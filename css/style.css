@@ -1,0 +1,248 @@
+.resize path {
+  fill: #666;
+  fill-opacity: .8;
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+.axis path, .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+.axis text {
+  text-shadow: 0 1px 0 #fff;
+}
+
+.brush .extent {
+  fill-opacity: .125;
+  shape-rendering: crispEdges;
+}
+
+.background path {
+  fill: none;
+  stroke: #ccc;
+  stroke-opacity: .4;
+  shape-rendering: crispEdges;
+}
+
+.foreground path {
+  fill: none;
+  stroke: steelblue;
+  stroke-opacity: .7;
+}
+
+.axispd path, .axispd line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+.axispd text {
+  text-shadow: 0 1px 0 #fff;
+}
+
+.brushpd .extent {
+  fill-opacity: .5;
+  shape-rendering: crispEdges;
+}
+
+.backgroundpd path {
+  fill: none;
+  stroke: #ccc;
+  stroke-opacity: .4;
+  shape-rendering: crispEdges;
+}
+
+.foregroundpd path {
+  fill: none;
+  stroke: steelblue;
+  stroke-opacity: .7;
+}
+
+.axispd .domainpd {
+  fill: none;
+  stroke: #000;
+  stroke-opacity: .3;
+  stroke-width: 10px;
+  stroke-linecap: round;
+}
+
+.axissl .halosl {
+  fill: none;
+  stroke: #ddd;
+  stroke-width: 8px;
+  stroke-linecap: round;
+}
+
+.slidersl .handlesl {
+  fill: #fff;
+  stroke: #000;
+  stroke-opacity: .5;
+  stroke-width: 1.25px;
+  cursor: crosshair;
+}
+
+.axissl .axissl.domain {
+  fill: none;
+  stroke: #000;
+  stroke-opacity: .3;
+  stroke-width: 10px;
+  stroke-linecap: round;
+}
+
+.zoom {
+    fill: transparent;
+    cursor: pointer;
+}
+
+.y-axis path,
+.y-axis line,
+.x-axis path,
+.x-axis line,
+{
+    path,
+    line {
+        stroke: black;
+        fill: none;
+        stroke-width: 1px;
+    }
+}
+
+.y-axis g line {
+    stroke: grey;
+    fill: none;
+    stroke-width: 1px;
+}
+
+.graph-body .line circle {
+    opacity: 0.1;
+}
+
+/*RadialTree*/
+.node circle {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.node {
+  font: 10px sans-serif;
+}
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1.5px;
+}/*RadialTree*/
+/*forceGraph*/
+.Forcenode {
+  cursor: pointer;
+  stroke: #3182bd;
+  stroke-width: 1.5px;
+}
+
+.Forcelink {
+  fill: none;
+  stroke: #9ecae1;
+  stroke-width: 1.5px;
+}
+/*forceGraph*/
+
+/*CircleChart*/
+.CircleChart polyline{
+  opacity: .3;
+  stroke: black;
+  stroke-width: 2px;
+  fill: none;
+}
+
+/*swimlane*/
+.chart {
+  shape-rendering: crispEdges;
+}
+
+.mini text {
+  font: 9px sans-serif; 
+}
+
+.main text {
+  font: 12px sans-serif;  
+}
+
+.month text {
+  text-anchor: start;
+}
+
+.todayLine {
+  stroke: blue;
+  stroke-width: 1.5;
+}
+
+.axis line, .axis path {
+  stroke: black;
+}
+
+.miniItem {
+  stroke-width: 6;  
+}
+
+.future {
+  stroke: gray;
+  fill: #ddd;
+}
+
+.past {
+  stroke: green;
+  fill: lightgreen;
+}
+
+.brush .extent {
+  stroke: gray;
+  fill: blue;
+  fill-opacity: .165;
+}
+/*multiLine*/
+.linemultiline {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+/*AreaTime*/
+.area {
+  fill: steelblue;
+  clip-path: url(#clip);
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.brush .extent {
+  stroke: #fff;
+  fill-opacity: .125;
+  shape-rendering: crispEdges;
+}
+/*circlepacking*/
+circle.parent {
+  fill: #ccc;
+  stroke: #999;
+  pointer-events: all;
+}
+circle.child {
+  fill: #ccc;
+  stroke: #999;
+  pointer-events: none;
+}
+circle.parent {
+  fill: #1f77b4;
+  fill-opacity: .1;
+  stroke: steelblue;
+}
+
+circle.parent:hover {
+  stroke: #ff7f0e;
+  stroke-width: .5px;
+}

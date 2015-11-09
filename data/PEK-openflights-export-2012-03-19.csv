@@ -1,0 +1,484 @@
+Date,From,To,Flight_Number,Airline,Distance,Duration,Seat,Seat_Type,Class,Reason,Plane,Registration,Trip,Note,From_OID,To_OID,Airline_OID,Plane_OID
+- -,PEK,ADD,Ethiopian Airlines (ET),Ethiopian Airlines,5172,10:50,,,,,77L,,,Direct,3364,1107,2220
+- -,PEK,AKL,Air China (CA),Air China,6474,13:26,,,,,772,,,Codeshare,3364,2006,751
+- -,PEK,AKL,Air New Zealand (NZ),Air New Zealand,6474,13:26,,,,,772,,,Direct,3364,2006,345
+- -,PEK,ALA,Hainan Airlines (HU),Hainan Airlines,2031,04:33,,,,,738,,,Direct,3364,2908,2660
+- -,PEK,ALA,Air Astana (KC),Air Astana,2031,04:33,,,,,752 767,,,Direct,3364,2908,1006
+- -,PEK,ALG,Air Algerie (AH),Air Algerie,5653,11:48,,,,,330,,,Direct,3364,210,794
+- -,PEK,AMS,China Southern Airlines (CZ),China Southern Airlines,4860,10:13,,,,,332,,,Direct,3364,580,1767
+- -,PEK,AMS,KLM Royal Dutch Airlines (KL),KLM Royal Dutch Airlines,4860,10:13,,,,,74M,,,Direct,3364,580,3090
+- -,PEK,AQG,Air Foyle (GS),Air Foyle,656,01:48,,,,,E90,,,Direct,3364,6427,690
+- -,PEK,ARN,Air China (CA),Air China,4155,08:48,,,,,777,,,Direct,3364,737,751
+- -,PEK,ARN,Scandinavian Airlines System (SK),Scandinavian Airlines System,4155,08:48,,,,,777,,,Codeshare,3364,737,4319
+- -,PEK,AUH,Etihad Airways (EY),Etihad Airways,3698,07:53,,,,,332,,,Direct,3364,2179,2222
+- -,PEK,AUH,All Nippon Airways (NH),All Nippon Airways,3698,07:53,,,,,332,,,Codeshare,3364,2179,324
+- -,PEK,BAV,Air China (CA),Air China,348,01:11,,,,,738 733 737,,,Direct,3364,6346,751
+- -,PEK,BAV,Hainan Airlines (HU),Hainan Airlines,348,01:11,,,,,738,,,Direct,3364,6346,2660
+- -,PEK,BAV,Japan Air System (JD),Japan Air System,348,01:11,,,,,320 319,,,Direct,3364,6346,6557
+- -,PEK,BAV,Shenzhen Airlines (ZH),Shenzhen Airlines,348,01:11,,,,,737,,,Codeshare,3364,6346,4611
+- -,PEK,BHY,Air China (CA),Air China,1350,03:12,,,,,738,,,Direct,3364,6351,751
+- -,PEK,BHY,Shenzhen Airlines (ZH),Shenzhen Airlines,1350,03:12,,,,,737,,,Codeshare,3364,6351,4611
+- -,PEK,BKK,Air China (CA),Air China,2059,04:37,,,,,738 772,,,Direct,3364,3885,751
+- -,PEK,BKK,Bangkok Airways (PG),Bangkok Airways,2059,04:37,,,,,747,,,Codeshare,3364,3885,1422
+- -,PEK,BKK,Thai Airways International (TG),Thai Airways International,2059,04:37,,,,,333 747 744,,,Direct,3364,3885,4940
+- -,PEK,BKK,SriLankan Airlines (UL),SriLankan Airlines,2059,04:37,,,,,343,,,Direct,3364,3885,4349
+- -,PEK,BRU,Hainan Airlines (HU),Hainan Airlines,4933,10:21,,,,,330,,,Direct,3364,302,2660
+- -,PEK,BRU,Brussels Airlines (SN),Brussels Airlines,4933,10:21,,,,,330,,,Codeshare,3364,302,1531
+- -,PEK,BUD,Hainan Airlines (HU),Hainan Airlines,4551,09:36,,,,,330,,,Direct,3364,1489,2660
+- -,PEK,BUD,Malév (MA),Malév,4551,09:36,,,,,330,,,Codeshare,3364,1489,3389
+- -,PEK,CAI,Air China (CA),Air China,4678,09:51,,,,,330,,,Codeshare,3364,1128,751
+- -,PEK,CAI,Egyptair (MS),Egyptair,4678,09:51,,,,,330,,,Direct,3364,1128,2143
+- -,PEK,CAN,Air China (CA),Air China,1168,02:50,,,,,738 777 747 772 773 333 321 744 330,,,Direct,3364,3370,751
+- -,PEK,CAN,China Southern Airlines (CZ),China Southern Airlines,1168,02:50,,,,,321 380 333 777 332 772 320 738 330,,,Direct,3364,3370,1767
+- -,PEK,CAN,Hainan Airlines (HU),Hainan Airlines,1168,02:50,,,,,738 340 330,,,Direct,3364,3370,2660
+- -,PEK,CAN,KLM Royal Dutch Airlines (KL),KLM Royal Dutch Airlines,1168,02:50,,,,,330,,,Codeshare,3364,3370,3090
+- -,PEK,CAN,China Eastern Airlines (MU),China Eastern Airlines,1168,02:50,,,,,321 333 777 772 320 738 330,,,Codeshare,3364,3370,1758
+- -,PEK,CAN,Scandinavian Airlines System (SK),Scandinavian Airlines System,1168,02:50,,,,,777 321 738,,,Codeshare,3364,3370,4319
+- -,PEK,CAN,Shenzhen Airlines (ZH),Shenzhen Airlines,1168,02:50,,,,,737 777 747 330 320,,,Codeshare,3364,3370,4611
+- -,PEK,CDG,Air France (AF),Air France,5085,10:40,,,,,77W,,,Direct,3364,1382,137
+- -,PEK,CDG,Air China (CA),Air China,5085,10:40,,,,,340 330,,,Direct,3364,1382,751
+- -,PEK,CDG,China Eastern Airlines (MU),China Eastern Airlines,5085,10:40,,,,,77W,,,Codeshare,3364,1382,1758
+- -,PEK,CGD,China Southern Airlines (CZ),China Southern Airlines,820,02:08,,,,,321,,,Direct,3364,6352,1767
+- -,PEK,CGK,Garuda Indonesia (GA),Garuda Indonesia,3252,07:00,,,,,332,,,Direct,3364,3275,2520
+- -,PEK,CGO,Air China (CA),Air China,412,01:19,,,,,738 737,,,Direct,3364,3375,751
+- -,PEK,CGO,China Southern Airlines (CZ),China Southern Airlines,412,01:19,,,,,738,,,Direct,3364,3375,1767
+- -,PEK,CGO,China Eastern Airlines (MU),China Eastern Airlines,412,01:19,,,,,738,,,Codeshare,3364,3375,1758
+- -,PEK,CGO,Shenzhen Airlines (ZH),Shenzhen Airlines,412,01:19,,,,,737,,,Codeshare,3364,3375,4611
+- -,PEK,CGQ,Air China (CA),Air China,499,01:29,,,,,738 321 757 733 737,,,Direct,3364,4380,751
+- -,PEK,CGQ,China Southern Airlines (CZ),China Southern Airlines,499,01:29,,,,,319 320 321,,,Direct,3364,4380,1767
+- -,PEK,CGQ,Hainan Airlines (HU),Hainan Airlines,499,01:29,,,,,738,,,Direct,3364,4380,2660
+- -,PEK,CGQ,Hankook Air (HX),Hankook Air,499,01:29,,,,,738,,,Codeshare,3364,4380,16706
+- -,PEK,CGQ,China Eastern Airlines (MU),China Eastern Airlines,499,01:29,,,,,320,,,Direct,3364,4380,1758
+- -,PEK,CGQ,Hong Kong Express Airways (UO),Hong Kong Express Airways,499,01:29,,,,,738,,,Codeshare,3364,4380,2774
+- -,PEK,CGQ,Shenzhen Airlines (ZH),Shenzhen Airlines,499,01:29,,,,,737 320,,,Codeshare,3364,4380,4611
+- -,PEK,CIF,Air China (CA),Air China,191,00:52,,,,,733 738,,,Direct,3364,6342,751
+- -,PEK,CIH,China Southern Airlines (CZ),China Southern Airlines,324,01:08,,,,,320,,,Direct,3364,6343,1767
+- -,PEK,CIH,Hainan Airlines (HU),Hainan Airlines,324,01:08,,,,,738,,,Direct,3364,6343,2660
+- -,PEK,CJU,Korean Air (KE),Korean Air,710,01:55,,,,,739,,,Direct,3364,2370,3163
+- -,PEK,CJU,China Eastern Airlines (MU),China Eastern Airlines,710,01:55,,,,,739,,,Codeshare,3364,2370,1758
+- -,PEK,CKG,Sichuan Airlines (3U),Sichuan Airlines,909,02:19,,,,,320 319,,,Direct,3364,3393,4608
+- -,PEK,CKG,Air China (CA),Air China,909,02:19,,,,,738 737 321,,,Direct,3364,3393,751
+- -,PEK,CKG,China Southern Airlines (CZ),China Southern Airlines,909,02:19,,,,,319,,,Direct,3364,3393,1767
+- -,PEK,CKG,Hainan Airlines (HU),Hainan Airlines,909,02:19,,,,,738,,,Direct,3364,3393,2660
+- -,PEK,CKG,KLM Royal Dutch Airlines (KL),KLM Royal Dutch Airlines,909,02:19,,,,,32S,,,Codeshare,3364,3393,3090
+- -,PEK,CKG,Shenzhen Airlines (ZH),Shenzhen Airlines,909,02:19,,,,,737 320,,,Codeshare,3364,3393,4611
+- -,PEK,CPH,Air China (CA),Air China,4467,09:26,,,,,343,,,Codeshare,3364,609,751
+- -,PEK,CPH,Scandinavian Airlines System (SK),Scandinavian Airlines System,4467,09:26,,,,,343,,,Direct,3364,609,4319
+- -,PEK,CSX,Air China (CA),Air China,843,02:11,,,,,738 321 772 757,,,Direct,3364,3371,751
+- -,PEK,CSX,China Southern Airlines (CZ),China Southern Airlines,843,02:11,,,,,320 321,,,Direct,3364,3371,1767
+- -,PEK,CSX,Hainan Airlines (HU),Hainan Airlines,843,02:11,,,,,738,,,Direct,3364,3371,2660
+- -,PEK,CSX,Xiamen Airlines (MF),Xiamen Airlines,843,02:11,,,,,737,,,Direct,3364,3371,5484
+- -,PEK,CSX,China Eastern Airlines (MU),China Eastern Airlines,843,02:11,,,,,320 321,,,Codeshare,3364,3371,1758
+- -,PEK,CSX,Shenzhen Airlines (ZH),Shenzhen Airlines,843,02:11,,,,,737 320 777,,,Codeshare,3364,3371,4611
+- -,PEK,CTS,Air China (CA),Air China,1308,03:06,,,,,738,,,Direct,3364,2287,751
+- -,PEK,CTS,All Nippon Airways (NH),All Nippon Airways,1308,03:06,,,,,738,,,Codeshare,3364,2287,324
+- -,PEK,CTU,Sichuan Airlines (3U),Sichuan Airlines,966,02:25,,,,,321 320 330,,,Direct,3364,3395,4608
+- -,PEK,CTU,Air China (CA),Air China,966,02:25,,,,,321 319 738 757 330 767 763 333,,,Direct,3364,3395,751
+- -,PEK,CTU,China Southern Airlines (CZ),China Southern Airlines,966,02:25,,,,,738 321,,,Direct,3364,3395,1767
+- -,PEK,CTU,Hainan Airlines (HU),Hainan Airlines,966,02:25,,,,,738 340,,,Direct,3364,3395,2660
+- -,PEK,CTU,All Nippon Airways (NH),All Nippon Airways,966,02:25,,,,,319,,,Codeshare,3364,3395,324
+- -,PEK,CTU,Scandinavian Airlines System (SK),Scandinavian Airlines System,966,02:25,,,,,321 333,,,Codeshare,3364,3395,4319
+- -,PEK,CTU,Shenzhen Airlines (ZH),Shenzhen Airlines,966,02:25,,,,,320 319 737 757 330 767,,,Codeshare,3364,3395,4611
+- -,PEK,CZX,Air China (CA),Air China,588,01:40,,,,,738,,,Direct,3364,4109,751
+- -,PEK,CZX,Shenzhen Airlines (ZH),Shenzhen Airlines,588,01:40,,,,,737,,,Codeshare,3364,4109,4611
+- -,PEK,DAT,Air China (CA),Air China,163,00:49,,,,,733,,,Direct,3364,6344,751
+- -,PEK,DAX,Air China (CA),Air China,791,02:04,,,,,737,,,Direct,3364,6397,751
+- -,PEK,DDG,Air China (CA),Air China,407,01:18,,,,,738 733,,,Direct,3364,6433,751
+- -,PEK,DEL,Air China (CA),Air China,2365,05:13,,,,,333,,,Direct,3364,3093,751
+- -,PEK,DLC,Air China (CA),Air China,274,01:02,,,,,737 738,,,Direct,3364,3404,751
+- -,PEK,DLC,Canadian National Airways (CN),Canadian National Airways,274,01:02,,,,,738,,,Direct,3364,3404,9829
+- -,PEK,DLC,China Southern Airlines (CZ),China Southern Airlines,274,01:02,,,,,321 319,,,Direct,3364,3404,1767
+- -,PEK,DLC,China Eastern Airlines (MU),China Eastern Airlines,274,01:02,,,,,321 320,,,Direct,3364,3404,1758
+- -,PEK,DLC,All Nippon Airways (NH),All Nippon Airways,274,01:02,,,,,738 737,,,Codeshare,3364,3404,324
+- -,PEK,DLC,Air New Zealand (NZ),Air New Zealand,274,01:02,,,,,738,,,Codeshare,3364,3404,345
+- -,PEK,DLC,Shenzhen Airlines (ZH),Shenzhen Airlines,274,01:02,,,,,737,,,Codeshare,3364,3404,4611
+- -,PEK,DME,Transaero Airlines (UN),Transaero Airlines,3592,07:41,,,,,772,,,Direct,3364,4029,5067
+- -,PEK,DOH,Qatar Airways (QR),Qatar Airways,3829,08:09,,,,,77W 77L,,,Direct,3364,2241,4091
+- -,PEK,DOY,Hainan Airlines (HU),Hainan Airlines,214,00:55,,,,,738,,,Direct,3364,4145,2660
+- -,PEK,DSN,Air China (CA),Air China,347,01:11,,,,,738,,,Direct,3364,6434,751
+- -,PEK,DTW,Delta Air Lines (DL),Delta Air Lines,6611,13:43,,,,,77L,,,Direct,3364,3645,2009
+- -,PEK,DUS,Air China (CA),Air China,4841,10:10,,,,,330,,,Direct,3364,345,751
+- -,PEK,DUS,Lufthansa (LH),Lufthansa,4841,10:10,,,,,330,,,Codeshare,3364,345,3320
+- -,PEK,DXB,Air China (CA),Air China,3629,07:45,,,,,330,,,Direct,3364,2188,751
+- -,PEK,DXB,China Southern Airlines (CZ),China Southern Airlines,3629,07:45,,,,,330,,,Direct,3364,2188,1767
+- -,PEK,DXB,Emirates (EK),Emirates,3629,07:45,,,,,345 388,,,Direct,3364,2188,2183
+- -,PEK,DXB,Hainan Airlines (HU),Hainan Airlines,3629,07:45,,,,,767,,,Direct,3364,2188,2660
+- -,PEK,DXB,Kenya Airways (KQ),Kenya Airways,3629,07:45,,,,,330,,,Codeshare,3364,2188,3126
+- -,PEK,DYG,Air China (CA),Air China,833,02:09,,,,,738,,,Direct,3364,6353,751
+- -,PEK,DYG,China Southern Airlines (CZ),China Southern Airlines,833,02:09,,,,,321,,,Direct,3364,6353,1767
+- -,PEK,ENY,Air Foyle (GS),Air Foyle,448,01:23,,,,,E90,,,Direct,3364,6367,690
+- -,PEK,EWR,Continental Airlines (CO),Continental Airlines,6811,14:07,,,,,777,,,Direct,3364,3494,1881
+- -,PEK,EWR,United Airlines (UA),United Airlines,6811,14:07,,,,,777,,,Codeshare,3364,3494,5209
+- -,PEK,FCO,Alitalia (AZ),Alitalia,5059,10:37,,,,,330,,,Direct,3364,1555,596
+- -,PEK,FCO,Air China (CA),Air China,5059,10:37,,,,,330,,,Direct,3364,1555,751
+- -,PEK,FCO,China Eastern Airlines (MU),China Eastern Airlines,5059,10:37,,,,,330,,,Codeshare,3364,1555,1758
+- -,PEK,FNJ,Air China (CA),Air China,486,01:28,,,,,733,,,Direct,3364,3377,751
+- -,PEK,FNJ,Air Koryo (JS),Air Koryo,486,01:28,,,,,T20,,,Direct,3364,3377,998
+- -,PEK,FOC,Air China (CA),Air China,992,02:29,,,,,738,,,Direct,3364,3385,751
+- -,PEK,FOC,China Southern Airlines (CZ),China Southern Airlines,992,02:29,,,,,737,,,Codeshare,3364,3385,1767
+- -,PEK,FOC,Hainan Airlines (HU),Hainan Airlines,992,02:29,,,,,738,,,Direct,3364,3385,2660
+- -,PEK,FOC,Xiamen Airlines (MF),Xiamen Airlines,992,02:29,,,,,737,,,Direct,3364,3385,5484
+- -,PEK,FOC,Shenzhen Airlines (ZH),Shenzhen Airlines,992,02:29,,,,,737,,,Codeshare,3364,3385,4611
+- -,PEK,FRA,Air China (CA),Air China,4837,10:10,,,,,773,,,Direct,3364,340,751
+- -,PEK,FRA,Lufthansa (LH),Lufthansa,4837,10:10,,,,,388,,,Direct,3364,340,3320
+- -,PEK,FUG,Air China (CA),Air China,497,01:29,,,,,733,,,Direct,3364,7503,751
+- -,PEK,GMP,Air China (CA),Air China,575,01:39,,,,,738,,,Direct,3364,2378,751
+- -,PEK,GMP,China Southern Airlines (CZ),China Southern Airlines,575,01:39,,,,,321,,,Direct,3364,2378,1767
+- -,PEK,GMP,Korean Air (KE),Korean Air,575,01:39,,,,,333,,,Direct,3364,2378,3163
+- -,PEK,GMP,Asiana Airlines (OZ),Asiana Airlines,575,01:39,,,,,333,,,Direct,3364,2378,28
+- -,PEK,GYS,Air China (CA),Air China,804,02:06,,,,,737,,,Direct,3364,6398,751
+- -,PEK,HAK,Air China (CA),Air China,1437,03:22,,,,,321,,,Direct,3364,4120,751
+- -,PEK,HAK,China Southern Airlines (CZ),China Southern Airlines,1437,03:22,,,,,320,,,Direct,3364,4120,1767
+- -,PEK,HAK,Hainan Airlines (HU),Hainan Airlines,1437,03:22,,,,,738,,,Direct,3364,4120,2660
+- -,PEK,HAK,Shenzhen Airlines (ZH),Shenzhen Airlines,1437,03:22,,,,,320,,,Codeshare,3364,4120,4611
+- -,PEK,HAN,China Southern Airlines (CZ),China Southern Airlines,1448,03:23,,,,,321,,,Codeshare,3364,3199,1767
+- -,PEK,HAN,Vietnam Airlines (VN),Vietnam Airlines,1448,03:23,,,,,321,,,Direct,3364,3199,5309
+- -,PEK,HEL,Finnair (AY),Finnair,3917,08:20,,,,,340 333,,,Direct,3364,421,2350
+- -,PEK,HEL,Air China (CA),Air China,3917,08:20,,,,,340 333,,,Codeshare,3364,421,751
+- -,PEK,HET,Air China (CA),Air China,255,01:00,,,,,733 738 321 737,,,Direct,3364,6345,751
+- -,PEK,HET,Hainan Airlines (HU),Hainan Airlines,255,01:00,,,,,738,,,Direct,3364,6345,2660
+- -,PEK,HET,Japan Air System (JD),Japan Air System,255,01:00,,,,,320 319,,,Direct,3364,6345,6557
+- -,PEK,HET,Shenzhen Airlines (ZH),Shenzhen Airlines,255,01:00,,,,,737 320,,,Codeshare,3364,6345,4611
+- -,PEK,HFE,Air China (CA),Air China,574,01:38,,,,,738 733,,,Direct,3364,3389,751
+- -,PEK,HFE,Hainan Airlines (HU),Hainan Airlines,574,01:38,,,,,738,,,Direct,3364,3389,2660
+- -,PEK,HFE,China Eastern Airlines (MU),China Eastern Airlines,574,01:38,,,,,320,,,Direct,3364,3389,1758
+- -,PEK,HGH,Air China (CA),Air China,713,01:55,,,,,738 319 320 737 321 733,,,Direct,3364,3386,751
+- -,PEK,HGH,China Southern Airlines (CZ),China Southern Airlines,713,01:55,,,,,321,,,Direct,3364,3386,1767
+- -,PEK,HGH,Shanghai Airlines (FM),Shanghai Airlines,713,01:55,,,,,738 757,,,Direct,3364,3386,4609
+- -,PEK,HGH,Hainan Airlines (HU),Hainan Airlines,713,01:55,,,,,738 330,,,Direct,3364,3386,2660
+- -,PEK,HGH,China Eastern Airlines (MU),China Eastern Airlines,713,01:55,,,,,321 320,,,Direct,3364,3386,1758
+- -,PEK,HGH,Shenzhen Airlines (ZH),Shenzhen Airlines,713,01:55,,,,,737 319 320,,,Codeshare,3364,3386,4611
+- -,PEK,HIA,China Eastern Airlines (MU),China Eastern Airlines,457,01:24,,,,,737,,,Direct,3364,7898,1758
+- -,PEK,HKG,Air China (CA),Air China,1237,02:58,,,,,321 330 772,,,Direct,3364,3077,751
+- -,PEK,HKG,Cathay Pacific (CX),Cathay Pacific,1237,02:58,,,,,330 777 343,,,Direct,3364,3077,1680
+- -,PEK,HKG,China Southern Airlines (CZ),China Southern Airlines,1237,02:58,,,,,321,,,Direct,3364,3077,1767
+- -,PEK,HKG,Hankook Air (HX),Hankook Air,1237,02:58,,,,,332,,,Direct,3364,3077,16706
+- -,PEK,HKG,Dragonair (KA),Dragonair,1237,02:58,,,,,330 320 321,,,Direct,3364,3077,2056
+- -,PEK,HKG,Hong Kong Express Airways (UO),Hong Kong Express Airways,1237,02:58,,,,,332,,,Direct,3364,3077,2774
+- -,PEK,HKT,Air China (CA),Air China,2478,05:27,,,,,757,,,Direct,3364,3179,751
+- -,PEK,HKT,Hainan Airlines (HU),Hainan Airlines,2478,05:27,,,,,738,,,Direct,3364,3179,2660
+- -,PEK,HLD,Air China (CA),Air China,649,01:47,,,,,738 733,,,Direct,3364,3366,751
+- -,PEK,HLD,Air Foyle (GS),Air Foyle,649,01:47,,,,,E90,,,Direct,3364,3366,690
+- -,PEK,HLD,Hainan Airlines (HU),Hainan Airlines,649,01:47,,,,,738,,,Direct,3364,3366,2660
+- -,PEK,HLH,Air China (CA),Air China,496,01:29,,,,,733,,,Direct,3364,6349,751
+- -,PEK,HND,Air China (CA),Air China,1299,03:05,,,,,321,,,Direct,3364,2359,751
+- -,PEK,HND,Japan Airlines (JL),Japan Airlines,1299,03:05,,,,,767,,,Direct,3364,2359,2987
+- -,PEK,HND,China Eastern Airlines (MU),China Eastern Airlines,1299,03:05,,,,,767,,,Codeshare,3364,2359,1758
+- -,PEK,HND,All Nippon Airways (NH),All Nippon Airways,1299,03:05,,,,,777 788,,,Direct,3364,2359,324
+- -,PEK,HRB,Air China (CA),Air China,620,01:44,,,,,738 321 757 767,,,Direct,3364,3400,751
+- -,PEK,HRB,Canadian National Airways (CN),Canadian National Airways,620,01:44,,,,,738,,,Direct,3364,3400,9829
+- -,PEK,HRB,China Southern Airlines (CZ),China Southern Airlines,620,01:44,,,,,320 319 330,,,Direct,3364,3400,1767
+- -,PEK,HRB,Shanghai Airlines (FM),Shanghai Airlines,620,01:44,,,,,738,,,Direct,3364,3400,4609
+- -,PEK,HRB,China Eastern Airlines (MU),China Eastern Airlines,620,01:44,,,,,738,,,Codeshare,3364,3400,1758
+- -,PEK,HRB,Shenzhen Airlines (ZH),Shenzhen Airlines,620,01:44,,,,,737 320 757 767,,,Codeshare,3364,3400,4611
+- -,PEK,HYN,Air China (CA),Air China,841,02:10,,,,,733,,,Direct,3364,6384,751
+- -,PEK,HYN,Shenzhen Airlines (ZH),Shenzhen Airlines,841,02:10,,,,,737,,,Codeshare,3364,6384,4611
+- -,PEK,IAD,Air China (CA),Air China,6901,14:18,,,,,777,,,Codeshare,3364,3714,751
+- -,PEK,IAD,Continental Airlines (CO),Continental Airlines,6901,14:18,,,,,777,,,Codeshare,3364,3714,1881
+- -,PEK,IAD,United Airlines (UA),United Airlines,6901,14:18,,,,,777,,,Direct,3364,3714,5209
+- -,PEK,IAD,US Airways (US),US Airways,6901,14:18,,,,,777,,,Codeshare,3364,3714,5265
+- -,PEK,ICN,Air China (CA),Air China,560,01:37,,,,,330 738,,,Direct,3364,3930,751
+- -,PEK,ICN,China Southern Airlines (CZ),China Southern Airlines,560,01:37,,,,,773 772 77W,,,Codeshare,3364,3930,1767
+- -,PEK,ICN,Korean Air (KE),Korean Air,560,01:37,,,,,773 772 77W,,,Direct,3364,3930,3163
+- -,PEK,ICN,Asiana Airlines (OZ),Asiana Airlines,560,01:37,,,,,321 333 767,,,Direct,3364,3930,28
+- -,PEK,IKA,Iran Air (IR),Iran Air,3526,07:33,,,,,74L,,,Direct,3364,4330,2922
+- -,PEK,IKT,Hainan Airlines (HU),Hainan Airlines,1020,02:32,,,,,738,,,Direct,3364,2937,2660
+- -,PEK,IKT,S7 Airlines (S7),S7 Airlines,1020,02:32,,,,,319,,,Direct,3364,2937,4329
+- -,PEK,INC,Air China (CA),Air China,575,01:39,,,,,738,,,Direct,3364,4085,751
+- -,PEK,INC,China Southern Airlines (CZ),China Southern Airlines,575,01:39,,,,,321,,,Direct,3364,4085,1767
+- -,PEK,INC,Hainan Airlines (HU),Hainan Airlines,575,01:39,,,,,738,,,Direct,3364,4085,2660
+- -,PEK,INC,China Eastern Airlines (MU),China Eastern Airlines,575,01:39,,,,,320,,,Direct,3364,4085,1758
+- -,PEK,INC,Shandong Airlines (SC),Shandong Airlines,575,01:39,,,,,738,,,Direct,3364,4085,4599
+- -,PEK,INC,Shenzhen Airlines (ZH),Shenzhen Airlines,575,01:39,,,,,737,,,Codeshare,3364,4085,4611
+- -,PEK,ISB,China Southern Airlines (CZ),China Southern Airlines,2419,05:20,,,,,310,,,Codeshare,3364,2223,1767
+- -,PEK,ISB,Pakistan International Airlines (PK),Pakistan International Airlines,2419,05:20,,,,,310,,,Direct,3364,2223,3871
+- -,PEK,IST,Air China (CA),Air China,4391,09:16,,,,,77W,,,Codeshare,3364,1701,751
+- -,PEK,IST,Turkish Airlines (TK),Turkish Airlines,4391,09:16,,,,,77W,,,Direct,3364,1701,4951
+- -,PEK,JDZ,Air China (CA),Air China,742,01:59,,,,,733 738,,,Direct,3364,6380,751
+- -,PEK,JFK,Air China (CA),Air China,6817,14:08,,,,,744,,,Direct,3364,3797,751
+- -,PEK,JFK,United Airlines (UA),United Airlines,6817,14:08,,,,,744,,,Codeshare,3364,3797,5209
+- -,PEK,JFK,US Airways (US),US Airways,6817,14:08,,,,,744,,,Codeshare,3364,3797,5265
+- -,PEK,JGS,Air China (CA),Air China,916,02:19,,,,,738,,,Direct,3364,6428,751
+- -,PEK,JIU,Hainan Airlines (HU),Hainan Airlines,715,01:55,,,,,734,,,Direct,3364,6381,2660
+- -,PEK,JJN,Air China (CA),Air China,1061,02:37,,,,,733,,,Direct,3364,6386,751
+- -,PEK,JJN,China Southern Airlines (CZ),China Southern Airlines,1061,02:37,,,,,737,,,Codeshare,3364,6386,1767
+- -,PEK,JJN,Xiamen Airlines (MF),Xiamen Airlines,1061,02:37,,,,,737,,,Direct,3364,6386,5484
+- -,PEK,JJN,Shenzhen Airlines (ZH),Shenzhen Airlines,1061,02:37,,,,,737,,,Codeshare,3364,6386,4611
+- -,PEK,JMU,Air China (CA),Air China,836,02:10,,,,,733,,,Direct,3364,6411,751
+- -,PEK,JMU,Hainan Airlines (HU),Hainan Airlines,836,02:10,,,,,734,,,Direct,3364,6411,2660
+- -,PEK,JMU,Hankook Air (HX),Hankook Air,836,02:10,,,,,734,,,Codeshare,3364,6411,16706
+- -,PEK,JMU,Hong Kong Express Airways (UO),Hong Kong Express Airways,836,02:10,,,,,734,,,Codeshare,3364,6411,2774
+- -,PEK,JNG,Shanghai Airlines (FM),Shanghai Airlines,322,01:08,,,,,737,,,Direct,3364,6944,4609
+- -,PEK,JNG,China Eastern Airlines (MU),China Eastern Airlines,322,01:08,,,,,737,,,Codeshare,3364,6944,1758
+- -,PEK,KBP,Hainan Airlines (HU),Hainan Airlines,3993,08:29,,,,,763,,,Codeshare,3364,2939,2660
+- -,PEK,KBP,Aerosvit Airlines (VV),Aerosvit Airlines,3993,08:29,,,,,763,,,Direct,3364,2939,114
+- -,PEK,KHH,China Airlines (CI),China Airlines,1228,02:57,,,,,738,,,Direct,3364,2264,1756
+- -,PEK,KHN,Air China (CA),Air China,775,02:03,,,,,738,,,Direct,3364,3384,751
+- -,PEK,KHN,Canadian National Airways (CN),Canadian National Airways,775,02:03,,,,,738,,,Direct,3364,3384,9829
+- -,PEK,KHN,Xiamen Airlines (MF),Xiamen Airlines,775,02:03,,,,,737,,,Direct,3364,3384,5484
+- -,PEK,KHN,China Eastern Airlines (MU),China Eastern Airlines,775,02:03,,,,,321 320,,,Direct,3364,3384,1758
+- -,PEK,KHN,Shenzhen Airlines (ZH),Shenzhen Airlines,775,02:03,,,,,737,,,Codeshare,3364,3384,4611
+- -,PEK,KHV,S7 Airlines (S7),S7 Airlines,1084,02:40,,,,,320,,,Direct,3364,2927,4329
+- -,PEK,KHV,Vladivostok Air (XF),Vladivostok Air,1084,02:40,,,,,320 T20,,,Direct,3364,2927,5353
+- -,PEK,KIX,Air China (CA),Air China,1094,02:41,,,,,321 738,,,Direct,3364,3992,751
+- -,PEK,KIX,All Nippon Airways (NH),All Nippon Airways,1094,02:41,,,,,737,,,Direct,3364,3992,324
+- -,PEK,KJA,Hainan Airlines (HU),Hainan Airlines,1556,03:36,,,,,738,,,Direct,3364,4374,2660
+- -,PEK,KJA,S7 Airlines (S7),S7 Airlines,1556,03:36,,,,,320,,,Direct,3364,4374,4329
+- -,PEK,KLO,Air Philippines (2P),Air Philippines,1992,04:29,,,,,320,,,Direct,3364,2430,897
+- -,PEK,KMG,Air China (CA),Air China,1313,03:07,,,,,757 738 737,,,Direct,3364,3382,751
+- -,PEK,KMG,China Southern Airlines (CZ),China Southern Airlines,1313,03:07,,,,,321,,,Direct,3364,3382,1767
+- -,PEK,KMG,Hainan Airlines (HU),Hainan Airlines,1313,03:07,,,,,738,,,Direct,3364,3382,2660
+- -,PEK,KMG,China Eastern Airlines (MU),China Eastern Airlines,1313,03:07,,,,,737 333 733,,,Direct,3364,3382,1758
+- -,PEK,KMG,Shenzhen Airlines (ZH),Shenzhen Airlines,1313,03:07,,,,,757 737,,,Codeshare,3364,3382,4611
+- -,PEK,KOW,China Southern Airlines (CZ),China Southern Airlines,989,02:28,,,,,319,,,Direct,3364,6379,1767
+- -,PEK,KUL,Air China (CA),Air China,2740,05:58,,,,,757,,,Direct,3364,3304,751
+- -,PEK,KUL,China Southern Airlines (CZ),China Southern Airlines,2740,05:58,,,,,772,,,Codeshare,3364,3304,1767
+- -,PEK,KUL,Malaysia Airlines (MH),Malaysia Airlines,2740,05:58,,,,,772,,,Direct,3364,3304,3378
+- -,PEK,KUL,Air Zimbabwe (UM),Air Zimbabwe,2740,05:58,,,,,762,,,Direct,3364,3304,608
+- -,PEK,KWE,Air China (CA),Air China,1090,02:40,,,,,737 320 738,,,Direct,3364,3394,751
+- -,PEK,KWE,China Southern Airlines (CZ),China Southern Airlines,1090,02:40,,,,,738,,,Direct,3364,3394,1767
+- -,PEK,KWE,Hainan Airlines (HU),Hainan Airlines,1090,02:40,,,,,738,,,Direct,3364,3394,2660
+- -,PEK,KWL,Air China (CA),Air China,1093,02:41,,,,,321 738,,,Direct,3364,3372,751
+- -,PEK,KWL,Canadian National Airways (CN),Canadian National Airways,1093,02:41,,,,,738,,,Direct,3364,3372,9829
+- -,PEK,KWL,China Southern Airlines (CZ),China Southern Airlines,1093,02:41,,,,,738,,,Direct,3364,3372,1767
+- -,PEK,LAD,TAAG Angola Airlines (DT),TAAG Angola Airlines,7312,15:07,,,,,772,,,Direct,3364,951,5133
+- -,PEK,LAX,Air China (CA),Air China,6233,12:57,,,,,747 744,,,Direct,3364,3484,751
+- -,PEK,LAX,United Airlines (UA),United Airlines,6233,12:57,,,,,747 744,,,Codeshare,3364,3484,5209
+- -,PEK,LAX,US Airways (US),US Airways,6233,12:57,,,,,747 744,,,Codeshare,3364,3484,5265
+- -,PEK,LED,Rossiya-Russian Airlines (FV),Rossiya-Russian Airlines,3761,08:01,,,,,767,,,Codeshare,3364,2948,641
+- -,PEK,LED,Hainan Airlines (HU),Hainan Airlines,3761,08:01,,,,,767,,,Direct,3364,2948,2660
+- -,PEK,LHR,British Airways (BA),British Airways,5062,10:37,,,,,744,,,Direct,3364,507,1355
+- -,PEK,LHR,Air China (CA),Air China,5062,10:37,,,,,330,,,Direct,3364,507,751
+- -,PEK,LHR,Virgin Atlantic Airways (VS),Virgin Atlantic Airways,5062,10:37,,,,,330,,,Codeshare,3364,507,5347
+- -,PEK,LHW,Air China (CA),Air China,755,02:00,,,,,738,,,Direct,3364,6431,751
+- -,PEK,LHW,Hainan Airlines (HU),Hainan Airlines,755,02:00,,,,,738,,,Direct,3364,6431,2660
+- -,PEK,LHW,Hankook Air (HX),Hankook Air,755,02:00,,,,,738,,,Codeshare,3364,6431,16706
+- -,PEK,LHW,China Eastern Airlines (MU),China Eastern Airlines,755,02:00,,,,,321 320,,,Direct,3364,6431,1758
+- -,PEK,LHW,Hong Kong Express Airways (UO),Hong Kong Express Airways,755,02:00,,,,,738,,,Codeshare,3364,6431,2774
+- -,PEK,LHW,Shenzhen Airlines (ZH),Shenzhen Airlines,755,02:00,,,,,737,,,Codeshare,3364,6431,4611
+- -,PEK,LJG,Japan Air System (JD),Japan Air System,1306,03:06,,,,,319,,,Direct,3364,4033,6557
+- -,PEK,LUM,Cargo Plus Aviation (8L),Cargo Plus Aviation,1505,03:30,,,,,737,,,Direct,3364,6376,2942
+- -,PEK,LXA,Air China (CA),Air China,1628,03:45,,,,,319,,,Direct,3364,4097,751
+- -,PEK,LYA,China Eastern Airlines (MU),China Eastern Airlines,457,01:24,,,,,320 321 737,,,Direct,3364,4148,1758
+- -,PEK,LYG,Air China (CA),Air China,408,01:18,,,,,738,,,Direct,3364,6383,751
+- -,PEK,LYG,China Eastern Airlines (MU),China Eastern Airlines,408,01:18,,,,,321,,,Direct,3364,6383,1758
+- -,PEK,LYI,China Eastern Airlines (MU),China Eastern Airlines,361,01:13,,,,,737,,,Direct,3364,6385,1758
+- -,PEK,LZH,Air China (CA),Air China,1172,02:50,,,,,733,,,Direct,3364,6356,751
+- -,PEK,LZO,China Eastern Airlines (MU),China Eastern Airlines,1001,02:30,,,,,CRJ,,,Direct,3364,6399,1758
+- -,PEK,MAD,Air China (CA),Air China,5715,11:55,,,,,330,,,Direct,3364,1229,751
+- -,PEK,MDG,Hainan Airlines (HU),Hainan Airlines,729,01:57,,,,,738,,,Direct,3364,4334,2660
+- -,PEK,MDG,Hankook Air (HX),Hankook Air,729,01:57,,,,,738,,,Codeshare,3364,4334,16706
+- -,PEK,MDG,Hong Kong Express Airways (UO),Hong Kong Express Airways,729,01:57,,,,,738,,,Codeshare,3364,4334,2774
+- -,PEK,MEL,Air China (CA),Air China,5659,11:49,,,,,330,,,Direct,3364,3339,751
+- -,PEK,MFM,Air China (CA),Air China,1250,03:00,,,,,321 320,,,Codeshare,3364,3121,751
+- -,PEK,MFM,Air Macau (NX),Air Macau,1250,03:00,,,,,321 320,,,Direct,3364,3121,316
+- -,PEK,MIG,Air China (CA),Air China,891,02:16,,,,,738,,,Direct,3364,6400,751
+- -,PEK,MLE,Hainan Airlines (HU),Hainan Airlines,3645,07:47,,,,,767,,,Direct,3364,3156,2660
+- -,PEK,MNL,Cebu Pacific (5J),Cebu Pacific,1786,04:04,,,,,320,,,Direct,3364,2397,1683
+- -,PEK,MNL,Air China (CA),Air China,1786,04:04,,,,,738,,,Direct,3364,2397,751
+- -,PEK,MNL,Philippine Airlines (PR),Philippine Airlines,1786,04:04,,,,,320,,,Direct,3364,2397,3952
+- -,PEK,MUC,Air China (CA),Air China,4794,10:05,,,,,330,,,Direct,3364,346,751
+- -,PEK,MUC,Lufthansa (LH),Lufthansa,4794,10:05,,,,,343,,,Direct,3364,346,3320
+- -,PEK,MWX,Air China (CA),Air China,640,01:46,,,,,321,,,Codeshare,3364,4189,751
+- -,PEK,MWX,Asiana Airlines (OZ),Asiana Airlines,640,01:46,,,,,321,,,Direct,3364,4189,28
+- -,PEK,MXP,Air China (CA),Air China,5025,10:33,,,,,330,,,Direct,3364,1524,751
+- -,PEK,NAO,China Southern Airlines (CZ),China Southern Airlines,873,02:14,,,,,319,,,Direct,3364,6401,1767
+- -,PEK,NDG,Air China (CA),Air China,614,01:43,,,,,733,,,Direct,3364,6413,751
+- -,PEK,NDG,Hainan Airlines (HU),Hainan Airlines,614,01:43,,,,,734,,,Direct,3364,6413,2660
+- -,PEK,NDG,Hankook Air (HX),Hankook Air,614,01:43,,,,,734,,,Codeshare,3364,6413,16706
+- -,PEK,NDG,Hong Kong Express Airways (UO),Hong Kong Express Airways,614,01:43,,,,,734,,,Codeshare,3364,6413,2774
+- -,PEK,NGB,Air China (CA),Air China,759,02:01,,,,,738 737,,,Direct,3364,3387,751
+- -,PEK,NGB,China Southern Airlines (CZ),China Southern Airlines,759,02:01,,,,,321,,,Direct,3364,3387,1767
+- -,PEK,NGB,Hainan Airlines (HU),Hainan Airlines,759,02:01,,,,,734 738,,,Direct,3364,3387,2660
+- -,PEK,NGB,China Eastern Airlines (MU),China Eastern Airlines,759,02:01,,,,,320 321,,,Direct,3364,3387,1758
+- -,PEK,NGB,Shenzhen Airlines (ZH),Shenzhen Airlines,759,02:01,,,,,737,,,Codeshare,3364,3387,4611
+- -,PEK,NGO,Air China (CA),Air China,1162,02:49,,,,,738,,,Direct,3364,3942,751
+- -,PEK,NGO,Etihad Airways (EY),Etihad Airways,1162,02:49,,,,,332,,,Direct,3364,3942,2222
+- -,PEK,NGO,All Nippon Airways (NH),All Nippon Airways,1162,02:49,,,,,738 332,,,Codeshare,3364,3942,324
+- -,PEK,NKG,Air China (CA),Air China,589,01:40,,,,,738 737 733,,,Direct,3364,3388,751
+- -,PEK,NKG,China Southern Airlines (CZ),China Southern Airlines,589,01:40,,,,,319,,,Direct,3364,3388,1767
+- -,PEK,NKG,Shanghai Airlines (FM),Shanghai Airlines,589,01:40,,,,,757 738,,,Direct,3364,3388,4609
+- -,PEK,NKG,Hainan Airlines (HU),Hainan Airlines,589,01:40,,,,,738,,,Direct,3364,3388,2660
+- -,PEK,NKG,China Eastern Airlines (MU),China Eastern Airlines,589,01:40,,,,,320 321,,,Direct,3364,3388,1758
+- -,PEK,NKG,Shenzhen Airlines (ZH),Shenzhen Airlines,589,01:40,,,,,737,,,Codeshare,3364,3388,4611
+- -,PEK,NNG,Air China (CA),Air China,1302,03:06,,,,,738 321,,,Direct,3364,3373,751
+- -,PEK,NNG,Canadian National Airways (CN),Canadian National Airways,1302,03:06,,,,,738,,,Direct,3364,3373,9829
+- -,PEK,NNG,China Southern Airlines (CZ),China Southern Airlines,1302,03:06,,,,,330 738 333,,,Direct,3364,3373,1767
+- -,PEK,NNG,Shenzhen Airlines (ZH),Shenzhen Airlines,1302,03:06,,,,,738,,,Direct,3364,3373,4611
+- -,PEK,NRT,Air China (CA),Air China,1326,03:09,,,,,772 738 319,,,Direct,3364,2279,751
+- -,PEK,NRT,China Southern Airlines (CZ),China Southern Airlines,1326,03:09,,,,,73H,,,Codeshare,3364,2279,1767
+- -,PEK,NRT,Delta Air Lines (DL),Delta Air Lines,1326,03:09,,,,,767,,,Direct,3364,2279,2009
+- -,PEK,NRT,Japan Airlines (JL),Japan Airlines,1326,03:09,,,,,73H,,,Direct,3364,2279,2987
+- -,PEK,NRT,China Eastern Airlines (MU),China Eastern Airlines,1326,03:09,,,,,73H,,,Codeshare,3364,2279,1758
+- -,PEK,NRT,All Nippon Airways (NH),All Nippon Airways,1326,03:09,,,,,763 320,,,Direct,3364,2279,324
+- -,PEK,NRT,Pakistan International Airlines (PK),Pakistan International Airlines,1326,03:09,,,,,310,,,Direct,3364,2279,3871
+- -,PEK,NTG,Air China (CA),Air China,604,01:42,,,,,733 737,,,Direct,3364,5475,751
+- -,PEK,NTG,Shenzhen Airlines (ZH),Shenzhen Airlines,604,01:42,,,,,737,,,Codeshare,3364,5475,4611
+- -,PEK,NZH,Air China (CA),Air China,656,01:48,,,,,738,,,Direct,3364,6954,751
+- -,PEK,NZH,Hainan Airlines (HU),Hainan Airlines,656,01:48,,,,,738,,,Direct,3364,6954,2660
+- -,PEK,OKA,Air China (CA),Air China,1150,02:48,,,,,738,,,Direct,3364,2384,751
+- -,PEK,OKA,Hainan Airlines (HU),Hainan Airlines,1150,02:48,,,,,738,,,Direct,3364,2384,2660
+- -,PEK,OKA,All Nippon Airways (NH),All Nippon Airways,1150,02:48,,,,,738,,,Codeshare,3364,2384,324
+- -,PEK,ORD,American Airlines (AA),American Airlines,6559,13:37,,,,,777,,,Direct,3364,3830,24
+- -,PEK,ORD,Air China (CA),Air China,6559,13:37,,,,,777,,,Codeshare,3364,3830,751
+- -,PEK,ORD,Continental Airlines (CO),Continental Airlines,6559,13:37,,,,,777,,,Codeshare,3364,3830,1881
+- -,PEK,ORD,United Airlines (UA),United Airlines,6559,13:37,,,,,777,,,Direct,3364,3830,5209
+- -,PEK,ORD,US Airways (US),US Airways,6559,13:37,,,,,777,,,Codeshare,3364,3830,5265
+- -,PEK,OVB,Hainan Airlines (HU),Hainan Airlines,1860,04:13,,,,,738,,,Direct,3364,4078,2660
+- -,PEK,OVB,S7 Airlines (S7),S7 Airlines,1860,04:13,,,,,320,,,Direct,3364,4078,4329
+- -,PEK,PUS,Air China (CA),Air China,754,02:00,,,,,738,,,Direct,3364,2372,751
+- -,PEK,PUS,Hainan Airlines (HU),Hainan Airlines,754,02:00,,,,,738,,,Direct,3364,2372,2660
+- -,PEK,PUS,Korean Air (KE),Korean Air,754,02:00,,,,,739 738,,,Direct,3364,2372,3163
+- -,PEK,PUS,Asiana Airlines (OZ),Asiana Airlines,754,02:00,,,,,320,,,Direct,3364,2372,28
+- -,PEK,PVG,Air China (CA),Air China,682,01:51,,,,,777 340 330 321,,,Direct,3364,3406,751
+- -,PEK,PVG,China Southern Airlines (CZ),China Southern Airlines,682,01:51,,,,,380,,,Direct,3364,3406,1767
+- -,PEK,PVG,Hainan Airlines (HU),Hainan Airlines,682,01:51,,,,,738,,,Direct,3364,3406,2660
+- -,PEK,PVG,China Eastern Airlines (MU),China Eastern Airlines,682,01:51,,,,,321 333 AB6,,,Direct,3364,3406,1758
+- -,PEK,PVG,Air New Zealand (NZ),Air New Zealand,682,01:51,,,,,330,,,Codeshare,3364,3406,345
+- -,PEK,PVG,United Airlines (UA),United Airlines,682,01:51,,,,,747,,,Codeshare,3364,3406,5209
+- -,PEK,PVG,US Airways (US),US Airways,682,01:51,,,,,747,,,Codeshare,3364,3406,5265
+- -,PEK,PVG,Shenzhen Airlines (ZH),Shenzhen Airlines,682,01:51,,,,,777 340 330 320,,,Codeshare,3364,3406,4611
+- -,PEK,REP,China Eastern Airlines (MU),China Eastern Airlines,1997,04:29,,,,,320,,,Direct,3364,3035,1758
+- -,PEK,SEA,Delta Air Lines (DL),Delta Air Lines,5389,11:16,,,,,767,,,Direct,3364,3577,2009
+- -,PEK,SEA,Hainan Airlines (HU),Hainan Airlines,5389,11:16,,,,,330,,,Direct,3364,3577,2660
+- -,PEK,SFO,Air China (CA),Air China,5896,12:17,,,,,747,,,Direct,3364,3469,751
+- -,PEK,SFO,Continental Airlines (CO),Continental Airlines,5896,12:17,,,,,744,,,Codeshare,3364,3469,1881
+- -,PEK,SFO,United Airlines (UA),United Airlines,5896,12:17,,,,,744,,,Direct,3364,3469,5209
+- -,PEK,SFO,US Airways (US),US Airways,5896,12:17,,,,,744 747,,,Codeshare,3364,3469,5265
+- -,PEK,SGN,Air China (CA),Air China,2110,04:43,,,,,737,,,Direct,3364,3205,751
+- -,PEK,SHA,China SSS (9C),China SSS,668,01:50,,,,,320,,,Direct,3364,3391,15999
+- -,PEK,SHA,Air China (CA),Air China,668,01:50,,,,,321 333 738 763 772 747 757 744 330 777 767,,,Direct,3364,3391,751
+- -,PEK,SHA,China Southern Airlines (CZ),China Southern Airlines,668,01:50,,,,,321,,,Direct,3364,3391,1767
+- -,PEK,SHA,Shanghai Airlines (FM),Shanghai Airlines,668,01:50,,,,,738 763 757,,,Direct,3364,3391,4609
+- -,PEK,SHA,Juneyao Airlines (HO),Juneyao Airlines,668,01:50,,,,,320,,,Direct,3364,3391,3081
+- -,PEK,SHA,Hainan Airlines (HU),Hainan Airlines,668,01:50,,,,,340 738 330,,,Direct,3364,3391,2660
+- -,PEK,SHA,China Eastern Airlines (MU),China Eastern Airlines,668,01:50,,,,,333 321,,,Direct,3364,3391,1758
+- -,PEK,SHA,Air New Zealand (NZ),Air New Zealand,668,01:50,,,,,321,,,Codeshare,3364,3391,345
+- -,PEK,SHA,Scandinavian Airlines System (SK),Scandinavian Airlines System,668,01:50,,,,,321 772 738 330,,,Codeshare,3364,3391,4319
+- -,PEK,SHA,Shenzhen Airlines (ZH),Shenzhen Airlines,668,01:50,,,,,767 320 330 777 747 737 757,,,Codeshare,3364,3391,4611
+- -,PEK,SHE,Air China (CA),Air China,362,01:13,,,,,737 738 733 321,,,Direct,3364,4144,751
+- -,PEK,SHE,China Southern Airlines (CZ),China Southern Airlines,362,01:13,,,,,321 319,,,Direct,3364,4144,1767
+- -,PEK,SHE,China Eastern Airlines (MU),China Eastern Airlines,362,01:13,,,,,321 319,,,Codeshare,3364,4144,1758
+- -,PEK,SHE,Shenzhen Airlines (ZH),Shenzhen Airlines,362,01:13,,,,,737 320,,,Codeshare,3364,4144,4611
+- -,PEK,SIN,Air China (CA),Air China,2788,06:04,,,,,333 767 763,,,Direct,3364,3316,751
+- -,PEK,SIN,Jetstar Airways (JQ),Jetstar Airways,2788,06:04,,,,,332,,,Direct,3364,3316,3052
+- -,PEK,SIN,Qantas (QF),Qantas,2788,06:04,,,,,332,,,Codeshare,3364,3316,4089
+- -,PEK,SIN,Singapore Airlines (SQ),Singapore Airlines,2788,06:04,,,,,773 333 772,,,Direct,3364,3316,4435
+- -,PEK,SVO,Air China (CA),Air China,3598,07:41,,,,,777,,,Direct,3364,2985,751
+- -,PEK,SVO,Hainan Airlines (HU),Hainan Airlines,3598,07:41,,,,,330,,,Direct,3364,2985,2660
+- -,PEK,SVO,Aeroflot Russian Airlines (SU),Aeroflot Russian Airlines,3598,07:41,,,,,333 763 332,,,Direct,3364,2985,130
+- -,PEK,SVX,S7 Airlines (S7),S7 Airlines,2710,05:55,,,,,319 320,,,Direct,3364,2975,4329
+- -,PEK,SVX,Ural Airlines (U6),Ural Airlines,2710,05:55,,,,,320,,,Direct,3364,2975,5234
+- -,PEK,SWA,Air China (CA),Air China,1151,02:48,,,,,738,,,Direct,3364,4302,751
+- -,PEK,SWA,China Southern Airlines (CZ),China Southern Airlines,1151,02:48,,,,,738,,,Direct,3364,4302,1767
+- -,PEK,SWA,Shenzhen Airlines (ZH),Shenzhen Airlines,1151,02:48,,,,,737,,,Codeshare,3364,4302,4611
+- -,PEK,SYD,Air China (CA),Air China,5567,11:38,,,,,330,,,Direct,3364,3361,751
+- -,PEK,SYX,Air China (CA),Air China,1563,03:37,,,,,321 330 738 333,,,Direct,3364,4030,751
+- -,PEK,SYX,China Southern Airlines (CZ),China Southern Airlines,1563,03:37,,,,,330 777 321 333,,,Direct,3364,4030,1767
+- -,PEK,SYX,Hainan Airlines (HU),Hainan Airlines,1563,03:37,,,,,738,,,Direct,3364,4030,2660
+- -,PEK,SYX,Shenzhen Airlines (ZH),Shenzhen Airlines,1563,03:37,,,,,330,,,Codeshare,3364,4030,4611
+- -,PEK,SZX,Air China (CA),Air China,1215,02:55,,,,,321 738 767 330 763 777 772 333,,,Direct,3364,3374,751
+- -,PEK,SZX,China Southern Airlines (CZ),China Southern Airlines,1215,02:55,,,,,321 333,,,Direct,3364,3374,1767
+- -,PEK,SZX,Hainan Airlines (HU),Hainan Airlines,1215,02:55,,,,,340 738,,,Direct,3364,3374,2660
+- -,PEK,SZX,China Eastern Airlines (MU),China Eastern Airlines,1215,02:55,,,,,321 333,,,Codeshare,3364,3374,1758
+- -,PEK,SZX,Shenzhen Airlines (ZH),Shenzhen Airlines,1215,02:55,,,,,739,,,Direct,3364,3374,4611
+- -,PEK,TAE,Air China (CA),Air China,717,01:56,,,,,738,,,Direct,3364,2381,751
+- -,PEK,TAO,Air China (CA),Air China,334,01:10,,,,,321 738 733 737,,,Direct,3364,3390,751
+- -,PEK,TAO,China Southern Airlines (CZ),China Southern Airlines,334,01:10,,,,,320,,,Codeshare,3364,3390,1767
+- -,PEK,TAO,China Eastern Airlines (MU),China Eastern Airlines,334,01:10,,,,,737 320 321,,,Direct,3364,3390,1758
+- -,PEK,TAO,Shandong Airlines (SC),Shandong Airlines,334,01:10,,,,,733 738,,,Direct,3364,3390,4599
+- -,PEK,TAO,Shenzhen Airlines (ZH),Shenzhen Airlines,334,01:10,,,,,737,,,Codeshare,3364,3390,4611
+- -,PEK,TAS,China Southern Airlines (CZ),China Southern Airlines,2447,05:23,,,,,330,,,Direct,3364,2983,1767
+- -,PEK,TAS,Uzbekistan Airways (HY),Uzbekistan Airways,2447,05:23,,,,,763,,,Direct,3364,2983,5281
+- -,PEK,TGO,Air China (CA),Air China,375,01:15,,,,,733,,,Direct,3364,6348,751
+- -,PEK,TLV,Air China (CA),Air China,4434,09:22,,,,,763 762,,,Codeshare,3364,1590,751
+- -,PEK,TLV,El Al Israel Airlines (LY),El Al Israel Airlines,4434,09:22,,,,,763 762,,,Direct,3364,1590,2150
+- -,PEK,TNA,Air China (CA),Air China,225,00:57,,,,,738,,,Codeshare,3364,4108,751
+- -,PEK,TNA,Shandong Airlines (SC),Shandong Airlines,225,00:57,,,,,738,,,Direct,3364,4108,4599
+- -,PEK,TPE,EVA Air (BR),EVA Air,1070,02:38,,,,,332 744 77W,,,Direct,3364,2276,2091
+- -,PEK,TPE,Air China (CA),Air China,1070,02:38,,,,,772 738 333,,,Direct,3364,2276,751
+- -,PEK,TPE,China Airlines (CI),China Airlines,1070,02:38,,,,,744 333 738,,,Direct,3364,2276,1756
+- -,PEK,TPE,Hainan Airlines (HU),Hainan Airlines,1070,02:38,,,,,738,,,Direct,3364,2276,2660
+- -,PEK,TXL,Air Berlin (AB),Air Berlin,4568,09:38,,,,,330,,,Codeshare,3364,351,214
+- -,PEK,TXL,Hainan Airlines (HU),Hainan Airlines,4568,09:38,,,,,330,,,Direct,3364,351,2660
+- -,PEK,TXN,Air China (CA),Air China,720,01:56,,,,,738,,,Direct,3364,6387,751
+- -,PEK,TYN,Air China (CA),Air China,266,01:01,,,,,738,,,Direct,3364,3369,751
+- -,PEK,TYN,Hainan Airlines (HU),Hainan Airlines,266,01:01,,,,,738,,,Direct,3364,3369,2660
+- -,PEK,TYN,China Eastern Airlines (MU),China Eastern Airlines,266,01:01,,,,,737 738,,,Direct,3364,3369,1758
+- -,PEK,ULN,Air China (CA),Air China,723,01:56,,,,,738,,,Direct,3364,3380,751
+- -,PEK,ULN,MIAT Mongolian Airlines (OM),MIAT Mongolian Airlines,723,01:56,,,,,767 737,,,Direct,3364,3380,3354
+- -,PEK,URC,Air China (CA),Air China,1509,03:31,,,,,738 737 757,,,Direct,3364,3399,751
+- -,PEK,URC,China Southern Airlines (CZ),China Southern Airlines,1509,03:31,,,,,333 73G 321 752,,,Direct,3364,3399,1767
+- -,PEK,URC,Hainan Airlines (HU),Hainan Airlines,1509,03:31,,,,,738,,,Direct,3364,3399,2660
+- -,PEK,URC,Hankook Air (HX),Hankook Air,1509,03:31,,,,,738,,,Codeshare,3364,3399,16706
+- -,PEK,URC,KLM Royal Dutch Airlines (KL),KLM Royal Dutch Airlines,1509,03:31,,,,,737,,,Codeshare,3364,3399,3090
+- -,PEK,URC,China Eastern Airlines (MU),China Eastern Airlines,1509,03:31,,,,,333 321,,,Codeshare,3364,3399,1758
+- -,PEK,URC,Hong Kong Express Airways (UO),Hong Kong Express Airways,1509,03:31,,,,,738,,,Codeshare,3364,3399,2774
+- -,PEK,URC,Shenzhen Airlines (ZH),Shenzhen Airlines,1509,03:31,,,,,737 757,,,Codeshare,3364,3399,4611
+- -,PEK,UUS,Sat Airlines (HZ),Sat Airlines,1383,03:15,,,,,737,,,Direct,3364,2933,4808
+- -,PEK,UYN,Air Foyle (GS),Air Foyle,387,01:16,,,,,E90,,,Direct,3364,6368,690
+- -,PEK,VIE,Air China (CA),Air China,4627,09:45,,,,,767 763,,,Codeshare,3364,1613,751
+- -,PEK,VIE,Austrian Airlines (OS),Austrian Airlines,4627,09:45,,,,,767 763,,,Direct,3364,1613,491
+- -,PEK,VVO,S7 Airlines (S7),S7 Airlines,832,02:09,,,,,320,,,Direct,3364,2934,4329
+- -,PEK,VVO,Vladivostok Air (XF),Vladivostok Air,832,02:09,,,,,320 T20,,,Direct,3364,2934,5353
+- -,PEK,WEF,Air Foyle (GS),Air Foyle,273,01:02,,,,,E90,,,Direct,3364,6388,690
+- -,PEK,WEH,Air China (CA),Air China,364,01:13,,,,,737 738,,,Direct,3364,6389,751
+- -,PEK,WEH,Shandong Airlines (SC),Shandong Airlines,364,01:13,,,,,738,,,Direct,3364,6389,4599
+- -,PEK,WNZ,Air China (CA),Air China,874,02:14,,,,,737 320 738 319,,,Direct,3364,6392,751
+- -,PEK,WNZ,Hainan Airlines (HU),Hainan Airlines,874,02:14,,,,,738,,,Direct,3364,6392,2660
+- -,PEK,WNZ,China Eastern Airlines (MU),China Eastern Airlines,874,02:14,,,,,737 738,,,Direct,3364,6392,1758
+- -,PEK,WUA,Hainan Airlines (HU),Hainan Airlines,518,01:32,,,,,738,,,Direct,3364,6955,2660
+- -,PEK,WUH,Air China (CA),Air China,655,01:48,,,,,320,,,Direct,3364,3376,751
+- -,PEK,WUH,China Southern Airlines (CZ),China Southern Airlines,655,01:48,,,,,738 733,,,Direct,3364,3376,1767
+- -,PEK,WUH,Hainan Airlines (HU),Hainan Airlines,655,01:48,,,,,738,,,Direct,3364,3376,2660
+- -,PEK,WUH,China Eastern Airlines (MU),China Eastern Airlines,655,01:48,,,,,738 733,,,Direct,3364,3376,1758
+- -,PEK,WUH,Shenzhen Airlines (ZH),Shenzhen Airlines,655,01:48,,,,,320,,,Codeshare,3364,3376,4611
+- -,PEK,WUS,China Southern Airlines (CZ),China Southern Airlines,858,02:12,,,,,737,,,Codeshare,3364,6391,1767
+- -,PEK,WUS,Xiamen Airlines (MF),Xiamen Airlines,858,02:12,,,,,737,,,Direct,3364,6391,5484
+- -,PEK,WUX,Air China (CA),Air China,630,01:45,,,,,738,,,Direct,3364,6390,751
+- -,PEK,WUX,China Eastern Airlines (MU),China Eastern Airlines,630,01:45,,,,,320,,,Direct,3364,6390,1758
+- -,PEK,WUX,Shenzhen Airlines (ZH),Shenzhen Airlines,630,01:45,,,,,738,,,Direct,3364,6390,4611
+- -,PEK,WXN,Sichuan Airlines (3U),Sichuan Airlines,786,02:04,,,,,320,,,Direct,3364,6403,4608
+- -,PEK,XFN,Air China (CA),Air China,597,01:41,,,,,733,,,Direct,3364,6360,751
+- -,PEK,XIL,Air China (CA),Air China,266,01:01,,,,,738 733,,,Direct,3364,6350,751
+- -,PEK,XIY,Air China (CA),Air China,579,01:39,,,,,738 321 737 763,,,Direct,3364,3379,751
+- -,PEK,XIY,China Southern Airlines (CZ),China Southern Airlines,579,01:39,,,,,738,,,Direct,3364,3379,1767
+- -,PEK,XIY,Shanghai Airlines (FM),Shanghai Airlines,579,01:39,,,,,738,,,Direct,3364,3379,4609
+- -,PEK,XIY,Hainan Airlines (HU),Hainan Airlines,579,01:39,,,,,738,,,Direct,3364,3379,2660
+- -,PEK,XIY,China Eastern Airlines (MU),China Eastern Airlines,579,01:39,,,,,333 320 AB6 321 332,,,Direct,3364,3379,1758
+- -,PEK,XIY,Shenzhen Airlines (ZH),Shenzhen Airlines,579,01:39,,,,,737 320,,,Codeshare,3364,3379,4611
+- -,PEK,XMN,Air China (CA),Air China,1076,02:39,,,,,738,,,Direct,3364,3383,751
+- -,PEK,XMN,China Southern Airlines (CZ),China Southern Airlines,1076,02:39,,,,,321,,,Direct,3364,3383,1767
+- -,PEK,XMN,Hainan Airlines (HU),Hainan Airlines,1076,02:39,,,,,738,,,Direct,3364,3383,2660
+- -,PEK,XMN,KLM Royal Dutch Airlines (KL),KLM Royal Dutch Airlines,1076,02:39,,,,,32S,,,Codeshare,3364,3383,3090
+- -,PEK,XMN,Xiamen Airlines (MF),Xiamen Airlines,1076,02:39,,,,,737,,,Direct,3364,3383,5484
+- -,PEK,XMN,Shenzhen Airlines (ZH),Shenzhen Airlines,1076,02:39,,,,,737,,,Codeshare,3364,3383,4611
+- -,PEK,XNN,Air China (CA),Air China,824,02:08,,,,,738,,,Direct,3364,6366,751
+- -,PEK,XNN,China Southern Airlines (CZ),China Southern Airlines,824,02:08,,,,,320,,,Direct,3364,6366,1767
+- -,PEK,XNN,China Eastern Airlines (MU),China Eastern Airlines,824,02:08,,,,,320,,,Direct,3364,6366,1758
+- -,PEK,XNN,Shenzhen Airlines (ZH),Shenzhen Airlines,824,02:08,,,,,737,,,Codeshare,3364,6366,4611
+- -,PEK,XUZ,Air China (CA),Air China,409,01:19,,,,,738 733,,,Direct,3364,4149,751
+- -,PEK,YBP,Air China (CA),Air China,1035,02:34,,,,,737,,,Direct,3364,4110,751
+- -,PEK,YCU,Air China (CA),Air China,464,01:25,,,,,738,,,Direct,3364,6430,751
+- -,PEK,YIH,Air China (CA),Air China,711,01:55,,,,,738,,,Direct,3364,6361,751
+- -,PEK,YIH,Hainan Airlines (HU),Hainan Airlines,711,01:55,,,,,734,,,Direct,3364,6361,2660
+- -,PEK,YIW,Air China (CA),Air China,766,02:01,,,,,738,,,Direct,3364,6394,751
+- -,PEK,YIW,China Southern Airlines (CZ),China Southern Airlines,766,02:01,,,,,733,,,Direct,3364,6394,1767
+- -,PEK,YNJ,Air China (CA),Air China,692,01:53,,,,,738,,,Direct,3364,6414,751
+- -,PEK,YNJ,China Southern Airlines (CZ),China Southern Airlines,692,01:53,,,,,321,,,Direct,3364,6414,1767
+- -,PEK,YNT,Air China (CA),Air China,317,01:08,,,,,738 737,,,Direct,3364,3392,751
+- -,PEK,YNT,China Eastern Airlines (MU),China Eastern Airlines,317,01:08,,,,,320,,,Direct,3364,3392,1758
+- -,PEK,YNT,Shandong Airlines (SC),Shandong Airlines,317,01:08,,,,,738 737,,,Direct,3364,3392,4599
+- -,PEK,YNZ,Air China (CA),Air China,501,01:30,,,,,733,,,Direct,3364,6393,751
+- -,PEK,YVR,Air Canada (AC),Air Canada,5273,11:02,,,,,763,,,Direct,3364,156,330
+- -,PEK,YVR,Air China (CA),Air China,5273,11:02,,,,,330,,,Direct,3364,156,751
+- -,PEK,YYZ,Air Canada (AC),Air Canada,6558,13:36,,,,,77W,,,Direct,3364,193,330
+- -,PEK,YYZ,Air China (CA),Air China,6558,13:36,,,,,77W,,,Codeshare,3364,193,751
+- -,PEK,YYZ,Hainan Airlines (HU),Hainan Airlines,6558,13:36,,,,,340,,,Direct,3364,193,2660
+- -,PEK,ZHA,Air China (CA),Air China,1353,03:12,,,,,738,,,Direct,3364,6357,751
+- -,PEK,ZHA,Shenzhen Airlines (ZH),Shenzhen Airlines,1353,03:12,,,,,737,,,Codeshare,3364,6357,4611
+- -,PEK,ZHY,Sichuan Airlines (3U),Sichuan Airlines,638,01:46,,,,,320,,,Direct,3364,8043,4608
+- -,PEK,ZRH,Hainan Airlines (HU),Hainan Airlines,4949,10:23,,,,,330,,,Direct,3364,1678,2660
+- -,PEK,ZUH,Air China (CA),Air China,1262,03:01,,,,,738,,,Direct,3364,6355,751
+- -,PEK,ZUH,China Southern Airlines (CZ),China Southern Airlines,1262,03:01,,,,,738,,,Direct,3364,6355,1767
+- -,PEK,ZUH,Shenzhen Airlines (ZH),Shenzhen Airlines,1262,03:01,,,,,737,,,Codeshare,3364,6355,4611

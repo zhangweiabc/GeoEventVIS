@@ -1,0 +1,484 @@
+name,Distance,From_OID,To_OID,Airline_OID
+Ethiopian Airlines (ET),5172,3364,1107,2220
+Air China (CA),6474,3364,2006,751
+Air New Zealand (NZ),6474,3364,2006,345
+Hainan Airlines (HU),2031,3364,2908,2660
+Air Astana (KC),2031,3364,2908,1006
+Air Algerie (AH),5653,3364,210,794
+China Southern Airlines (CZ),4860,3364,580,1767
+KLM Royal Dutch Airlines (KL),4860,3364,580,3090
+Air Foyle (GS),656,3364,6427,690
+Air China (CA),4155,3364,737,751
+Scandinavian Airlines System (SK),4155,3364,737,4319
+Etihad Airways (EY),3698,3364,2179,2222
+All Nippon Airways (NH),3698,3364,2179,324
+Air China (CA),348,3364,6346,751
+Hainan Airlines (HU),348,3364,6346,2660
+Japan Air System (JD),348,3364,6346,6557
+Shenzhen Airlines (ZH),348,3364,6346,4611
+Air China (CA),1350,3364,6351,751
+Shenzhen Airlines (ZH),1350,3364,6351,4611
+Air China (CA),2059,3364,3885,751
+Bangkok Airways (PG),2059,3364,3885,1422
+Thai Airways International (TG),2059,3364,3885,4940
+SriLankan Airlines (UL),2059,3364,3885,4349
+Hainan Airlines (HU),4933,3364,302,2660
+Brussels Airlines (SN),4933,3364,302,1531
+Hainan Airlines (HU),4551,3364,1489,2660
+Malév (MA),4551,3364,1489,3389
+Air China (CA),4678,3364,1128,751
+Egyptair (MS),4678,3364,1128,2143
+Air China (CA),1168,3364,3370,751
+China Southern Airlines (CZ),1168,3364,3370,1767
+Hainan Airlines (HU),1168,3364,3370,2660
+KLM Royal Dutch Airlines (KL),1168,3364,3370,3090
+China Eastern Airlines (MU),1168,3364,3370,1758
+Scandinavian Airlines System (SK),1168,3364,3370,4319
+Shenzhen Airlines (ZH),1168,3364,3370,4611
+Air France (AF),5085,3364,1382,137
+Air China (CA),5085,3364,1382,751
+China Eastern Airlines (MU),5085,3364,1382,1758
+China Southern Airlines (CZ),820,3364,6352,1767
+Garuda Indonesia (GA),3252,3364,3275,2520
+Air China (CA),412,3364,3375,751
+China Southern Airlines (CZ),412,3364,3375,1767
+China Eastern Airlines (MU),412,3364,3375,1758
+Shenzhen Airlines (ZH),412,3364,3375,4611
+Air China (CA),499,3364,4380,751
+China Southern Airlines (CZ),499,3364,4380,1767
+Hainan Airlines (HU),499,3364,4380,2660
+Hankook Air (HX),499,3364,4380,16706
+China Eastern Airlines (MU),499,3364,4380,1758
+Hong Kong Express Airways (UO),499,3364,4380,2774
+Shenzhen Airlines (ZH),499,3364,4380,4611
+Air China (CA),191,3364,6342,751
+China Southern Airlines (CZ),324,3364,6343,1767
+Hainan Airlines (HU),324,3364,6343,2660
+Korean Air (KE),710,3364,2370,3163
+China Eastern Airlines (MU),710,3364,2370,1758
+Sichuan Airlines (3U),909,3364,3393,4608
+Air China (CA),909,3364,3393,751
+China Southern Airlines (CZ),909,3364,3393,1767
+Hainan Airlines (HU),909,3364,3393,2660
+KLM Royal Dutch Airlines (KL),909,3364,3393,3090
+Shenzhen Airlines (ZH),909,3364,3393,4611
+Air China (CA),4467,3364,609,751
+Scandinavian Airlines System (SK),4467,3364,609,4319
+Air China (CA),843,3364,3371,751
+China Southern Airlines (CZ),843,3364,3371,1767
+Hainan Airlines (HU),843,3364,3371,2660
+Xiamen Airlines (MF),843,3364,3371,5484
+China Eastern Airlines (MU),843,3364,3371,1758
+Shenzhen Airlines (ZH),843,3364,3371,4611
+Air China (CA),1308,3364,2287,751
+All Nippon Airways (NH),1308,3364,2287,324
+Sichuan Airlines (3U),966,3364,3395,4608
+Air China (CA),966,3364,3395,751
+China Southern Airlines (CZ),966,3364,3395,1767
+Hainan Airlines (HU),966,3364,3395,2660
+All Nippon Airways (NH),966,3364,3395,324
+Scandinavian Airlines System (SK),966,3364,3395,4319
+Shenzhen Airlines (ZH),966,3364,3395,4611
+Air China (CA),588,3364,4109,751
+Shenzhen Airlines (ZH),588,3364,4109,4611
+Air China (CA),163,3364,6344,751
+Air China (CA),791,3364,6397,751
+Air China (CA),407,3364,6433,751
+Air China (CA),2365,3364,3093,751
+Air China (CA),274,3364,3404,751
+Canadian National Airways (CN),274,3364,3404,9829
+China Southern Airlines (CZ),274,3364,3404,1767
+China Eastern Airlines (MU),274,3364,3404,1758
+All Nippon Airways (NH),274,3364,3404,324
+Air New Zealand (NZ),274,3364,3404,345
+Shenzhen Airlines (ZH),274,3364,3404,4611
+Transaero Airlines (UN),3592,3364,4029,5067
+Qatar Airways (QR),3829,3364,2241,4091
+Hainan Airlines (HU),214,3364,4145,2660
+Air China (CA),347,3364,6434,751
+Delta Air Lines (DL),6611,3364,3645,2009
+Air China (CA),4841,3364,345,751
+Lufthansa (LH),4841,3364,345,3320
+Air China (CA),3629,3364,2188,751
+China Southern Airlines (CZ),3629,3364,2188,1767
+Emirates (EK),3629,3364,2188,2183
+Hainan Airlines (HU),3629,3364,2188,2660
+Kenya Airways (KQ),3629,3364,2188,3126
+Air China (CA),833,3364,6353,751
+China Southern Airlines (CZ),833,3364,6353,1767
+Air Foyle (GS),448,3364,6367,690
+Continental Airlines (CO),6811,3364,3494,1881
+United Airlines (UA),6811,3364,3494,5209
+Alitalia (AZ),5059,3364,1555,596
+Air China (CA),5059,3364,1555,751
+China Eastern Airlines (MU),5059,3364,1555,1758
+Air China (CA),486,3364,3377,751
+Air Koryo (JS),486,3364,3377,998
+Air China (CA),992,3364,3385,751
+China Southern Airlines (CZ),992,3364,3385,1767
+Hainan Airlines (HU),992,3364,3385,2660
+Xiamen Airlines (MF),992,3364,3385,5484
+Shenzhen Airlines (ZH),992,3364,3385,4611
+Air China (CA),4837,3364,340,751
+Lufthansa (LH),4837,3364,340,3320
+Air China (CA),497,3364,7503,751
+Air China (CA),575,3364,2378,751
+China Southern Airlines (CZ),575,3364,2378,1767
+Korean Air (KE),575,3364,2378,3163
+Asiana Airlines (OZ),575,3364,2378,28
+Air China (CA),804,3364,6398,751
+Air China (CA),1437,3364,4120,751
+China Southern Airlines (CZ),1437,3364,4120,1767
+Hainan Airlines (HU),1437,3364,4120,2660
+Shenzhen Airlines (ZH),1437,3364,4120,4611
+China Southern Airlines (CZ),1448,3364,3199,1767
+Vietnam Airlines (VN),1448,3364,3199,5309
+Finnair (AY),3917,3364,421,2350
+Air China (CA),3917,3364,421,751
+Air China (CA),255,3364,6345,751
+Hainan Airlines (HU),255,3364,6345,2660
+Japan Air System (JD),255,3364,6345,6557
+Shenzhen Airlines (ZH),255,3364,6345,4611
+Air China (CA),574,3364,3389,751
+Hainan Airlines (HU),574,3364,3389,2660
+China Eastern Airlines (MU),574,3364,3389,1758
+Air China (CA),713,3364,3386,751
+China Southern Airlines (CZ),713,3364,3386,1767
+Shanghai Airlines (FM),713,3364,3386,4609
+Hainan Airlines (HU),713,3364,3386,2660
+China Eastern Airlines (MU),713,3364,3386,1758
+Shenzhen Airlines (ZH),713,3364,3386,4611
+China Eastern Airlines (MU),457,3364,7898,1758
+Air China (CA),1237,3364,3077,751
+Cathay Pacific (CX),1237,3364,3077,1680
+China Southern Airlines (CZ),1237,3364,3077,1767
+Hankook Air (HX),1237,3364,3077,16706
+Dragonair (KA),1237,3364,3077,2056
+Hong Kong Express Airways (UO),1237,3364,3077,2774
+Air China (CA),2478,3364,3179,751
+Hainan Airlines (HU),2478,3364,3179,2660
+Air China (CA),649,3364,3366,751
+Air Foyle (GS),649,3364,3366,690
+Hainan Airlines (HU),649,3364,3366,2660
+Air China (CA),496,3364,6349,751
+Air China (CA),1299,3364,2359,751
+Japan Airlines (JL),1299,3364,2359,2987
+China Eastern Airlines (MU),1299,3364,2359,1758
+All Nippon Airways (NH),1299,3364,2359,324
+Air China (CA),620,3364,3400,751
+Canadian National Airways (CN),620,3364,3400,9829
+China Southern Airlines (CZ),620,3364,3400,1767
+Shanghai Airlines (FM),620,3364,3400,4609
+China Eastern Airlines (MU),620,3364,3400,1758
+Shenzhen Airlines (ZH),620,3364,3400,4611
+Air China (CA),841,3364,6384,751
+Shenzhen Airlines (ZH),841,3364,6384,4611
+Air China (CA),6901,3364,3714,751
+Continental Airlines (CO),6901,3364,3714,1881
+United Airlines (UA),6901,3364,3714,5209
+US Airways (US),6901,3364,3714,5265
+Air China (CA),560,3364,3930,751
+China Southern Airlines (CZ),560,3364,3930,1767
+Korean Air (KE),560,3364,3930,3163
+Asiana Airlines (OZ),560,3364,3930,28
+Iran Air (IR),3526,3364,4330,2922
+Hainan Airlines (HU),1020,3364,2937,2660
+S7 Airlines (S7),1020,3364,2937,4329
+Air China (CA),575,3364,4085,751
+China Southern Airlines (CZ),575,3364,4085,1767
+Hainan Airlines (HU),575,3364,4085,2660
+China Eastern Airlines (MU),575,3364,4085,1758
+Shandong Airlines (SC),575,3364,4085,4599
+Shenzhen Airlines (ZH),575,3364,4085,4611
+China Southern Airlines (CZ),2419,3364,2223,1767
+Pakistan International Airlines (PK),2419,3364,2223,3871
+Air China (CA),4391,3364,1701,751
+Turkish Airlines (TK),4391,3364,1701,4951
+Air China (CA),742,3364,6380,751
+Air China (CA),6817,3364,3797,751
+United Airlines (UA),6817,3364,3797,5209
+US Airways (US),6817,3364,3797,5265
+Air China (CA),916,3364,6428,751
+Hainan Airlines (HU),715,3364,6381,2660
+Air China (CA),1061,3364,6386,751
+China Southern Airlines (CZ),1061,3364,6386,1767
+Xiamen Airlines (MF),1061,3364,6386,5484
+Shenzhen Airlines (ZH),1061,3364,6386,4611
+Air China (CA),836,3364,6411,751
+Hainan Airlines (HU),836,3364,6411,2660
+Hankook Air (HX),836,3364,6411,16706
+Hong Kong Express Airways (UO),836,3364,6411,2774
+Shanghai Airlines (FM),322,3364,6944,4609
+China Eastern Airlines (MU),322,3364,6944,1758
+Hainan Airlines (HU),3993,3364,2939,2660
+Aerosvit Airlines (VV),3993,3364,2939,114
+China Airlines (CI),1228,3364,2264,1756
+Air China (CA),775,3364,3384,751
+Canadian National Airways (CN),775,3364,3384,9829
+Xiamen Airlines (MF),775,3364,3384,5484
+China Eastern Airlines (MU),775,3364,3384,1758
+Shenzhen Airlines (ZH),775,3364,3384,4611
+S7 Airlines (S7),1084,3364,2927,4329
+Vladivostok Air (XF),1084,3364,2927,5353
+Air China (CA),1094,3364,3992,751
+All Nippon Airways (NH),1094,3364,3992,324
+Hainan Airlines (HU),1556,3364,4374,2660
+S7 Airlines (S7),1556,3364,4374,4329
+Air Philippines (2P),1992,3364,2430,897
+Air China (CA),1313,3364,3382,751
+China Southern Airlines (CZ),1313,3364,3382,1767
+Hainan Airlines (HU),1313,3364,3382,2660
+China Eastern Airlines (MU),1313,3364,3382,1758
+Shenzhen Airlines (ZH),1313,3364,3382,4611
+China Southern Airlines (CZ),989,3364,6379,1767
+Air China (CA),2740,3364,3304,751
+China Southern Airlines (CZ),2740,3364,3304,1767
+Malaysia Airlines (MH),2740,3364,3304,3378
+Air Zimbabwe (UM),2740,3364,3304,608
+Air China (CA),1090,3364,3394,751
+China Southern Airlines (CZ),1090,3364,3394,1767
+Hainan Airlines (HU),1090,3364,3394,2660
+Air China (CA),1093,3364,3372,751
+Canadian National Airways (CN),1093,3364,3372,9829
+China Southern Airlines (CZ),1093,3364,3372,1767
+TAAG Angola Airlines (DT),7312,3364,951,5133
+Air China (CA),6233,3364,3484,751
+United Airlines (UA),6233,3364,3484,5209
+US Airways (US),6233,3364,3484,5265
+Rossiya-Russian Airlines (FV),3761,3364,2948,641
+Hainan Airlines (HU),3761,3364,2948,2660
+British Airways (BA),5062,3364,507,1355
+Air China (CA),5062,3364,507,751
+Virgin Atlantic Airways (VS),5062,3364,507,5347
+Air China (CA),755,3364,6431,751
+Hainan Airlines (HU),755,3364,6431,2660
+Hankook Air (HX),755,3364,6431,16706
+China Eastern Airlines (MU),755,3364,6431,1758
+Hong Kong Express Airways (UO),755,3364,6431,2774
+Shenzhen Airlines (ZH),755,3364,6431,4611
+Japan Air System (JD),1306,3364,4033,6557
+Cargo Plus Aviation (8L),1505,3364,6376,2942
+Air China (CA),1628,3364,4097,751
+China Eastern Airlines (MU),457,3364,4148,1758
+Air China (CA),408,3364,6383,751
+China Eastern Airlines (MU),408,3364,6383,1758
+China Eastern Airlines (MU),361,3364,6385,1758
+Air China (CA),1172,3364,6356,751
+China Eastern Airlines (MU),1001,3364,6399,1758
+Air China (CA),5715,3364,1229,751
+Hainan Airlines (HU),729,3364,4334,2660
+Hankook Air (HX),729,3364,4334,16706
+Hong Kong Express Airways (UO),729,3364,4334,2774
+Air China (CA),5659,3364,3339,751
+Air China (CA),1250,3364,3121,751
+Air Macau (NX),1250,3364,3121,316
+Air China (CA),891,3364,6400,751
+Hainan Airlines (HU),3645,3364,3156,2660
+Cebu Pacific (5J),1786,3364,2397,1683
+Air China (CA),1786,3364,2397,751
+Philippine Airlines (PR),1786,3364,2397,3952
+Air China (CA),4794,3364,346,751
+Lufthansa (LH),4794,3364,346,3320
+Air China (CA),640,3364,4189,751
+Asiana Airlines (OZ),640,3364,4189,28
+Air China (CA),5025,3364,1524,751
+China Southern Airlines (CZ),873,3364,6401,1767
+Air China (CA),614,3364,6413,751
+Hainan Airlines (HU),614,3364,6413,2660
+Hankook Air (HX),614,3364,6413,16706
+Hong Kong Express Airways (UO),614,3364,6413,2774
+Air China (CA),759,3364,3387,751
+China Southern Airlines (CZ),759,3364,3387,1767
+Hainan Airlines (HU),759,3364,3387,2660
+China Eastern Airlines (MU),759,3364,3387,1758
+Shenzhen Airlines (ZH),759,3364,3387,4611
+Air China (CA),1162,3364,3942,751
+Etihad Airways (EY),1162,3364,3942,2222
+All Nippon Airways (NH),1162,3364,3942,324
+Air China (CA),589,3364,3388,751
+China Southern Airlines (CZ),589,3364,3388,1767
+Shanghai Airlines (FM),589,3364,3388,4609
+Hainan Airlines (HU),589,3364,3388,2660
+China Eastern Airlines (MU),589,3364,3388,1758
+Shenzhen Airlines (ZH),589,3364,3388,4611
+Air China (CA),1302,3364,3373,751
+Canadian National Airways (CN),1302,3364,3373,9829
+China Southern Airlines (CZ),1302,3364,3373,1767
+Shenzhen Airlines (ZH),1302,3364,3373,4611
+Air China (CA),1326,3364,2279,751
+China Southern Airlines (CZ),1326,3364,2279,1767
+Delta Air Lines (DL),1326,3364,2279,2009
+Japan Airlines (JL),1326,3364,2279,2987
+China Eastern Airlines (MU),1326,3364,2279,1758
+All Nippon Airways (NH),1326,3364,2279,324
+Pakistan International Airlines (PK),1326,3364,2279,3871
+Air China (CA),604,3364,5475,751
+Shenzhen Airlines (ZH),604,3364,5475,4611
+Air China (CA),656,3364,6954,751
+Hainan Airlines (HU),656,3364,6954,2660
+Air China (CA),1150,3364,2384,751
+Hainan Airlines (HU),1150,3364,2384,2660
+All Nippon Airways (NH),1150,3364,2384,324
+American Airlines (AA),6559,3364,3830,24
+Air China (CA),6559,3364,3830,751
+Continental Airlines (CO),6559,3364,3830,1881
+United Airlines (UA),6559,3364,3830,5209
+US Airways (US),6559,3364,3830,5265
+Hainan Airlines (HU),1860,3364,4078,2660
+S7 Airlines (S7),1860,3364,4078,4329
+Air China (CA),754,3364,2372,751
+Hainan Airlines (HU),754,3364,2372,2660
+Korean Air (KE),754,3364,2372,3163
+Asiana Airlines (OZ),754,3364,2372,28
+Air China (CA),682,3364,3406,751
+China Southern Airlines (CZ),682,3364,3406,1767
+Hainan Airlines (HU),682,3364,3406,2660
+China Eastern Airlines (MU),682,3364,3406,1758
+Air New Zealand (NZ),682,3364,3406,345
+United Airlines (UA),682,3364,3406,5209
+US Airways (US),682,3364,3406,5265
+Shenzhen Airlines (ZH),682,3364,3406,4611
+China Eastern Airlines (MU),1997,3364,3035,1758
+Delta Air Lines (DL),5389,3364,3577,2009
+Hainan Airlines (HU),5389,3364,3577,2660
+Air China (CA),5896,3364,3469,751
+Continental Airlines (CO),5896,3364,3469,1881
+United Airlines (UA),5896,3364,3469,5209
+US Airways (US),5896,3364,3469,5265
+Air China (CA),2110,3364,3205,751
+China SSS (9C),668,3364,3391,15999
+Air China (CA),668,3364,3391,751
+China Southern Airlines (CZ),668,3364,3391,1767
+Shanghai Airlines (FM),668,3364,3391,4609
+Juneyao Airlines (HO),668,3364,3391,3081
+Hainan Airlines (HU),668,3364,3391,2660
+China Eastern Airlines (MU),668,3364,3391,1758
+Air New Zealand (NZ),668,3364,3391,345
+Scandinavian Airlines System (SK),668,3364,3391,4319
+Shenzhen Airlines (ZH),668,3364,3391,4611
+Air China (CA),362,3364,4144,751
+China Southern Airlines (CZ),362,3364,4144,1767
+China Eastern Airlines (MU),362,3364,4144,1758
+Shenzhen Airlines (ZH),362,3364,4144,4611
+Air China (CA),2788,3364,3316,751
+Jetstar Airways (JQ),2788,3364,3316,3052
+Qantas (QF),2788,3364,3316,4089
+Singapore Airlines (SQ),2788,3364,3316,4435
+Air China (CA),3598,3364,2985,751
+Hainan Airlines (HU),3598,3364,2985,2660
+Aeroflot Russian Airlines (SU),3598,3364,2985,130
+S7 Airlines (S7),2710,3364,2975,4329
+Ural Airlines (U6),2710,3364,2975,5234
+Air China (CA),1151,3364,4302,751
+China Southern Airlines (CZ),1151,3364,4302,1767
+Shenzhen Airlines (ZH),1151,3364,4302,4611
+Air China (CA),5567,3364,3361,751
+Air China (CA),1563,3364,4030,751
+China Southern Airlines (CZ),1563,3364,4030,1767
+Hainan Airlines (HU),1563,3364,4030,2660
+Shenzhen Airlines (ZH),1563,3364,4030,4611
+Air China (CA),1215,3364,3374,751
+China Southern Airlines (CZ),1215,3364,3374,1767
+Hainan Airlines (HU),1215,3364,3374,2660
+China Eastern Airlines (MU),1215,3364,3374,1758
+Shenzhen Airlines (ZH),1215,3364,3374,4611
+Air China (CA),717,3364,2381,751
+Air China (CA),334,3364,3390,751
+China Southern Airlines (CZ),334,3364,3390,1767
+China Eastern Airlines (MU),334,3364,3390,1758
+Shandong Airlines (SC),334,3364,3390,4599
+Shenzhen Airlines (ZH),334,3364,3390,4611
+China Southern Airlines (CZ),2447,3364,2983,1767
+Uzbekistan Airways (HY),2447,3364,2983,5281
+Air China (CA),375,3364,6348,751
+Air China (CA),4434,3364,1590,751
+El Al Israel Airlines (LY),4434,3364,1590,2150
+Air China (CA),225,3364,4108,751
+Shandong Airlines (SC),225,3364,4108,4599
+EVA Air (BR),1070,3364,2276,2091
+Air China (CA),1070,3364,2276,751
+China Airlines (CI),1070,3364,2276,1756
+Hainan Airlines (HU),1070,3364,2276,2660
+Air Berlin (AB),4568,3364,351,214
+Hainan Airlines (HU),4568,3364,351,2660
+Air China (CA),720,3364,6387,751
+Air China (CA),266,3364,3369,751
+Hainan Airlines (HU),266,3364,3369,2660
+China Eastern Airlines (MU),266,3364,3369,1758
+Air China (CA),723,3364,3380,751
+MIAT Mongolian Airlines (OM),723,3364,3380,3354
+Air China (CA),1509,3364,3399,751
+China Southern Airlines (CZ),1509,3364,3399,1767
+Hainan Airlines (HU),1509,3364,3399,2660
+Hankook Air (HX),1509,3364,3399,16706
+KLM Royal Dutch Airlines (KL),1509,3364,3399,3090
+China Eastern Airlines (MU),1509,3364,3399,1758
+Hong Kong Express Airways (UO),1509,3364,3399,2774
+Shenzhen Airlines (ZH),1509,3364,3399,4611
+Sat Airlines (HZ),1383,3364,2933,4808
+Air Foyle (GS),387,3364,6368,690
+Air China (CA),4627,3364,1613,751
+Austrian Airlines (OS),4627,3364,1613,491
+S7 Airlines (S7),832,3364,2934,4329
+Vladivostok Air (XF),832,3364,2934,5353
+Air Foyle (GS),273,3364,6388,690
+Air China (CA),364,3364,6389,751
+Shandong Airlines (SC),364,3364,6389,4599
+Air China (CA),874,3364,6392,751
+Hainan Airlines (HU),874,3364,6392,2660
+China Eastern Airlines (MU),874,3364,6392,1758
+Hainan Airlines (HU),518,3364,6955,2660
+Air China (CA),655,3364,3376,751
+China Southern Airlines (CZ),655,3364,3376,1767
+Hainan Airlines (HU),655,3364,3376,2660
+China Eastern Airlines (MU),655,3364,3376,1758
+Shenzhen Airlines (ZH),655,3364,3376,4611
+China Southern Airlines (CZ),858,3364,6391,1767
+Xiamen Airlines (MF),858,3364,6391,5484
+Air China (CA),630,3364,6390,751
+China Eastern Airlines (MU),630,3364,6390,1758
+Shenzhen Airlines (ZH),630,3364,6390,4611
+Sichuan Airlines (3U),786,3364,6403,4608
+Air China (CA),597,3364,6360,751
+Air China (CA),266,3364,6350,751
+Air China (CA),579,3364,3379,751
+China Southern Airlines (CZ),579,3364,3379,1767
+Shanghai Airlines (FM),579,3364,3379,4609
+Hainan Airlines (HU),579,3364,3379,2660
+China Eastern Airlines (MU),579,3364,3379,1758
+Shenzhen Airlines (ZH),579,3364,3379,4611
+Air China (CA),1076,3364,3383,751
+China Southern Airlines (CZ),1076,3364,3383,1767
+Hainan Airlines (HU),1076,3364,3383,2660
+KLM Royal Dutch Airlines (KL),1076,3364,3383,3090
+Xiamen Airlines (MF),1076,3364,3383,5484
+Shenzhen Airlines (ZH),1076,3364,3383,4611
+Air China (CA),824,3364,6366,751
+China Southern Airlines (CZ),824,3364,6366,1767
+China Eastern Airlines (MU),824,3364,6366,1758
+Shenzhen Airlines (ZH),824,3364,6366,4611
+Air China (CA),409,3364,4149,751
+Air China (CA),1035,3364,4110,751
+Air China (CA),464,3364,6430,751
+Air China (CA),711,3364,6361,751
+Hainan Airlines (HU),711,3364,6361,2660
+Air China (CA),766,3364,6394,751
+China Southern Airlines (CZ),766,3364,6394,1767
+Air China (CA),692,3364,6414,751
+China Southern Airlines (CZ),692,3364,6414,1767
+Air China (CA),317,3364,3392,751
+China Eastern Airlines (MU),317,3364,3392,1758
+Shandong Airlines (SC),317,3364,3392,4599
+Air China (CA),501,3364,6393,751
+Air Canada (AC),5273,3364,156,330
+Air China (CA),5273,3364,156,751
+Air Canada (AC),6558,3364,193,330
+Air China (CA),6558,3364,193,751
+Hainan Airlines (HU),6558,3364,193,2660
+Air China (CA),1353,3364,6357,751
+Shenzhen Airlines (ZH),1353,3364,6357,4611
+Sichuan Airlines (3U),638,3364,8043,4608
+Hainan Airlines (HU),4949,3364,1678,2660
+Air China (CA),1262,3364,6355,751
+China Southern Airlines (CZ),1262,3364,6355,1767
+Shenzhen Airlines (ZH),1262,3364,6355,4611

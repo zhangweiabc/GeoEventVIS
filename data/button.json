@@ -1,0 +1,9 @@
+{
+ "name": "flare",
+ "children": [
+     {"name": "Map1","size": 100},
+     {"name": "Map2","size": 100},
+     {"name": "Map3","size": 100},
+     {"name": "Map4","size": 100}
+  ]
+}

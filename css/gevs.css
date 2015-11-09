@@ -1,0 +1,37 @@
+.maps path{
+	fill: #FFFFCC;
+	ill-opacity: .8;
+	stroke: #CCCCCC;
+	stroke-width: 1px;
+}
+.maps text{
+  font-family: sans-serif;
+  font-size: 6px;
+  color: #fff;
+  fill:  #fff;
+}
+.southsea line {
+	stroke: #CCCCCC;
+	stroke-width: 1px;
+}
+.southsea  path{
+	fill: #222;
+	ill-opacity: .8;
+	stroke: #CCCCCC;
+	stroke-width: 1px;
+}
+.graticule path{
+	fill: none;
+	stroke: #CCCCCC;
+	stroke-width: 1px;
+}
+.graticule3d{
+	fill: none;
+	stroke: #888;
+	stroke-width: 1px;
+}
+.routeline {
+	stroke: #0aa;
+	stroke-width: 3px;
+	fill: #0aa;
+}
