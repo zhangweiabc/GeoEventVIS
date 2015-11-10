@@ -5,11 +5,11 @@ function Draweventstory3(divID,w,h)
 	  , items = data.items
 	  , now = new Date();
 
-	var margin = {top: 20, right: 15, bottom: 15, left: 60}
+	var margin = {top: 20, right: 60, bottom: 15, left: 60}
 	  , width = w - margin.left - margin.right
 	  , height = h - margin.top - margin.bottom
-	  , miniHeight = lanes.length * 12 + 50
-	  , mainHeight = height - miniHeight - 50;
+	  , miniHeight = lanes.length * 12 + 20
+	  , mainHeight = height - miniHeight - 20;
 
 	var x = d3.time.scale()
 		.domain([d3.time.sunday(d3.min(items, function(d) { return d.start; })),

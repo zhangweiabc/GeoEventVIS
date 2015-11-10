@@ -1557,7 +1557,7 @@ function DrawAreaTime(divID,w,h)
     context.append("g")
         .attr("class", "x brush")
         .call(brush)
-      .selectAll("rect")
+        .selectAll("rect")
         .attr("y", -6)
         .attr("height", height2 + 7);
   });

@@ -7,40 +7,7 @@ body {
   padding-top: 50px;
 }
 
-/*
- * Top navigation
- * Hide default border to remove 1px line.
- */
-.navbar-fixed-top {
-  border: 0;
-}
 
-/* CUSTOMIZE THE CAROUSEL
--------------------------------------------------- */
-/* Carousel base class */
-.carousel {
-  height: 500px;
-  margin-bottom: 30px;
-}
-/* Since positioning the image, we need to help out the caption */
-.carousel-caption {
-  z-index: 10;
-  color: #eee;
-  text-align: center;
-}
-
-/* Declare heights because of positioning of img element */
-.carousel .item {
-  height: 510px;
-  background-color: #ddd;
-}
-.carousel-inner > .item > img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  height: 500px;
-}
 div .tooltip {
   position: absolute;
   text-align: center;
@@ -206,6 +173,52 @@ div #bottompanel:hover {
   transform: scale(0.75);*/
   opacity:0.8;
 }
+div #bottompanel3d{
+  position:absolute;
+  height:8%;
+  width:100%;
+  bottom:0px;
+  background-color:#cccccc;
+  -moz-box-sizing: border-box;
+  border: 1px solid #dddddd;
+  box-sizing: border-box;
+  opacity: 0;
+}
+div #bottompanel3d:hover {
+  /*-webkit-transform: scale(0.75);
+  -moz-transform: scale(0.75);
+  transform: scale(0.75);*/
+  opacity:0.8;
+}
+/*crossfilter*/
+div #crossfilter {
+  margin-top: 10px;
+  width: 830px;
+  height: 160px;
+  font: 10px sans-serif;
+  color: #000;
+  bottom: 0px;
+  background-color: white;
+  -moz-box-sizing: border-box;
+  border: 1px solid #bebebe;
+  box-sizing: border-box;
+}
+div #date-chart {
+  position: absolute;
+  width: 280px;
+}
+div #hour-chart {
+  position: absolute;
+  width: 280px;
+  left: 300px;
+}
+div #id-chart {
+  position: absolute;
+  width: 230px;
+  left: 600px;
+}
+/*crossfilter*/
+
 div #relations{
   margin-top: 10px;
   margin-left: 10px;
@@ -213,7 +226,6 @@ div #relations{
   -moz-box-sizing: border-box;
   border: 1px solid #bebebe;
   box-sizing: border-box;
-  
 }
 div #relation2{
   margin-top: 10px;
@@ -248,7 +260,12 @@ div #property4{
   box-sizing: border-box;
 }
 div #eventstory{
-  margin-top:20px;
+   margin-top: 10px;
+   padding-top: 10px;
+   padding-right: 20px;
+   -moz-box-sizing: border-box;
+   border: 1px solid #bebebe;
+   box-sizing: border-box;
 }
 div #eventstory1{
    margin-top: 10px;

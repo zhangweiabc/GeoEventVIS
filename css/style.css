@@ -1,3 +1,39 @@
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+  border: 0;
+}
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+/* Carousel base class */
+.carousel {
+  height: 500px;
+  margin-bottom: 30px;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  z-index: 10;
+  color: #eee;
+  text-align: center;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel .item {
+  height: 510px;
+  background-color: #ddd;
+}
+.carousel-inner > .item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 500px;
+}
+
+
 .resize path {
   fill: #666;
   fill-opacity: .8;
@@ -18,6 +54,14 @@
   fill-opacity: .125;
   shape-rendering: crispEdges;
 }
+/*crossfilter*/
+.background.bar {
+  fill: #ccc;
+}
+.foreground.bar {
+  fill: steelblue;
+}
+/*crossfilter*/
 
 .background path {
   fill: none;
@@ -89,7 +133,7 @@
   stroke-width: 10px;
   stroke-linecap: round;
 }
-
+/*EventDrop*/
 .zoom {
     fill: transparent;
     cursor: pointer;
@@ -107,16 +151,14 @@
         stroke-width: 1px;
     }
 }
-
 .y-axis g line {
     stroke: grey;
     fill: none;
     stroke-width: 1px;
 }
-
 .graph-body .line circle {
-    opacity: 0.1;
-}
+    opacity: 1;
+}/*EventDrop*/
 
 /*RadialTree*/
 .node circle {

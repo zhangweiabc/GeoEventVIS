@@ -256,6 +256,72 @@ function DrawTimeAxis(filename, svg, w, h, d){
       console.log(icount);
     }
 }
+/////////////////////////////////////创建bottompantool3d//////////////////////////////
+DrawTimeAxis3d(0,2000,"#bottompanel3d",$("#bottompanel").width(),$("#bottompanel").height()*0.8);
+
+function DrawTimeAxis3d(Durationmin,Durationmax,divId,w,h){
+    //var Durationmax=d3.max(gflightsdata, function(d) {return parseInt(d["Distance"]);});
+    //var Durationmin=d3.min(gflightsdata, function(d) {return parseInt(d["Distance"]);});
+    var margin = {top: 30, right: 20, bottom: 10, left: 20}
+      , width = w - margin.left - margin.right
+      , height = h - margin.top - margin.bottom;
+    //1、设置svg
+    var timetoolsvg = d3.select(divId).append("svg")
+                        .attr("width",width + margin.right + margin.left)
+                        .attr("height",height + margin.top + margin.bottom);
+
+    //2、设置时间轴x    
+    //x轴刻画          
+    var x = d3.scale.linear().range([0, width]).domain([Durationmin,Durationmax]);
+    //绘制x轴（d3.svg.axis()）
+    timetoolsvg.append("g")
+              .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
+              .attr("class", "x axis").call(d3.svg.axis().scale(x).orient("bottom").ticks(20,d3.format(",d")));
+    //3、设置刷子
+    //刷子初始化
+      var brush = d3.svg.brush().x(x).extent([500, 1000])
+            .on("brushstart", brushstart)
+            .on("brush", brushmove)
+            .on("brushend", brushend);
+    //绘制刷子弧线（d3.svg.arc()）
+    var arc = d3.svg.arc().outerRadius(height/2).startAngle(0).endAngle(function(d, i) { return i ? -Math.PI : Math.PI; });
+    //绘制刷子（d3.svg.brush()）      
+    var brushg = timetoolsvg.append("g")
+                            .attr('transform', 'translate(' + margin.left + ',' + (margin.top) + ')')
+                            .attr("class", "brush").call(brush);
+    //设置resize类
+    brushg.selectAll(".resize").append("path").attr("d", arc);
+    //设置rect
+    brushg.selectAll("rect").attr("height", height);
+    brushstart();
+    brushmove();
+    timerbrush();
+    //4、刷子响应函数
+    function brushstart() {
+      //timetoolsvg.classed("selecting", true);
+    }
+    function brushmove() {
+        var s = brush.extent();
+    }
+    function brushend() {
+      //timetoolsvg.classed("selecting", !d3.event.target.empty());
+    }
+    function timerbrush()
+    {
+      setInterval(function(){
+        var s = brush.extent();
+          //执行动作
+            if( (s[0] <= 1000) && (1000<= s[1]))
+            {
+              
+            }
+            else
+            {
+              
+            }
+      },3000);
+    }
+}
 ////////////////////////////////////////////////////////////////////////////////////
 //搜索地名
 /*d3.select("#SearchLoc").attr("click",function(){
