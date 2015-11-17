@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh"> 
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Welcome">
+    <meta name="author" content="HAHA">
+    <link rel="icon" href="img/favicon.ico">
+    <title>基于互联网的地理事件可视化</title>
+
+    <link href="lib/bootstrapdist/css/bootstrap.css" rel="stylesheet">
+    <link href="css/mainstyle.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/earth.css">
+    <link rel="stylesheet" type="text/css" href="lib/timeline/timeline.css">
+    <link href="lib/leaflet/leaflet.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="lib/flamegraph/d3.flameGraph.css">
+    <style>@import url(css/gevs.css);</style> 
+    <style>@import url('js/ComicNarrative/narrative.css');</style>
+  </head>
+
+  <body>
+  <!--导航条-->
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+        <a class="navbar-brand" href="#">抗日战争历史事件可视化</a>
+      </div>
+      <div class="navbar-collapse collapse" id="navbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a href="#mapdiv">基础信息</a></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">关系分析</a>
+            <ul class="dropdown-menu">
+            <li class="dropdown-header">关系</li>
+            <li><a href="#relations">人物关系</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#relations">组织关系</a></li>
+            </ul>
+          </li>
+          <li><a href="#property">属性分析</a></li>
+          <li><a href="#eventstory2">事件分析</a></li>
+        </ul>
+        <form class="navbar-form navbar-left" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="用户名">
+          </div>
+           <div class="form-group">
+            <input type="text" class="form-control" placeholder="密码">
+          </div>
+          <button type="submit" class="btn btn-default">登录</button>
+        </form>
+
+        <form class="navbar-form navbar-right" role="search">
+          <input type="text" class="form-control" placeholder="Search..." id="SearchText">
+          <button type="submit" class="btn btn-default" id="SearchLoc">搜索</button>
+        </form>
+      </div>
+    </div>
+  </nav><!--导航条-->
+  <!-- Carousel -->
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img class="first-slide" src="img/carousel/1.jpg" alt="First slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>地理信息框架</h1>
+              <p></p>
+              <p><a class="btn btn-md btn-primary" href="#mapdiv" role="button">转到页面</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img class="second-slide" src="img/carousel/2.jpg" alt="Second slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>组织关系图</h1>
+              <p></p>
+              <p><a class="btn btn-md btn-primary" href="#relations" role="button">转到页面</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img class="third-slide" src="img/carousel/3.jpg" alt="Third slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>属性数据图</h1>
+              <p></p>
+              <p><a class="btn btn-md btn-primary" href="#property" role="button">转到页面</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img class="second-slide" src="img/carousel/4.jpg" alt="Second slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>事件故事流</h1>
+              <p></p>
+              <p><a class="btn btn-md btn-primary" href="#eventstory2" role="button">转到页面</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">上一页</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">下一页</span>
+      </a>
+  </div><!-- carousel -->  
+  <!-- 整体布局3列 --> 
+  <div class="container-fluid"> 
+    <div class="row">
+      <!-左侧栏->  
+      <div class="col-md-1 sidebar main">
+        <ul class="nav nav-sidebar">
+          <li><a href=""><strong>十大战役</strong></a></li>
+          <li><a href="">滇缅之战</a></li>
+          <li><a href="">桂南会战</a></li>
+          <li><a href="">南京保卫战</a></li>
+          <li><a href="">淞沪会战</a></li>
+          <li><a href="">太原会战</a></li>
+          <li><a href="">武汉会战</a></li>
+          <li><a href="">湘西会战</a></li>
+          <li><a href="">徐州会战</a></li>
+          <li><a href="">长沙会战</a></li>
+        </ul>
+      </div> <!-左侧栏-> 
+
+      <!-中间栏-> 
+      <div class="col-md-10">
+        <!-主要内容->
+        <div class="container-fluid">
+          <!-简介 ->
+          <div class="row sumerary">
+              <div class="col-md-4">
+                  <img class="img-circle" src="img/1.jpg">
+                  <h2>第一阶段</h2>
+                  <p class="lead">从1937年7月卢沟桥事变到1938年10月广州、武汉失守，是战略防御阶段。卢沟桥事变揭开了全国抗战的序幕。全国抗战初期，先后进行了平津会战、淞沪会战、忻口会战、徐州会战、太原会战、武汉会战等重要战役，并取得台儿庄战役胜利。 </p>
+                  <p><a class="btn btn-default" href="http://baike.baidu.com/view/55587.htm" target="_blank" role="button">转到页面</a></p>
+              </div>
+              <div class="col-md-4">
+                  <img class="img-circle" src="img/2.jpg">
+                  <h2>第二阶段</h2>
+                  <p class="lead">从1938年10月至1943年12月，是战略相持阶段。敌后游击战争发展和抗日根据地扩大，使日军在其占领区内只能控制主要交通线和一些大城市，广大农村均控制在以八路军、新四军为主的中国军队手中。<hr></hr></p>
+                  <p><a class="btn btn-default" href="http://baike.baidu.com/view/55611.htm" target="_blank" role="button">转到页面</a></p>
+              </div>
+              <div class="col-md-4">
+                  <img class="img-circle" src="img/3.jpg">
+                  <h2>第三阶段</h2>
+                  <p class="lead">从1944年1月至1945年8月日本宣布无条件投降，是战略反攻阶段。1944年，共产党领导敌后军民在华北、华中、华南地区，对日伪军发起反攻。国民党正面战场出现大溃败，先后丧失了河南、湖南、广西、广东等省的大部分。</p>
+                  <p><a class="btn btn-default" href="http://baike.baidu.com/view/55617.htm" target="_blank" role="button">转到页面</a></p>
+              </div>
+          </div><!-简介 ->
+          <!-关键内容->
+          <div class="row"> 
+            <!-显示地图和时间->
+            <div class="col-md-8" id="a"> 
+                <!-显示地图->
+                <div class="row">
+                  <!- 标签->  
+                  <ul class="nav nav-tabs" role="tablist" id="myTabWhole">
+                      <li class="active"><a href="#mapdiv" role="tab" data-toggle="tab">地理信息</a></li>               
+                      <li><a href="#global3Ddiv" role="tab" data-toggle="tab">三维态势</a></li>
+                      <li><a href="#wholePropert" role="tab" data-toggle="tab">统计分析</a></li> 
+                      <li><a href="#wholeNavPic" role="tab" data-toggle="tab">词频导航</a></li>                    
+                  </ul><!- 标签-> 
+                  <!- 标签页-class="tab-pane">  
+                  <div class="tab-content">
+                    <div class="tab-pane active" id="mapdiv" style="position:relative;">
+                        <!--<div class="mapdiv1" id="mapdiv1" style="height:100%;width:100%;position:absolute;"></div>-->
+                        <!--<div class="heatmapcanvas" id="heatmapcanvas"></div>-->
+                        <div class="pantool" id="pantool"></div>
+                        <div class="rightpanel" id="rightpanel"></div>
+                        <div class="bottompanel" id="bottompanel"></div>
+                    </div>
+                    <div class="tab-pane" id="global3Ddiv" style="position:relative;"> 
+                        <div class="pantool3d" id="pantool3d"></div>
+                        <div class="bottompanel3d" id="bottompanel3d"></div>
+                    </div>
+                    <div class="tab-pane" id="wholePropert" style="position:relative;"> 
+                          <div class="row">
+                            <div class="col-xs-4 col-md-4 col-sm-4 col-lg-4" id="col-4"> 
+                                <div id="wholePropert1"> </div>
+                            </div>
+                            <div class="col-xs-4 col-md-4 col-sm-4 col-lg-4" id="col-4"> 
+                                <div id="wholePropert2"> </div>
+                            </div>
+                            <div class="col-xs-4 col-md-4 col-sm-4 col-lg-4" id="col-4"> 
+                                <div id="wholePropert3"> </div>
+                            </div>
+                          </div>
+                         <div class="row">
+                            <div class="col-xs-4 col-md-4 col-sm-4 col-lg-4" id="col-4"> 
+                                <div id="wholePropert4"> </div>
+                            </div>
+                            <div class="col-xs-4 col-md-4 col-sm-4 col-lg-4" id="col-4"> 
+                                <div id="wholePropert5"> </div>
+                            </div>
+                            <div class="col-xs-4 col-md-4 col-sm-4 col-lg-4" id="col-4"> 
+                                <div id="wholePropert6"> </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-xs-4 col-md-4 col-sm-4 col-lg-4" id="col-4"> 
+                                <div id="wholePropert7"> </div>
+                            </div>
+                            <div class="col-xs-4 col-md-4 col-sm-4 col-lg-4" id="col-4"> 
+                                <div id="wholePropert8"> </div>
+                            </div>
+                            <div class="col-xs-4 col-md-4 col-sm-4 col-lg-4" id="col-4"> 
+                                <div id="wholePropert9"> </div>
+                            </div>
+                          </div>
+                    </div>
+                    <div class="tab-pane" id="wholeNavPic" style="position:relative;"> 
+                    </div>
+                  </div> <!- 标签页->  
+                </div><!-显示地图-> 
+                <!-显示时间-> 
+                <div class="row">
+                    <div id="crossfilter">
+                        <div id="date-chart" class="chart">
+                            <div class="title">Day of Date</div>
+                        </div>
+                        <div id="hour-chart" class="chart">
+                            <div class="title">Time of Day</div>
+                        </div>
+                        <div id="id-chart" class="chart">
+                            <div class="title">ID</div>
+                        </div>
+                    </div><!-eventdrop-> 
+                </div><!-显示时间-> 
+            </div><!-显示地图和时间->
+            <!-显示其他-> 
+            <div class="col-md-4" id="b">
+                <!-显示关系-> 
+                <div class="row">
+                  <!- 标签->  
+                  <ul class="nav nav-tabs" role="tablist" id="myTabRelations">
+                      <li class="active"><a href="#relations" role="tab" data-toggle="tab">组织关系</a></li>
+                      <li><a href="#relation2" role="tab" data-toggle="tab">人物关系</a></li>
+                  </ul><!- 标签-> 
+                  <!- 标签页-class="tab-pane">  
+                  <div class="tab-content">
+                     <div class="tab-pane active" id="relations"></div>
+                     <div class="tab-pane " id="relation2"></div>  
+                  </div>
+                </div><!-显示关系-> 
+                <!-显示属性-> 
+                <div class="row">
+                  <!- 标签->  
+                  <ul class="nav nav-tabs" role="tablist" id="myProperty">
+                      <li class="active"><a href="#property" role="tab" data-toggle="tab">属性1</a></li>
+                      <li><a href="#property2" role="tab" data-toggle="tab">属性2</a></li>
+                      <li><a href="#property3" role="tab" data-toggle="tab">属性3</a></li>
+                      <li><a href="#property4" role="tab" data-toggle="tab">属性4</a></li>
+                  </ul><!- 标签-> 
+                  <!- 标签页-class="tab-pane">  
+                  <div class="tab-content">
+                      <div class="tab-pane col-md-12 active" id="property"></div> 
+                      <div class="tab-pane col-md-12" id="property2"></div> 
+                      <div class="tab-pane col-md-12" id="property3"></div> 
+                      <div class="tab-pane col-md-12" id="property4"></div> 
+                  </div><!- 标签页-class="tab-pane">  
+                </div><!-显示属性-> 
+            </div><!-显示其他-> 
+          </div> <!-关键内容->
+          <!-事件相关->
+          <div class="row">
+              <!- 标签->
+              <ul class="nav nav-tabs" role="tablist" id="myTabEvents">
+                  <li class="active"><a href="#eventstory" role="tab" data-toggle="tab">事件聚类</a></li>   
+                  <li><a href="#eventstory1" role="tab" data-toggle="tab">事件分类</a></li>               
+                  <li><a href="#eventstory2" role="tab" data-toggle="tab">事件关系</a></li>
+                  <li><a href="#eventstory3" role="tab" data-toggle="tab">事件跨度</a></li> 
+                  <li><a href="#eventstory4" role="tab" data-toggle="tab">事件流</a></li>                    
+              </ul><!- 标签-> 
+              <!- 标签页-class="tab-pane">  
+              <div class="tab-content">
+                  <div  class="tab-pane col-md-12 active" id="eventstory"></div><!-eventdrop-> 
+                  <div  class="tab-pane col-md-12 " id="eventstory1"></div><!-timeline-> 
+                  <div  class="tab-pane col-md-12" id="eventstory2"> </div><!-comicnarrative-> 
+                  <div  class="tab-pane col-md-12" id="eventstory3"> </div><!-swimlane-> 
+                  <div  class="tab-pane col-md-12" id="eventstory4"> </div><!-streamgraph-> 
+              </div><!- 标签页-class="tab-pane">  
+          </div><!-事件相关->
+        </div><!-主要内容-> 
+      </div> <!-中间栏-> 
+
+      <!-右侧栏-> 
+      <div class="col-md-1">
+        <h4>总体介绍</h4>
+        <p>中国军队共进行大规模和较大规模的会战22次，重要战役200余次，大小战斗近20万次，总计歼灭日军150余万人、伪军118万人。</p>
+        <h4>项目支持</h4>
+        <p>课题研究小组：二院可视分析小组<hr></p>
+        <p>联系电话：18678193398<hr></p>
+        <p>邮箱：125015532@qq.com</p>
+        <br/>
+        <p>地址：河南省郑州市陇海中路66号</p>
+      </div> <!-右侧栏-> 
+    </div>
+  </div><!-- 整体布局3列 -->  
+
+  <footer class="footer">
+    <p class="pull-right"><a href="#top">回到顶部</a></p>
+    <p>&copy; Company 2014</p>
+  </footer>
+  <script src="lib/jquery-2.1.4.js"></script>
+  <script src="lib/bootstrapdist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="lib/three.js"></script>
+  <script type="text/javascript" src="lib/d3.v357.js"></script>
+  <!--<script type="text/javascript" src="lib/d3.layout.js"></script>-->
+  <script type="text/javascript" src="lib/topojson.js"></script>
+  <script type="text/javascript" src="lib/fisheye.js"></script>
+  <script type="text/javascript" src="js/global.js"></script>
+  <script type="text/javascript" src="js/earth.js"></script>
+  <script type="text/javascript" src="lib/d3.layout.cloud.js"></script>
+  <script type="text/javascript" src="js/tools.js"></script>
+  <script type="text/javascript" src="lib/leaflet/leaflet.js"></script>
+  <script type="text/javascript" src="lib/heatmap.js"></script>
+  <script type="text/javascript" src="lib/crossfilter.js"></script>
+  <script type="text/javascript" src="js/geo.v3.js"></script>
+  <script type="text/javascript" src="js/geo.mark.js"></script>
+  <script type="text/javascript" src="js/geo.panel.js"></script> 
+  <script type="text/javascript" src="js/arrowmaker.js"></script>
+  <script type="text/javascript" src="js/jqueryApp.js"></script>
+
+  <script type="text/javascript" src="lib/timeline/timeline.js"></script>
+  <script type="text/javascript" src="lib/eventDrops.js"></script>
+  <script type="text/javascript" src="js/ComicNarrative/narrative.js"></script>
+  <script type="text/javascript" src="js/swimlane/randomData.js"></script>
+  <script type="text/javascript" src="js/swimlane/swimlane.js"></script>
+  <script type="text/javascript" src="js/geo.event.js"></script>
+
+  <script type="text/javascript" src="js/ComicNarrative/catxml.js"></script>
+  <script type="text/javascript" src="lib/circularHeatChart.js"></script>
+
+  <script type="text/javascript" src="lib/flamegraph/index.flameGraph.js"></script>
+  <script type="text/javascript" src="lib/flamegraph/d3.flameGraph.js"></script>
+  <script type="text/javascript" src="index.js"></script>
+  </body>
+</html>

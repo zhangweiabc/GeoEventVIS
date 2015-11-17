@@ -3,9 +3,6 @@
  */
 
 /* Move down content because we have a fixed navbar that is 50px tall */
-body {
-  padding-top: 50px;
-}
 
 
 div .tooltip {
@@ -37,18 +34,15 @@ div .tooltip {
     line-height: 1.4;
   }
 }
-/*div设置*/
-div #mapdiv{
-  margin: 10px;
-  background-color:#ccffff;
-  height:800px;
-   -moz-box-sizing: border-box;
-  border: 1px solid #bebebe;
-  box-sizing: border-box;
+/*div设置id中间不能有空格*/
+div#mapdiv{
+  margin: 0 px;
+  background-color: #ccccff;
+  height: 918px;
 }
 div #global3Ddiv{
   margin: 10px;
-  background-color:#333333;
+  background-color:#FFFFCC;
   height:800px;
    -moz-box-sizing: border-box;
   border: 1px solid #bebebe;
@@ -122,12 +116,22 @@ div #wholeNavPic{
   border: 1px solid #bebebe;
   box-sizing: border-box;
 }
+div #heatmapcanvas{
+    position:absolute;
+    width:100%;
+    height:100%;
+}
 div #pantool{
     position:absolute;
     width:50px;
-    height:200px;
+    height:60%;
     left:20px;
     top:20px;
+    opacity: 0.8;
+}
+div #pantool3d{
+    position:absolute;
+    width:100%;
 }
 div #rightpanel{
     position:absolute;
@@ -193,7 +197,7 @@ div #bottompanel3d:hover {
 /*crossfilter*/
 div #crossfilter {
   margin-top: 10px;
-  width: 830px;
+  width: 100%;
   height: 160px;
   font: 10px sans-serif;
   color: #000;
@@ -205,16 +209,16 @@ div #crossfilter {
 }
 div #date-chart {
   position: absolute;
-  width: 280px;
+  width: 30%;
 }
 div #hour-chart {
   position: absolute;
-  width: 280px;
+  width: 30%;
   left: 300px;
 }
 div #id-chart {
   position: absolute;
-  width: 230px;
+  width: 40%;
   left: 600px;
 }
 /*crossfilter*/

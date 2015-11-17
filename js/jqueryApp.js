@@ -1,55 +1,26 @@
 $(document).ready(function(){
 	$("#ptbuttonQuantu").click(function(){
-		
 		if(isshow3d)
 		{
+			currentScale = 1;
+	  		currentTranslate = [0,0];
 			projection.rotate([initRotate[0],initRotate[1]]);
      		projection.scale(initScale);
-     		projection.center(currentTranslate);
-			d3.selectAll(".graticule").attr("d", function(d) { return path(d);}); 
-			d3.select("#southseachina").attr("opacity",0);
-			d3.selectAll(".worldpath").attr("d", function(d) { return path(d);}); 
-			d3.selectAll(".chinapath").attr("d", function(d) { return path(d);}); 
-			d3.selectAll(".chinacity").attr({
-				cx:function(d,i){return projection([d.x,d.y])[0]},
-				cy:function(d,i){return projection([d.x,d.y])[1]}
-			}); 
-			d3.selectAll(".chinatext").attr({
-				x:function(d,i){return projection(d.properties.cp)[0]},
-				y:function(d,i){return projection(d.properties.cp)[1]}
-			}); 
-			zoomMap.scale(1);
-	  		zoomMap.translate([0,0]);
+     		//projection.center(currentTranslate);
+			SVGMap.projectionChange(projection1);
+
+			handlesl.attr("cy", ysl(1));
+			SVGMap.zoomMap.scale(1);
+	  		SVGMap.zoomMap.translate([0,0]);
 		}
 		else
 		{
-			d3.select("#worldmap").attr("transform",  "translate(0,0)scale(1)");
-		    d3.select("#chinamaps").attr("transform",  "translate(0,0)scale(1)");
-		    d3.select("#chinatexts").attr("transform",  "translate(0,0)scale(1)");
-		    d3.select("#provencemaps").attr("transform",  "translate(0,0)scale(1)");
-		    d3.select("#provencetexts").attr("transform",  "translate(0,0)scale(1)");
-		    d3.select("#citymaps").attr("transform",  "translate(0,0)scale(1)");
-		    d3.select("#citytexts").attr("transform",  "translate(0,0)scale(1)");
-		    d3.select("#points").attr("transform",  "translate(0,0)scale(1)");
-		    d3.select("#graticule").attr("transform", "translate(0,0)scale(1)");
-		    d3.select("#lines").attr("transform","translate(0,0)scale(1)");
-		    d3.select("#airports").attr("transform","translate(0,0)scale(1)");
-		    d3.select("#flights1").attr("transform", "translate(0,0)scale(1)");
-		    d3.select("#southsea").attr("transform", "translate(0,0)scale(1)");
-
-		    d3.select("#worldmap").attr("display","block");
-	        d3.select("#chinamaps").attr("display","block");
-	        d3.select("#chinatexts").attr("display","block");
-	        d3.select("#provencemaps").attr("display","none");
-	        d3.select("#provencetexts").attr("display","none");
-	        d3.select("#citymaps").attr("display","none");
-	        d3.select("#citytexts").attr("display","none");
-	        d3.select("#svgsun").attr("display","none");
 			currentScale = 1;
 	  		currentTranslate = [0,0];
+	  		SVGMap.scaleLOD(currentTranslate,currentScale);
 	  		handlesl.attr("cy", ysl(currentScale));
-	  		zoomMap.scale(1);
-	  		zoomMap.translate([0,0]);
+	  		SVGMap.zoomMap.scale(1);
+	  		SVGMap.zoomMap.translate([0,0]);
 	  	}
 	});
 	$("#ptbuttonAdd").click(function(){
@@ -59,50 +30,187 @@ $(document).ready(function(){
 
 		if(isshowcitypoint)
 		{
-			d3.selectAll(".chinacity").attr({
-			        cx:function(d,i){return Math.random()*width},//projc([d.x,d.y])[0]},
+			d3.selectAll(".chinacity").style("fill", function(d,i){return color2(i)})
+				.attr("opacity",1).attr({
+			        cx:function(d,i){return projc([d.x,d.y])[0]}, //Math.random()*width},
 			        cy:function(d,i){return projc([d.x,90])[1]-500},
-			        r:function(d,i){return 1}
+			        r:function(d,i){return 1.5}
 			      })
-			      .style("fill", function(d,i){return color2(i)}).attr("opacity",1);
-			      /*.style("fill",function(d){
-			          var color = interpolateColor(Math.random());
-			          return color.toString();
-			      })*/
-			      //.style("filter","url(#"+ gaussian.attr("id") +")");
-
-	  		d3.selectAll(".chinacity").each(function(d,i){
-		        d3.select(this)
-		          .transition()
-		          .delay(500)
-		          .duration(Math.random()*5000)
-		          .attr({
-		            cx:function(d,i){return projc([d.x,d.y])[0]},
-		            cy:function(d,i){return projc([d.x,d.y])[1]},
-		            r:function(d,i){return 1.3}
-		          });
-	        });
+		      	.each(function(d,i){
+		        	d3.select(this)
+			          .transition()
+			          //.delay(500)
+			          .duration(Math.random()*3000)
+			          .ease("bounce-in-out")
+			          .attr("cy",function(d,i){return projc([d.x,d.y])[1]});
+			          /*.attr({
+			            cx:function(d,i){return projc([d.x,d.y])[0]},
+			            cy:function(d,i){return projc([d.x,d.y])[1]}
+			          });*/
+	        	});
 	        isshowcitypoint=0;
 	        this.value="关闭";
+
+			setTimeout(function(){
+				d3.selectAll(".chinacity").each(function(d,i){
+				var aa=d3.select(this);
+				var tt= 3000+i*Math.random();
+				//var rr = Math.random()*5;
+
+				d.timeid = setInterval(function(){
+	        			aa.attr("r",1.5).transition().duration(tt/2).attr("r",Math.random()*5).transition().duration(tt/2).attr("r",1);
+	        	},tt)});
+			},3100);		
 		}
 		else
 		{
 			d3.selectAll(".chinacity").attr("opacity",0);
 			isshowcitypoint=1;
-			this.value="加载";
+			this.value="测试";
+			
+			d3.selectAll(".chinacity").each(function(d,i){
+				clearInterval(d.timeid);
+			})
+			.attr({
+				cx:function(d,i){return Math.random()*width},//projc([d.x,d.y])[0]},
+		        cy:function(d,i){return projc([d.x,90])[1]-500},
+		        r:function(d,i){return 1}
+			});
 		}
 		
+	});
+	$("#ptbuttonAirport").click(function(){
+		if(isshouwairports)
+		{
+			isshouwairports=0;
+
+			this.value="关闭";
+			d3.selectAll("#flight").style("opacity",1);
+			d3.selectAll("#airport").style("opacity",1);
+
+			//动画
+			d3.selectAll("#flight").each(function(d,i){
+		      var totalLength = d3.select(this).node().getTotalLength();
+		      var tt= 5000+i*Math.random();
+		      var aa=d3.select(this);
+		      
+		    d.timeid3d = setInterval(function(){aa.attr("stroke-dasharray", totalLength + " " + totalLength)
+		        .attr("stroke-dashoffset", totalLength)
+		        .style("stroke", "blue")
+		        .style("stroke-width", 0.2)
+		        .style("opacity",0.5)
+		        .transition()
+		        .duration(tt/2)
+		        .ease("linear")//cubic//elastic//back//bounce
+		        .attr("stroke-dashoffset",0)
+		        .style("stroke", "red")
+		        .style("stroke-width", 2)
+		        .style("opacity",0.2); 
+		    },tt+i*10)});
+		}
+		else
+		{
+			isshouwairports=1;
+			this.value="机场";
+			//停止动画
+			d3.selectAll(".flight").each(function(d,i){
+				clearInterval(d.timeid3d);
+				d3.select(this).transition()
+					.duration(2000)
+					.attr("stroke-dasharray", d3.select(this).node().getTotalLength() + " " + d3.select(this).node().getTotalLength())
+					.attr("stroke-dashoffset",0)
+					.style("stroke", "blue")
+			        .style("stroke-width", 1)
+			        .style("opacity",0)
+			});
+			//隐藏
+			d3.selectAll("#flight").style("opacity",0);
+			d3.selectAll("#airport").style("opacity",0);
+	  	}
+	});
+	$("#ptbuttonPoints").click(function(){
+		if(isshouwpoints)
+		{
+			d3.selectAll(".biaojis").remove();
+			isshouwpoints=0;
+			this.value="点标";
+		}
+		else
+		{
+			if(isshow3d)
+				DrawPointLable(gmajorcitydata,projection);
+			else
+				DrawPointLable(gmajorcitydata,projection2);
+			isshouwpoints=1;
+			this.value="关闭";
+		}
+	});
+	$("#ptbuttonLines").click(function(){
+		if(isshouwlines)
+		{
+			d3.selectAll(".routeline").remove();
+			isshouwlines=0;
+			this.value="线标";
+		}
+		else
+		{
+			DrawArrowLines();
+			isshouwlines=1;
+			this.value="关闭";
+		}
+	});
+	$("#ptbuttonAreas").click(function(){
+		//if(isshowchina==0) return;
+		if(isshouwareas)
+		{
+			d3.selectAll(".chinapath").style("fill",function(d,i){
+		        return colorChina;
+		    });
+		    d3.selectAll(".worldpath").style("fill",worldColor);
+		    d3.select("#mapdiv").style("background-color",oceanColor);
+		    d3.selectAll(".southsea path").style("fill",worldColor);
+			isshouwareas=0;
+			this.value="面域";
+		}
+		else
+		{
+			d3.selectAll(".chinapath").style("fill",function(d,i){
+		      return chinainterpolatecolor(chinalinear(i));
+		    });
+		    d3.selectAll(".worldpath").style("fill","#FFFFCC");
+		    d3.select("#mapdiv").style("background-color","#CCFFFF");
+		    d3.selectAll(".southsea path").style("fill","#FFFFCC");
+			isshouwareas=1;
+			this.value="关闭";
+		}
+	});
+	$("#ptbuttonHeat").click(function(){
+		if(isshouwheat)
+		{
+			d3.select(".heatmap-canvas").remove();
+			isshouwheat=0;
+			this.value="场域";
+		}
+		else
+		{
+		  //canvas热图数据
+		  DrawHeatMapData(gmajorcitydata);
+		  isshouwheat=1;
+		  this.value="关闭";
+		}
 	});
 	$("#ptbuttonGraticule").click(function(){
 		if(isshowgraticule)
 		{
 			d3.selectAll(".graticule").attr("opacity",0);
 			isshowgraticule=0;
+			this.value="格网";
 		}
 		else
 		{
 			d3.selectAll(".graticule").attr("opacity",1);
 			isshowgraticule=1;
+			this.value="关闭";
 		}
 	});
 	$("#ptbuttonChina").click(function(){
@@ -110,11 +218,13 @@ $(document).ready(function(){
 		{
 			d3.selectAll(".chinapath").attr("opacity",0);
 			isshowchina=0;
+			this.value="关闭";
 		}
 		else
 		{
 			d3.selectAll(".chinapath").attr("opacity",1);
 			isshowchina=1;
+			this.value="中国";
 		}
 	});
 	$("#ptbuttonZhuji").click(function(){
@@ -122,49 +232,54 @@ $(document).ready(function(){
 		{
 			d3.selectAll(".chinatext").attr("opacity",0);
 			isshowzhuji=0;
+			this.value="注记";		
 		}
 		else
 		{
 			d3.selectAll(".chinatext").attr("opacity",1);
 			isshowzhuji=1;
+			this.value="关闭";
 		}
 	});
-	$("#ptbuttonTree").click(function(){
+	$("#ptbuttonThree").click(function(){
 			if(isshow3d)
 			{
-				d3.selectAll(".graticule").attr("d", path2);
-				d3.selectAll(".worldpath").attr("d", function(d) { return path2(d);}); 
-				d3.selectAll(".chinapath").attr("d", function(d) { return path2(d);}); 
-				d3.select("#southseachina").attr("opacity",1);
-				d3.selectAll(".chinacity").attr({
-					cx:function(d,i){return projection2([d.x,d.y])[0]},
-    				cy:function(d,i){return projection2([d.x,d.y])[1]}
-				}); 
-				d3.selectAll(".chinatext").attr({
-					x:function(d,i){return projection2(d.properties.cp)[0]},
-    				y:function(d,i){return projection2(d.properties.cp)[1]}
-				}); 
-				zoomMap.on("zoom", zoomed);
+ 				SVGMap.projectionChange(projection2);
+				SVGMap.scaleLOD(currentTranslate,currentScale);
+				SVGMap.zoomMap.on("zoom", SVGMap.zoomed);
 				isshow3d=0;
 				this.value="三维";
 			}
 			else
 			{
-				d3.selectAll(".graticule").attr("d", function(d) { return path(d);}); 
-				d3.select("#southseachina").attr("opacity",0);
-				d3.selectAll(".worldpath").attr("d", function(d) { return path(d);}); 
-				d3.selectAll(".chinapath").attr("d", function(d) { return path(d);}); 
-				d3.selectAll(".chinacity").attr({
-					cx:function(d,i){return projection([d.x,d.y])[0]},
-    				cy:function(d,i){return projection([d.x,d.y])[1]}
-				}); 
-				d3.selectAll(".chinatext").attr({
-					x:function(d,i){return projection(d.properties.cp)[0]},
-    				y:function(d,i){return projection(d.properties.cp)[1]}
-				}); 
-				zoomMap.on("zoom", zoomed3);
+				SVGMap.scaleLOD([0,0],1);
+
+				projection.rotate([initRotate[0]+180*currentTranslate[0]/width,
+			          initRotate[1]-180*currentTranslate[1]/height,
+			          initRotate[2]
+			        ]);
+			    projection.scale(initScale*currentScale);
+
+			    SVGMap.projectionChange(projection);
+
+				SVGMap.zoomMap.on("zoom", SVGMap.zoomed3);
+
 				isshow3d=1;
 				this.value="二维";
 			}
+	});
+	$("#ptbuttonAnimal").click(function(){
+		if(isshowdata3d==1){
+			
+		   
+			  
+			isshowdata3d=0;
+		}
+		else
+		{
+			
+			
+			isshowdata3d=1;
+		}
 	});
 });

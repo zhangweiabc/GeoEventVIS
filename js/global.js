@@ -5,31 +5,54 @@ var height = 918;
 var defaultZoom = 1;
 var defaultTranslateX = 0;
 var defaultTranslateY = 0;
-
+var currentScale = defaultZoom,
+    currentTranslate = [defaultTranslateX,defaultTranslateY];
 //数据变量
 var gflightsdata =[];
 var gHeatmapdata=[];
 var gheatmap;
+
+var gworlddata ;
+var gchinadata ;
+var gcitydata ;
+var gmajorcitydata;
 //控制变量
 var isshowrighttool=1;
+var isshouwpoints=0;
+var isshouwlines=0;
+var isshouwareas=0;
+var isshouwheat=0;
 var isshowgraticule=0;
 var isshowchina=0;
 var isshowcitypoint=1;
 var isshowzhuji=0;
 var isshow3d=0;
 
+var isshowdata3d=1;
+var isshouwairports=1;
 //投影3D
 var projection = d3.geo.orthographic()//albers//orthographic正射//equirectangular等距圆筒//mercator
                        .scale(400)
 				       .translate([400, 400])
 				       .clipAngle(90)
-				       .rotate([250,-30,0]);
-				       //.precision(0);
-//投影
+				       //.clipExtent([[1, 1], [840,800]])
+				       .rotate([250,-30,0])
+				       .precision(.1);
+var projection1 = d3.geo.orthographic()//albers//orthographic正射//equirectangular等距圆筒//mercator
+                       .scale(400)
+				       .translate([400, 400])
+				       .clipAngle(90)
+				       //.clipExtent([[1, 1], [840,800]])
+				       .rotate([250,-30,0])
+				       .precision(.1);
+//投影2D
 var projection2 = d3.geo.mercator()//albers//orthographic//equirectangular//mercator
                     .center([0, 0])
                     .scale(400)//初始化比例尺
                     .translate([width/2-1300, height/2+200]);
+//初始化
+var initRotate = projection.rotate();
+var initScale = projection.scale();
 //经纬度转3D
 var path = d3.geo.path().projection(projection);
 //经纬度转平面信息
@@ -55,6 +78,8 @@ var bb = d3.rgb(150,100,200);        //深绿
 var colorChina ="#555";//d3.interpolate(aa,bb);    
 var chinastroke ="#CCCCCC";
 var chinastrokewidth = 0.5;
+var chinainterpolatecolor=d3.interpolate(aa,bb);   
+var chinalinear;
 //var colorSouthSea = "#222";
 //分省地图颜色设置
 var provenceColor = "#FFFF99";
@@ -76,9 +101,5 @@ var color = d3.scale.category10();
 //E : "#4CC3D9"
 //U : "#93648D"
 -->
-//数据
-var gworlddata ;
-var gchinadata ;
-var gcitydata ;
-var gmajorcitydata ;
+
 

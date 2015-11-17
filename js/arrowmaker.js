@@ -1,5 +1,5 @@
-var arrowdefs = svglines.append("defs");
- 
+var arrowdefs = SVGMap.svglines().append("defs");//d3.select("#mapdiv").append("defs");
+
 var arrowMarker = arrowdefs.append("marker")
             .attr("id","arrow")
             .attr("markerUnits","strokeWidth")

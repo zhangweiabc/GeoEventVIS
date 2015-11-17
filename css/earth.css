@@ -1,0 +1,34 @@
+/*模拟3D*/
+.canvas .wrapper.outer > .background {
+    fill: #000000;
+}
+.canvas .wrapper.inner > .background {
+    fill: #CCCCCC;
+    cursor: move;
+}
+.canvas .background {
+    fill: #FAFAFF;
+    stroke: #333333;
+    cursor: move;
+}
+.canvas .panCanvas {
+    cursor: move;
+}
+.canvas .minimap .frame .background {
+    stroke: #111111;
+    stroke-width: 4px;
+    fill-opacity: 0.4;
+    fill: #000000;
+    fill: url(#minimapGradient);
+    filter: url(#minimapDropShadow);
+    cursor: move;
+}
+.water {
+    fill: #B0D6FD;
+    stroke: #000;
+}
+.boundary {
+    fill: #CCC;
+    stroke: #000;
+    stroke-linejoin: round;
+}/*模拟3D*/
