@@ -78,7 +78,7 @@ function DrawArrowLines()
           .attr("marker-start","url(#startPoint)"); 
 }//绘制线目标数据
 ////////////////////////////////////////////绘制机场数据///////////////////////////////////////////
-DrawFlights();
+//DrawFlights();
 function DrawFlights()
 {
   d3.csv("data/airports.csv",function(error, airportdata) 
@@ -92,7 +92,7 @@ function DrawFlights()
           r : function(d,i){return 1}
       })
       .style("fill", "yellow")
-      .style("opacity", 0);
+      .style("opacity", 1);
     ////////////////////////////////////////航线数据////////////////////////////////
     d3.csv("data/PEK-openflights-export-2012-03-19.csv",function(error, flightsdata) 
     {
@@ -129,21 +129,53 @@ function DrawFlights()
           .style("stroke", "blue")
           .style("stroke-width", 0.2)
           .attr("d", function(d) { return path2(arc(d));})
-          .style("opacity", 0);  
+          .style("opacity", 1);  
+      //动画效果
+      d3.selectAll("#flight").each(function(d,i){
+          var totalLength = d3.select(this).node().getTotalLength();
+          var tt= 5000+i*Math.random();
+          var aa=d3.select(this);
+
+          d.timeid3d = setInterval(function(){aa.attr("stroke-dasharray", totalLength + " " + totalLength)
+            .attr("stroke-dashoffset", totalLength)
+            .style("stroke", "blue")
+            .style("stroke-width", 0.2)
+            .style("opacity",0.5)
+            .transition()
+            .duration(tt/2)
+            .ease("linear")//cubic//elastic//back//bounce
+            .attr("stroke-dashoffset",0)
+            .style("stroke", "red")
+            .style("stroke-width", 2)
+            .style("opacity",0.2); 
+        },tt+i*10)});
     });//航线数据
   });
 }
 function RemoveFlights()
 {
-    svgairport.selectAll("#flight").exit().remove();
-    svgflights1.selectAll("#airport").exit().remove();
+    d3.selectAll(".flight").each(function(d,i){
+        clearInterval(d.timeid3d);
+        d3.select(this).transition()
+          .duration(2000)
+          .attr("stroke-dasharray", d3.select(this).node().getTotalLength() + " " + d3.select(this).node().getTotalLength())
+          .attr("stroke-dashoffset",0)
+          .style("stroke", "blue")
+          .style("stroke-width", 1)
+          .style("opacity",0)
+    });
+
+    SVGMap.svgairport().selectAll("circle").remove();
+    SVGMap.svgflights().selectAll("path").remove();
 }
 ///////////////////////////////////////绘制热点数据/////////////////////////////////////////////////////
+//绘制热图
 function DrawHeatMapData(mgHeatmapdata)
 {
   var config = {
-    container: document.querySelector('#heatmapcanvas'),
-    radius:45,
+    container: document.querySelector('#heatmapcanvas'),//mapdiv#heatmapcanvas
+    canvas:document.getElementById("#heatmap-canvas"),
+    radius:30,
     maxOpacity:0.5,
     minOpacity:0,
     blur:0.75,
@@ -157,39 +189,66 @@ function DrawHeatMapData(mgHeatmapdata)
   }
   gheatmap = h337.create(config);
 
-  var gHeatmapdata = JSON.parse(JSON.stringify(mgHeatmapdata));
+  ////////////////////////////////////////////////////////////
+  //Heatmapdata为转换后的屏幕坐标，mHeatmapdata为转换前的经纬度坐标(解析问题，执行先后问题，值会变)
+  ////////////////////////////////////////////////////////////////
+  var heatmapdata = JSON.parse(JSON.stringify(mgHeatmapdata));
+  //console.log(mgHeatmapdata);
+  //console.log(heatmapdata);
 
-  for (var i = 0; i < mgHeatmapdata.length; i++) {
-    gHeatmapdata[i].x = projection2([mgHeatmapdata[i].x,mgHeatmapdata[i].y])[0];
-    gHeatmapdata[i].y = projection2([mgHeatmapdata[i].x,mgHeatmapdata[i].y])[1];
-    gHeatmapdata[i].value = mgHeatmapdata[i].value;
-  };
-
-  gheatmap.setData({
-    max: 100,
-    data: gHeatmapdata
-  });
-
-  var gcanvas = d3.selectAll(".heatmap-canvas")
-    .call(d3.behavior.zoom().x(xScalezoom).y(yScalezoom).scaleExtent([1, 20])
-    .on("zoom", zoomed))
-    .node().getContext("2d");
-}//绘制热点数据
-function ResetHeatmapData(mHeatmapdata)
-{
-  var i = -1, n = mHeatmapdata.length, d;
-    while (++i < n) {
-      d  = mHeatmapdata[i];
-      mHeatmapdata[i].x  = xScalezoom(d.x);
-      mHeatmapdata[i].y = yScalezoom(d.y);
+  if(isshow3d) 
+  {
+    projectionheat=projection;
+    for (var i = 0; i < mgHeatmapdata.length; i++) {
+      heatmapdata[i].x = projectionheat([mgHeatmapdata[i].x,mgHeatmapdata[i].y])[0];
+      heatmapdata[i].y = projectionheat([mgHeatmapdata[i].x,mgHeatmapdata[i].y])[1];
+      heatmapdata[i].value = mgHeatmapdata[i].value;
+    };
   }
+  else 
+  {
+    projectionheat=projection2;
+    var i = -1, n = heatmapdata.length;
+    var d = heatmapdata;
+    while (++i < n) {
+      heatmapdata[i].x = SVGMap.zoomMap.scale()*projectionheat([d[i].x,d[i].y])[0]+SVGMap.zoomMap.translate()[0];
+      heatmapdata[i].y = SVGMap.zoomMap.scale()*projectionheat([d[i].x,d[i].y])[1]+SVGMap.zoomMap.translate()[1];
+      heatmapdata[i].value = d[i].value;
+    }
+  }
+
   gheatmap.setData({
     max: 100,
-    data: mHeatmapdata
+    data: heatmapdata
   });
-  //gcanvas.translate(d3.event.translate[0], d3.event.translate[1]);
-  //gcanvas.scale(d3.event.scale, d3.event.scale);
-  gHeatmapdata=mHeatmapdata;
+}
+//绘制热点数据
+function ResetHeatmapData(mHeatmapdata,projectionheat)
+{
+  //Heatmapdata为转换后的屏幕坐标，mHeatmapdata为转换前的经纬度坐标
+  var Heatmapdata = JSON.parse(JSON.stringify(mHeatmapdata));
+  var d = Heatmapdata;
+
+  if(isshow3d) 
+  {
+    for (var i = 0; i < Heatmapdata.length; i++) {
+      Heatmapdata[i].x = projectionheat([mHeatmapdata[i].x,mHeatmapdata[i].y])[0];
+      Heatmapdata[i].y = projectionheat([mHeatmapdata[i].x,mHeatmapdata[i].y])[1];
+    };
+  }
+  else 
+  {
+    var i = -1, n = Heatmapdata.length;
+    while (++i < n) {
+      Heatmapdata[i].x = SVGMap.zoomMap.scale()*projectionheat([d[i].x,d[i].y])[0]+SVGMap.zoomMap.translate()[0];
+      Heatmapdata[i].y = SVGMap.zoomMap.scale()*projectionheat([d[i].x,d[i].y])[1]+SVGMap.zoomMap.translate()[1];
+    }
+  }
+
+  gheatmap.setData({
+    max: 100,
+    data: Heatmapdata
+  });
 }
 //////////////////////////////////绘制3DMap（Canvase）///////////////////////////////////////////
 //Draw3DMapCanvas(800);

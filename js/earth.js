@@ -1,4 +1,4 @@
-/*
+/*///////////////////////////////////////////Three基本步骤////////////////////////
 //开启Three.js渲染器
  var renderer;//声明全局变量（对象）
  function initThree() {
@@ -58,7 +58,8 @@
     renderer.render(scene, camera);
   }
   threeStart();*/
-var  width = document.getElementById('mapdiv').clientWidth;//获取画布「canvas3d」的宽
+/////////////////////////////d3的canvas生成three纹理///////////////////////////////////////////
+/*var  width = document.getElementById('mapdiv').clientWidth;//获取画布「canvas3d」的宽
      height = document.getElementById('mapdiv').clientHeight;//获取画布「canvas3d」的高
 var projection3 = d3.geo.equirectangular().translate([width/2, height/2]).scale(180);//d3.geo.orthographic().translate([width/2, height/2]).clipAngle(85);
 
@@ -103,7 +104,7 @@ var projection3 = d3.geo.equirectangular().translate([width/2, height/2]).scale(
     scene.add(light);
     //材质
     var waterMaterial  = new THREE.MeshBasicMaterial({color: '#555', transparent: true});
-    var sphere = new THREE.SphereGeometry(250, 100, 100);
+    var sphere = new THREE.SphereGeometry(200, 100, 100);
     var baseLayer = new THREE.Mesh(sphere, waterMaterial);
     //纹理
     var mapTexture = new THREE.Texture(canvas.node());//3、d3生产的canvas纹理
@@ -114,7 +115,7 @@ var projection3 = d3.geo.equirectangular().translate([width/2, height/2]).scale(
 
     var textureLoader = new THREE.TextureLoader();
         textureLoader.load('./img/2_no_clouds_8k.jpg', function(texture) {
-         mapMaterial.map = texture;
+        mapMaterial.map = texture;
      });
     //实体
     var root = new THREE.Object3D();
@@ -127,10 +128,108 @@ var projection3 = d3.geo.equirectangular().translate([width/2, height/2]).scale(
       requestAnimationFrame(render);
       renderer.render(scene, camera);
     }
-    render();*/
+    render();
     setTimeout(function(){return renderer.render(scene, camera);},1000);
+  });*/
+////////////////////////////////////d3canvas三维////////////////////////////////////////////
+var  width = document.getElementById('mapdiv').clientWidth;//获取画布「canvas3d」的宽
+     height = document.getElementById('mapdiv').clientHeight;//获取画布「canvas3d」的高
+//添加漫游缩放
+var xScalezoom = d3.scale.linear()
+          .domain([0, width])
+          .range([0, width]);
+var yScalezoom = d3.scale.linear()
+          .domain([0, height])
+          .range([height, 0]);
+
+var projection3d = d3.geo.orthographic()
+    .scale(248)
+    .clipAngle(90);
+
+var globe = {type: "Sphere"},
+    land ={},
+    countries={},
+    borders={};
+
+var zoomed = function(){
+    console.log("sss");
+    projection3d.rotate([180*d3.event.translate[0]/width,
+        -180*d3.event.translate[1]/height,
+        0
+      ]);
+    projection3d.scale(248*d3.event.scale);
+
+    var c =d3.select("#canvas3d").node().getContext("2d");
+    c.clearRect(0, 0, width, height);
+    c.fillStyle = "#bbb", c.beginPath(), path3d(land), c.fill();
+    //c.fillStyle = "#f00", c.beginPath(), path3d(countries[i]), c.fill();
+    c.strokeStyle = "#fff", c.lineWidth = .5, c.beginPath(), path3d(borders), c.stroke();
+    c.strokeStyle = "#000", c.lineWidth = 2, c.beginPath(), path3d(globe), c.stroke();
+}
+var zoomMap = d3.behavior.zoom().x(xScalezoom).y(yScalezoom)
+                    .center([width / 2, height / 2])
+                    .scaleExtent([1, 500])//设置缩放范围
+                    .on("zoom", zoomed);
+
+var canvas = d3.select("#global3Ddiv").append("canvas").attr("id","canvas3d").call(zoomMap)
+    .attr("width", width)
+    .attr("height", height);
+
+var c = canvas.node().getContext("2d");
+
+var path3d = d3.geo.path()
+    .projection(projection3d)
+    .context(c);
+
+var title = d3.select("h1");
+
+queue()
+    .defer(d3.json, "./data/earthdata/world-110m.json")
+    .defer(d3.tsv, "./data/earthdata/world-country-names.tsv")
+    .await(ready);
+
+function ready(error, world, names) {
+  if (error) throw error;
+  console.log(world);
+  console.log(names);
+  globe = {type: "Sphere"};
+  land = topojson.feature(world, world.objects.land);
+  countries = topojson.feature(world, world.objects.countries).features;
+  borders = topojson.mesh(world, world.objects.countries, function(a, b) { return a !== b; });
+  var i = -1,
+      n = countries.length;
+
+  countries = countries.filter(function(d) {
+    return names.some(function(n) {
+      if (d.id == n.id) return d.name = n.name;
+    });
+  }).sort(function(a, b) {
+    return a.name.localeCompare(b.name);
   });
-///////////////////////////////////////////模拟3D///////////////////////////////////
+
+  (function transition() {
+    d3.transition()
+        .duration(1250)
+        .each("start", function() {
+          title.text(countries[i = (i + 1) % n].name);
+        })
+        .tween("rotate", function() {
+          var p = d3.geo.centroid(countries[i]),
+              r = d3.interpolate(projection3d.rotate(), [-p[0], -p[1]]);
+          return function(t) {
+            projection3d.rotate(r(t));
+            c.clearRect(0, 0, width, height);
+            c.fillStyle = "#bbb", c.beginPath(), path3d(land), c.fill();
+            c.fillStyle = "#f00", c.beginPath(), path3d(countries[i]), c.fill();
+            c.strokeStyle = "#fff", c.lineWidth = .5, c.beginPath(), path3d(borders), c.stroke();
+            c.strokeStyle = "#000", c.lineWidth = 2, c.beginPath(), path3d(globe), c.stroke();
+          };
+        })
+      .transition();
+      //.each("end", transition);
+  })();
+}
+///////////////////////////////////////////纯d3模拟3D///////////////////////////////////
 /*d3.demo = {};
 d3.demo.canvas = function() {
 

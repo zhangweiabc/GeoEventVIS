@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="css/earth.css">
     <link rel="stylesheet" type="text/css" href="lib/timeline/timeline.css">
     <link href="lib/leaflet/leaflet.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="lib/globe3d/globe3d.css">
     <link rel="stylesheet" type="text/css" href="lib/flamegraph/d3.flameGraph.css">
     <style>@import url(css/gevs.css);</style> 
     <style>@import url('js/ComicNarrative/narrative.css');</style>
@@ -140,7 +141,7 @@
           <li><a href="">武汉会战</a></li>
           <li><a href="">湘西会战</a></li>
           <li><a href="">徐州会战</a></li>
-          <li><a href="">长沙会战</a></li>
+          <li><a href="index1.html" target="_blank">长沙会战</a></li>
         </ul>
       </div> <!-左侧栏-> 
 
@@ -186,7 +187,7 @@
                   <div class="tab-content">
                     <div class="tab-pane active" id="mapdiv" style="position:relative;">
                         <!--<div class="mapdiv1" id="mapdiv1" style="height:100%;width:100%;position:absolute;"></div>-->
-                        <!--<div class="heatmapcanvas" id="heatmapcanvas"></div>-->
+                        <div class="heatmapcanvas" id="heatmapcanvas" style="position:absolute;" style="display: none;"></div>
                         <div class="pantool" id="pantool"></div>
                         <div class="rightpanel" id="rightpanel"></div>
                         <div class="bottompanel" id="bottompanel"></div>
@@ -194,6 +195,7 @@
                     <div class="tab-pane" id="global3Ddiv" style="position:relative;"> 
                         <div class="pantool3d" id="pantool3d"></div>
                         <div class="bottompanel3d" id="bottompanel3d"></div>
+                        <canvas id="d3-canvas" width="1048px" height="800px" style="display: none;"></canvas>
                     </div>
                     <div class="tab-pane" id="wholePropert" style="position:relative;"> 
                           <div class="row">
@@ -318,15 +320,18 @@
       </div> <!-右侧栏-> 
     </div>
   </div><!-- 整体布局3列 -->  
-
+  <!--<div id="loading">
+      <img src="img/start.jpg">
+  </div>-->
   <footer class="footer">
     <p class="pull-right"><a href="#top">回到顶部</a></p>
     <p>&copy; Company 2014</p>
   </footer>
   <script src="lib/jquery-2.1.4.js"></script>
   <script src="lib/bootstrapdist/js/bootstrap.js"></script>
-    <script type="text/javascript" src="lib/three.js"></script>
+  <script type="text/javascript" src="lib/three.js"></script>
   <script type="text/javascript" src="lib/d3.v357.js"></script>
+  <script type="text/javascript" src="lib/queue.js"></script>
   <!--<script type="text/javascript" src="lib/d3.layout.js"></script>-->
   <script type="text/javascript" src="lib/topojson.js"></script>
   <script type="text/javascript" src="lib/fisheye.js"></script>
@@ -356,5 +361,22 @@
   <script type="text/javascript" src="lib/flamegraph/index.flameGraph.js"></script>
   <script type="text/javascript" src="lib/flamegraph/d3.flameGraph.js"></script>
   <script type="text/javascript" src="index.js"></script>
+  
+  <script>
+    /*d3.select("#loading")
+      .transition()
+      .delay(1000)
+      .duration(5000)
+      .style("opacity", 0)
+      .remove();*/
+  </script>
+  <script type="text/javascript">
+    //全部刷新，等效于F5刷新
+    $(window).resize(function (){
+        location.reload()
+     });
+
+  </script>
+  <!--<script type="text/javascript" src="lib/globe3d/globe3d.js"></script>-->
   </body>
 </html>

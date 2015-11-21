@@ -10,8 +10,9 @@
   };
 
   dthree.tool={};
+  dthree.event={};
   //平行坐标
-  dthree.tool.DarwParallel = function(svg,w,h)
+  dthree.tool.DarwParallel = function(selection,data,w,h)
   {
     var marginpd = {top: 30, right: 10, bottom: 10, left: 10},
         widthpd = w - marginpd.right - marginpd.left,
@@ -28,62 +29,60 @@
           foregroundpd;
 
 
-       svg.attr("width", widthpd + marginpd.right + marginpd.left)
-          .attr("height", heightpd + marginpd.top + marginpd.bottom)
-          .append("g")
-          .attr("transform", "translate(" + marginpd.left + "," + marginpd.top + ")");
+      var svg =selection.append("svg")
+                        .attr("width", widthpd + marginpd.right + marginpd.left)
+                        .attr("height", heightpd + marginpd.top + marginpd.bottom)
+                        .append("g")
+                        .attr("transform", "translate(" + marginpd.left + "," + marginpd.top + ")");
 
-      d3.csv("data/PEK-openflights-export1.csv", function(airports) {
+      // Extract the list of dimensions and create a scale for each.
+      xpd.domain(dimensions = d3.keys(data[0]).filter(function(d) {
+        return d != "name" && (ypd[d] = d3.scale.linear()
+            .domain(d3.extent(data, function(p) { return +p[d]; }))
+            .range([heightpd, 0]));
+      }));
 
-        // Extract the list of dimensions and create a scale for each.
-        xpd.domain(dimensions = d3.keys(airports[0]).filter(function(d) {
-          return d != "name" && (ypd[d] = d3.scale.linear()
-              .domain(d3.extent(airports, function(p) { return +p[d]; }))
-              .range([heightpd, 0]));
-        }));
+      // Add grey background lines for context.
+      backgroundpd = svg.append("g")
+          .attr("class", "backgroundpd")
+          .selectAll("path")
+          .data(data)
+          .enter().append("path")
+          .attr("d", pathpd);
 
-        // Add grey background lines for context.
-        backgroundpd = svg.append("g")
-            .attr("class", "backgroundpd")
-            .selectAll("path")
-            .data(airports)
-            .enter().append("path")
-            .attr("d", pathpd);
+      // Add blue foreground lines for focus.
+      foregroundpd = svg.append("g")
+          .attr("class", "foregroundpd")
+          .selectAll("path")
+          .data(data)
+          .enter().append("path")
+          .attr("d", pathpd)
+          .on("mouseover",function(d,i){tipshow(d,"Parallel");})
+          .on("mouseout",function(){tiphide();});
 
-        // Add blue foreground lines for focus.
-        foregroundpd = svg.append("g")
-            .attr("class", "foregroundpd")
-            .selectAll("path")
-            .data(airports)
-            .enter().append("path")
-            .attr("d", pathpd)
-            .on("mouseover",function(d,i){tipshow(d,"Parallel");})
-            .on("mouseout",function(){tiphide();});
+      // Add a group element for each dimension.
+      var gpd = svg.selectAll(".dimensionpd")
+          .data(dimensions)
+          .enter().append("g")
+          .attr("class", "dimensionpd")
+          .attr("transform", function(d) { return "translate(" + xpd(d) + ")"; });
 
-        // Add a group element for each dimension.
-        var gpd = svg.selectAll(".dimensionpd")
-            .data(dimensions)
-            .enter().append("g")
-            .attr("class", "dimensionpd")
-            .attr("transform", function(d) { return "translate(" + xpd(d) + ")"; });
+      // Add an axis and title.
+      gpd.append("g")
+          .attr("class", "axispd")
+          .each(function(d) { d3.select(this).call(axispd.scale(ypd[d])); })
+          .append("text")
+          .attr("text-anchor", "middle")
+          .attr("y", -9)
+          .text(String);
 
-        // Add an axis and title.
-        gpd.append("g")
-            .attr("class", "axispd")
-            .each(function(d) { d3.select(this).call(axispd.scale(ypd[d])); })
-            .append("text")
-            .attr("text-anchor", "middle")
-            .attr("y", -9)
-            .text(String);
-
-        // Add and store a brush for each axis.
-        gpd.append("g")
-            .attr("class", "brushpd")
-            .each(function(d) { d3.select(this).call(ypd[d].brushpd = d3.svg.brush().y(ypd[d]).on("brush", brushpd)); })
-            .selectAll("rect")
-            .attr("x", -8)
-            .attr("width", 16);
-      });
+      // Add and store a brush for each axis.
+      gpd.append("g")
+          .attr("class", "brushpd")
+          .each(function(d) { d3.select(this).call(ypd[d].brushpd = d3.svg.brush().y(ypd[d]).on("brush", brushpd)); })
+          .selectAll("rect")
+          .attr("x", -8)
+          .attr("width", 16);
 
       // Returns the path for a given data point.
       function pathpd(d) {
@@ -233,7 +232,7 @@
     });
   }
   //RadialTeee
-  dthree.tool.DrawRadialTree = function(svg,diameter,h)
+  dthree.tool.DrawRadialTree = function(selection,data,w,h)
   {
     var zoomrelations = d3.behavior.zoom()
           .scaleExtent([0, 8])//设置缩放范围
@@ -244,126 +243,125 @@
     d3.select("#relations").call(zoomrelations);
 
     var tree = d3.layout.tree()
-        .size([360, diameter / 2])
+        .size([360, w / 2])
         .separation(function(a, b) { return (a.parent == b.parent ? 1 : 2) / a.depth; });
 
     var diagonal = d3.svg.diagonal.radial()
         .projection(function(d) { return [d.y, d.x / 180 * Math.PI]; });
 
+    var svg = selection.append("svg");
     var svgRadialTree = svg
-        .attr("width", diameter)
+        .attr("width", w)
         .attr("height", h)
         .append("g")
         .attr("id","RadialTeee")
-        .attr("transform", "translate(" + diameter / 2 + "," + h / 2 + ")");
+        .attr("transform", "translate(" + w / 2 + "," + h / 2 + ")");
     var i = 0;
 
-    d3.json("data/relations2.json", function(error, root) {
-      if (error) throw error;
-      update(root);
+    update(data);
 
-      function update(source)
-      {
-        var nodes = tree.nodes(root),
-            links = tree.links(nodes);
+    function update(source)
+    {
+      var nodes = tree.nodes(data),
+          links = tree.links(nodes);
 
-        var link = svgRadialTree.selectAll(".link")
-            .data(links)
-            .enter().append("path")
-            .attr("class", "link")
-            .attr("d", diagonal);
-        var node =svgRadialTree.selectAll("g.node").data(nodes, function(d) { return d.id || (d.id = ++i); });
-
-        var nodeEnter = node.enter().append("g")
-            .attr("class", "node")
-            .attr("transform", function(d) { return "rotate(" + (source.x - 90) + ")translate(" + source.y + ")"; })
-            .on("mouseover",function(d){tipshow(d,"RadialTree");})
-            .on("mouseout",function(){tiphide();})
-            .on("click",function(d){treeclick(d);});
-
-        nodeEnter.append("circle")
-            .attr("r", 4.5);
-
-
-        nodeEnter.append("text")
-            .attr("dy", ".31em")
-            .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; })
-            .attr("transform", function(d) { return d.x < 180 ? "translate(8)" : "rotate(180)translate(-8)"; })
-            .text(function(d) { return d.name; });
-
-        // Transition nodes to their new position.
-        var nodeUpdate = node.transition()
-          .duration(750)
-          .attr("transform", function(d) { return"rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; });
-
-        nodeUpdate.select("circle")
-          .attr("r",4.5)
-          .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
-
-        nodeUpdate.select("text")
-          .style("fill-opacity", 1);
-
-        // Transition exiting nodes to the parent's new position.
-        var nodeExit = node.exit().transition()
-          .duration(750)
-          .attr("transform", function(d) { return "rotate(" + (source.x - 90) + ")translate(" + source.y + ")";  })
-          .remove();
-
-        nodeExit.select("circle")
-          .attr("r", 1e-6);
-
-        nodeExit.select("text")
-          .style("fill-opacity", 1e-6);
-
-        // Update the links…
-        var link = svg.selectAll("path.link")
-          .data(links, function(d) { return d.target.id; });
-
-        // Enter any new links at the parent's previous position.
-        link.enter().insert("path", "g")
+      var link = svgRadialTree.selectAll(".link")
+          .data(links)
+          .enter().append("path")
           .attr("class", "link")
-          .attr("d", function(d) {
-          var o = {x: source.x0, y: source.y0};
-          return diagonal({source: o, target: o});
-          });
-
-        // Transition links to their new position.
-        link.transition()
-          .duration(750)
           .attr("d", diagonal);
+      var node =svgRadialTree.selectAll("g.node").data(nodes, function(d) { return d.id || (d.id = ++i); });
 
-        // Transition exiting nodes to the parent's new position.
-        link.exit().transition()
-          .duration(750)
-          .attr("d", function(d) {
-          var o = {x: source.x, y: source.y};
-          return diagonal({source: o, target: o});
-          })
-          .remove();
+      var nodeEnter = node.enter().append("g")
+          .attr("class", "node")
+          .attr("transform", function(d) { return "rotate(" + (source.x - 90) + ")translate(" + source.y + ")"; })
+          .on("mouseover",function(d){tipshow(d,"RadialTree");})
+          .on("mouseout",function(){tiphide();})
+          .on("click",function(d){treeclick(d);});
 
-        // Stash the old positions for transition.
-        nodes.forEach(function(d) {
-        d.x0 = d.x;
-        d.y0 = d.y;
+      nodeEnter.append("circle")
+          .attr("r", 4.5);
+
+
+      nodeEnter.append("text")
+          .attr("dy", ".31em")
+          .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; })
+          .attr("transform", function(d) { return d.x < 180 ? "translate(8)" : "rotate(180)translate(-8)"; })
+          .text(function(d) { return d.name; });
+
+      // Transition nodes to their new position.
+      var nodeUpdate = node.transition()
+        .duration(750)
+        .attr("transform", function(d) { return"rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; });
+
+      nodeUpdate.select("circle")
+        .attr("r",4.5)
+        .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+
+      nodeUpdate.select("text")
+        .style("fill-opacity", 1);
+
+      // Transition exiting nodes to the parent's new position.
+      var nodeExit = node.exit().transition()
+        .duration(750)
+        .attr("transform", function(d) { return "rotate(" + (source.x - 90) + ")translate(" + source.y + ")";  })
+        .remove();
+
+      nodeExit.select("circle")
+        .attr("r", 1e-6);
+
+      nodeExit.select("text")
+        .style("fill-opacity", 1e-6);
+
+      // Update the links…
+      var link = svg.selectAll("path.link")
+        .data(links, function(d) { return d.target.id; });
+
+      // Enter any new links at the parent's previous position.
+      link.enter().insert("path", "g")
+        .attr("class", "link")
+        .attr("d", function(d) {
+        var o = {x: source.x0, y: source.y0};
+        return diagonal({source: o, target: o});
         });
-      }
 
-      function treeclick(d)
-      {
-        if (d.children) {
-        d._children = d.children;
-        d.children = null;
-        } else {
-        d.children = d._children;
-        d._children = null;
-        }
-        update(d);
+      // Transition links to their new position.
+      link.transition()
+        .duration(750)
+        .attr("d", diagonal);
+
+      // Transition exiting nodes to the parent's new position.
+      link.exit().transition()
+        .duration(750)
+        .attr("d", function(d) {
+        var o = {x: source.x, y: source.y};
+        return diagonal({source: o, target: o});
+        })
+        .remove();
+
+      // Stash the old positions for transition.
+      nodes.forEach(function(d) {
+      d.x0 = d.x;
+      d.y0 = d.y;
+      });
+    }
+
+    function treeclick(d)
+    {
+      if (d.children) {
+      d._children = d.children;
+      d.children = null;
+      } else {
+      d.children = d._children;
+      d._children = null;
       }
-    });
+      update(d);
+    }
+
     d3.select(self.frameElement).style("height", h - 150 + "px");  
   }   
   //HeatMap
-  dthree.tool.DrawHeatMap = function(svg,w,h)
+  dthree.tool.DrawHeatMap = function(selection,data,w,h)
   {
     var margin = {top: 20, right: 90, bottom: 30, left: 50},
         width = w - margin.left - margin.right,
@@ -377,90 +375,86 @@
     // This could be inferred from the data if it weren't sparse.
     var xStep = 864e5,
         yStep = 100;
-    var svgheatmap = svg
+    var svgheatmap = selection.append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-    d3.csv("data/heatmap.csv", function(error, buckets) {
-      if (error) throw error;
-      // Coerce the CSV data to the appropriate types.
-      buckets.forEach(function(d) {
-        d.date = parseDate(d.date);
-        d.bucket = +d.bucket;
-        d.count = +d.count;
-      });
-      // Compute the scale domains.
-      x.domain(d3.extent(buckets, function(d) { return d.date; }));
-      y.domain(d3.extent(buckets, function(d) { return d.bucket; }));
-      z.domain([0, d3.max(buckets, function(d) { return d.count; })]);
-      // Extend the x- and y-domain to fit the last bucket.
-      // For example, the y-bucket 3200 corresponds to values [3200, 3300].
-      x.domain([x.domain()[0], + x.domain()[1] + xStep]);
-      y.domain([y.domain()[0], y.domain()[1] + yStep]);
-      // Display the tiles for each non-zero bucket.
-      // See http://bl.ocks.org/3074470 for an alternative implementation.
-      svgheatmap.selectAll(".tile")
-          .data(buckets)
-          .enter().append("rect")
-          .attr("class", "tile")
-          .attr("x", function(d) { return x(d.date); })
-          .attr("y", function(d) { return y(d.bucket + yStep);})
-          .attr("width", x(xStep) - x(0))
-          .attr("height", y(0) - y(yStep))
-          .style("fill", function(d) { return z(d.count); })
-          .on("mouseover",function(d){tipshow(d,"HeatMap");})
-          .on("mouseout",function(){tiphide();});
-      // Add a legend for the color values.
-      var legend = svgheatmap.selectAll(".legend")
-          .data(z.ticks(6).slice(1).reverse())
-          .enter().append("g")
-          .attr("class", "legend")
-          .attr("transform", function(d, i) { return "translate(" + (width + 20) + "," + (20 + i * 20) + ")"; });
-      legend.append("rect")
-          .attr("width", 20)
-          .attr("height", 20)
-          .style("fill", z);
-      legend.append("text")
-          .attr("x", 26)
-          .attr("y", 10)
-          .attr("dy", ".35em")
-          .text(String);
-      svgheatmap.append("text")
-          .attr("class", "label")
-          .attr("x", width + 20)
-          .attr("y", 10)
-          .attr("dy", ".35em")
-          .text("Count");
-      // Add an x-axis with label.
-      svgheatmap.append("g")
-          .attr("class", "x axis")
-          .attr("transform", "translate(0," + height + ")")
-          .call(d3.svg.axis().scale(x).ticks(d3.time.days).tickFormat(formatDate).orient("bottom"))
-          .append("text")
-          .attr("class", "label")
-          .attr("x", width)
-          .attr("y", -6)
-          .attr("text-anchor", "end")
-          .text("Date");
-      // Add a y-axis with label.
-      svgheatmap.append("g")
-          .attr("class", "y axis")
-          .call(d3.svg.axis().scale(y).orient("left"))
-          .append("text")
-          .attr("class", "label")
-          .attr("y", 6)
-          .attr("dy", ".71em")
-          .attr("text-anchor", "end")
-          .attr("transform", "rotate(-90)")
-          .text("Value");
+    
+    // Coerce the CSV data to the appropriate types.
+    data.forEach(function(d) {
+      d.date = parseDate(d.date);
+      d.bucket = +d.bucket;
+      d.count = +d.count;
     });
+    // Compute the scale domains.
+    x.domain(d3.extent(data, function(d) { return d.date; }));
+    y.domain(d3.extent(data, function(d) { return d.bucket; }));
+    z.domain([0, d3.max(data, function(d) { return d.count; })]);
+    // Extend the x- and y-domain to fit the last bucket.
+    // For example, the y-bucket 3200 corresponds to values [3200, 3300].
+    x.domain([x.domain()[0], + x.domain()[1] + xStep]);
+    y.domain([y.domain()[0], y.domain()[1] + yStep]);
+    // Display the tiles for each non-zero bucket.
+    // See http://bl.ocks.org/3074470 for an alternative implementation.
+    svgheatmap.selectAll(".tile")
+        .data(data)
+        .enter().append("rect")
+        .attr("class", "tile")
+        .attr("x", function(d) { return x(d.date); })
+        .attr("y", function(d) { return y(d.bucket + yStep);})
+        .attr("width", x(xStep) - x(0))
+        .attr("height", y(0) - y(yStep))
+        .style("fill", function(d) { return z(d.count); })
+        .on("mouseover",function(d){tipshow(d,"HeatMap");})
+        .on("mouseout",function(){tiphide();});
+    // Add a legend for the color values.
+    var legend = svgheatmap.selectAll(".legend")
+        .data(z.ticks(6).slice(1).reverse())
+        .enter().append("g")
+        .attr("class", "legend")
+        .attr("transform", function(d, i) { return "translate(" + (width + 20) + "," + (20 + i * 20) + ")"; });
+    legend.append("rect")
+        .attr("width", 20)
+        .attr("height", 20)
+        .style("fill", z);
+    legend.append("text")
+        .attr("x", 26)
+        .attr("y", 10)
+        .attr("dy", ".35em")
+        .text(String);
+    svgheatmap.append("text")
+        .attr("class", "label")
+        .attr("x", width + 20)
+        .attr("y", 10)
+        .attr("dy", ".35em")
+        .text("Count");
+    // Add an x-axis with label.
+    svgheatmap.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.svg.axis().scale(x).ticks(d3.time.days).tickFormat(formatDate).orient("bottom"))
+        .append("text")
+        .attr("class", "label")
+        .attr("x", width)
+        .attr("y", -6)
+        .attr("text-anchor", "end")
+        .text("Date");
+    // Add a y-axis with label.
+    svgheatmap.append("g")
+        .attr("class", "y axis")
+        .call(d3.svg.axis().scale(y).orient("left"))
+        .append("text")
+        .attr("class", "label")
+        .attr("y", 6)
+        .attr("dy", ".71em")
+        .attr("text-anchor", "end")
+        .attr("transform", "rotate(-90)")
+        .text("Value");
   }
   //ForceGraph
-  dthree.tool.DrawForceGraph = function (svg,width,height)
+  dthree.tool.DrawForceGraph = function (selection,data,width,height)
   {
-    var  root;
     var fisheye = d3.fisheye.circular()
         .radius(120);
 
@@ -468,18 +462,15 @@
         .size([width, height])
         .on("tick", tick);
 
-    svg.attr("width", width).attr("height", height);
+    var svg =selection.append("svg").attr("width", width).attr("height", height);
 
     var link = svg.selectAll(".Forcelink"),
         node = svg.selectAll(".Forcenode");
 
-    d3.json("./data/relations.json", function(json) {
-      root = json;
-      update();
-    });
-
+    update();
+    
     function update() {
-      var nodes = flatten(root),
+      var nodes = flatten(data),
           links = d3.layout.tree().links(nodes);
       
       // Restart the force layout.
@@ -573,7 +564,7 @@
         nodes.push(node);
       }
 
-      recurse(root);
+      recurse(data);
       return nodes;
     }
   }
@@ -1336,21 +1327,21 @@
     }
   }
   //DrawTreeMap
-  dthree.tool.DrawTreeMap = function(divID,w,h)
+  dthree.tool.DrawTreeMap = function(selection,data,w,h)
   {
     var x = d3.scale.linear().range([0, w]),
       y = d3.scale.linear().range([0, h]),
       color = d3.scale.category20c(),
       root,
       node;
-
+      
     var treemap = d3.layout.treemap()
         .round(false)
         .size([w, h])
         .sticky(true)
         .value(function(d) { return d.size; });
 
-    var svg = d3.select(divID).append("div")
+    var svg = selection.append("div")
         .attr("class", "chart")
         .style("width", w + "px")
         .style("height", h + "px")
@@ -1360,38 +1351,37 @@
         .append("svg:g")
         .attr("transform", "translate(.5,.5)");
 
-    d3.json("data/relations.json", function(data) {
-      node = root = data;
+  
+    node = root = data;
 
-      var nodes = treemap.nodes(root)
-          .filter(function(d) { return !d.children; });
+    var nodes = treemap.nodes(root)
+        .filter(function(d) { return !d.children; });
 
-      var cell = svg.selectAll("g")
-          .data(nodes)
-          .enter().append("svg:g")
-          .attr("class", "cell")
-          .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
-          .on("click", function(d) { return zoom(node == d.parent ? root : d.parent); });
+    var cell = svg.selectAll("g")
+        .data(nodes)
+        .enter().append("svg:g")
+        .attr("class", "cell")
+        .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+        .on("click", function(d) { return zoom(node == d.parent ? root : d.parent); });
 
-      cell.append("svg:rect")
-          .attr("width", function(d) { return d.dx - 1; })
-          .attr("height", function(d) { return d.dy - 1; })
-          .style("fill", function(d) { return color(d.parent.name); });
+    cell.append("svg:rect")
+        .attr("width", function(d) { return d.dx - 1; })
+        .attr("height", function(d) { return d.dy - 1; })
+        .style("fill", function(d) { return color(d.parent.name); });
 
-      cell.append("svg:text")
-          .attr("x", function(d) { return d.dx / 2; })
-          .attr("y", function(d) { return d.dy / 2; })
-          .attr("dy", ".35em")
-          .attr("text-anchor", "middle")
-          .text(function(d) { return d.name; })
-          .style("opacity", 0);//function(d) { d.w = this.getComputedTextLength(); return d.dx > d.w ? 1 : 0; });
+    cell.append("svg:text")
+        .attr("x", function(d) { return d.dx / 2; })
+        .attr("y", function(d) { return d.dy / 2; })
+        .attr("dy", ".35em")
+        .attr("text-anchor", "middle")
+        .text(function(d) { return d.name; })
+        .style("opacity", 0);//function(d) { d.w = this.getComputedTextLength(); return d.dx > d.w ? 1 : 0; });
 
-      d3.select(window).on("click", function() { zoom(root); });
+    d3.select(window).on("click", function() { zoom(root); });
 
-      d3.select("select").on("change", function() {
-        treemap.value(this.value == "size" ? size : count).nodes(root);
-        zoom(node);
-      });
+    d3.select("select").on("change", function() {
+      treemap.value(this.value == "size" ? size : count).nodes(root);
+      zoom(node);
     });
 
     function size(d) {
@@ -1597,7 +1587,7 @@
     }
   }
   //DrawFlameGraph
-  dthree.tool.DrawFlameGraph = function(divID,w,h)
+  dthree.tool.DrawFlameGraph = function(selection,data,w,h)
   {
     var flameGraph = d3.flameGraph()
         .height(h)
@@ -1610,13 +1600,7 @@
         .transitionEase('cubic-in-out')
         .title("");
 
-    d3.json("data/stacks.json", function(error, data) {
-      if (error) return console.warn(error);
-      d3.select(divID)
-          .datum(data)
-          .call(flameGraph);
-    });
-
+      selection.datum(data).call(flameGraph);
 
     /*<div class="pull-right">
       <form class="form-inline" id="form">

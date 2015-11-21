@@ -125,7 +125,7 @@ d3.select("#pantool").append("g")
   .append("input")
   .attr("id","ptbuttonChina")
   .attr("type","button")
-  .attr("value","中国")
+  .attr("value","滤镜")
   .on("click",function(){});
 d3.select("#pantool").append("g")
   .append("input")

@@ -23,7 +23,7 @@ var isshouwlines=0;
 var isshouwareas=0;
 var isshouwheat=0;
 var isshowgraticule=0;
-var isshowchina=0;
+var isshowchina=1;
 var isshowcitypoint=1;
 var isshowzhuji=0;
 var isshow3d=0;
@@ -50,6 +50,8 @@ var projection2 = d3.geo.mercator()//albers//orthographic//equirectangular//merc
                     .center([0, 0])
                     .scale(400)//初始化比例尺
                     .translate([width/2-1300, height/2+200]);
+//投影heatmap
+var projectionheat=projection2; 
 //初始化
 var initRotate = projection.rotate();
 var initScale = projection.scale();
@@ -67,16 +69,16 @@ var b1 = d3.rgb(255,255,0);
 var interpolateColor = d3.interpolate(a1,b1);
 
 //世界地图颜色设置
-var worldColor = "#222";//"#FFFFCC";//世界地图
+var worldColor = "#FFFFCC";//"#222";//世界地图
 var overColor = "#ff0";//查询颜色
-var oceanColor = "#333333";//"#CCFFFF";//#mapdiv设置
+var oceanColor = "#CCFFFF";//"#333333";//#mapdiv设置
 var worldstroke= "#CCCCCC";
 var worldstrokewidth = 1;
 //中国地图颜色设置
 var aa = d3.rgb(150,200,100);  //浅绿  
 var bb = d3.rgb(150,100,200);        //深绿  
-var colorChina ="#555";//d3.interpolate(aa,bb);    
-var chinastroke ="#CCCCCC";
+var colorChina ="#E26D64";//d3.interpolate(aa,bb);    
+var chinastroke ="#FFFFCC";
 var chinastrokewidth = 0.5;
 var chinainterpolatecolor=d3.interpolate(aa,bb);   
 var chinalinear;
@@ -102,4 +104,8 @@ var color = d3.scale.category10();
 //U : "#93648D"
 -->
 
-
+//数据变量
+var relationsdata={},
+    heatmapsvgdata={},
+    flightdata={},
+    stacksdata={};

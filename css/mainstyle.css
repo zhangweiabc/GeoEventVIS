@@ -3,8 +3,21 @@
  */
 
 /* Move down content because we have a fixed navbar that is 50px tall */
-
-
+body{
+  /*background: #666;*/
+}
+div#loading{
+  position:absolute;
+  top: 100px; 
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 800px;
+  height: 600px;
+  text-align:center
+}
 div .tooltip {
   position: absolute;
   text-align: center;
@@ -38,9 +51,9 @@ div .tooltip {
 div#mapdiv{
   margin: 0 px;
   background-color: #ccccff;
-  height: 918px;
+  height: 800px;
 }
-div #global3Ddiv{
+div#global3Ddiv{
   margin: 10px;
   background-color:#FFFFCC;
   height:800px;
@@ -116,10 +129,11 @@ div #wholeNavPic{
   border: 1px solid #bebebe;
   box-sizing: border-box;
 }
-div #heatmapcanvas{
-    position:absolute;
-    width:100%;
-    height:100%;
+div#heatmapcanvas{
+  position:absolute;
+  margin: 0 px;
+  width: 100%;
+  height: 100%;
 }
 div #pantool{
     position:absolute;

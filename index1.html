@@ -10,26 +10,29 @@
     <title>基于互联网的地理事件可视化</title>
 
     <link href="css/mainstyle.css" rel="stylesheet">
-    <!--<link rel="stylesheet" type="text/css" href="css/style.css">
-    <style>@import url(css/gevs.css);</style> -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <style>@import url(css/gevs.css);</style>
   </head>
 
   <body>
   
    <div class="mapdiv" id="mapdiv">
-          <div class="pantool" id="pantool"></div>
-          <div class="rightpanel" id="rightpanel"></div>
-          <div class="bottompanel" id="bottompanel"></div>
+        <div class="heatmapcanvas" id="heatmapcanvas" style="position:absolute;" style="display: none;"></div>
+        <div class="pantool" id="pantool"></div>
+        <div class="rightpanel" id="rightpanel"></div>
+        <div class="bottompanel" id="bottompanel"></div>
    </div>
 
   <script type="text/javascript" src="lib/jquery-2.1.4.js"></script>
   <script type="text/javascript" src="lib/d3.v357.js"></script>
   <script type="text/javascript" src="lib/topojson.js"></script>
+  <script type="text/javascript" src="lib/heatmap.js"></script>
   <script type="text/javascript" src="js/global.js"></script>
+  <script type="text/javascript" src="js/tools.js"></script>
   <script type="text/javascript" src="js/geo.v3.js"></script>
-  <!--<script type="text/javascript" src="js/geo.mark.js"></script>
-  <script type="text/javascript" src="js/geo.panel.js"></script> -->
-
+  <script type="text/javascript" src="js/geo.mark.js"></script>
+  <script type="text/javascript" src="js/geo.panel.js"></script> 
+  <script type="text/javascript" src="js/arrowmaker.js"></script>
   <script type="text/javascript" src="js/jqueryApp.js"></script>
 
   </body>

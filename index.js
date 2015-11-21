@@ -1,24 +1,45 @@
+//读取数据
+d3.json("data/relations.json", function(error, root) {
+   if (error) throw error;
+   relationsdata = root;
+   //绘制组织关系图
+	dthree.tool.DrawRadialTree(d3.select("#relations"),relationsdata,$("#mapdiv").width()/2-10,($("#mapdiv").height()+$("#crossfilter").height()-50)/2);
+	//绘制人物关系图
+	dthree.tool.DrawForceGraph(d3.select("#relation2"),relationsdata,$("#mapdiv").width()/2-10,($("#mapdiv").height()+$("#crossfilter").height()-50)/2);
+});
+d3.csv("data/heatmap.csv", function(error, root) {
+   if (error) throw error;
+   heatmapsvgdata = root;
+   //绘制热图
+	dthree.tool.DrawHeatMap(d3.select("#property"),heatmapsvgdata,$("#relations").width(),($("#mapdiv").height()+$("#crossfilter").height()-50)/2);
+});
+d3.csv("data/PEK-openflights-export1.csv", function(error,root) {	
+	if (error) throw error;
+	flightdata=root;
+	//绘制平行坐标系
+	dthree.tool.DarwParallel(d3.select("#property2"),flightdata,$("#relations").width(),($("#mapdiv").height()+$("#crossfilter").height()-50)/2);
+});
+d3.json("data/relations.json", function(error, root) {
+   if (error) throw error;
+   relationsdata = root;
+	//绘制树图
+	dthree.tool.DrawTreeMap(d3.select("#property3"),relationsdata,$("#relations").width(),($("#mapdiv").height()+$("#crossfilter").height()-50)/2);
+});
+d3.json("data/stacks.json", function(error, root) {
+  	if (error) return console.warn(error);
+	stacksdata=root;
+	//绘制火焰图
+	dthree.tool.DrawFlameGraph(d3.select("#property4"),stacksdata,$("#relations").width(),($("#mapdiv").height()+$("#crossfilter").height()-50)/2);
+});
 //timeline.js
-DrawEventstory("eventstory","100%","290px");//优先eventstory1的高度5*40+60+10
+dthree.event.DrawEventstory("eventstory","100%","290px");//优先eventstory1的高度5*40+60+10
 //eventdrop.js
-DrawEventstory1("#eventstory1",$("#eventstory1").width());//只能设置宽度，高度=内容多少*40+margin.top+margin.bottom
+dthree.event.DrawEventstory1("#eventstory1",$("#eventstory1").width());//只能设置宽度，高度=内容多少*40+margin.top+margin.bottom
 //narrative.js
 DrawEventstory2("#eventstory2",$("#eventstory2").width(),$("#eventstory1").height());
 //swimlane.js
 Draweventstory3("#eventstory3",$("#eventstory3").width(),$("#eventstory1").height());
 
-/////////////////////////////////////tools.js/////////////////////////////////////
-dthree.tool.DrawRadialTree(d3.select("#relations").append("svg"),$("#relations").width(),($("#mapdiv").height()+$("#crossfilter").height()-40)/2);
-//绘制力导向关系
-dthree.tool.DrawForceGraph(d3.select("#relation2").append("svg"),$("#relations").width(),$("#relations").height());
-//绘制热图
-dthree.tool.DrawHeatMap(d3.select("#property").append("svg"),$("#relations").width(),($("#mapdiv").height()+$("#crossfilter").height()-40)/2);
-//绘制平行坐标系
-dthree.tool.DarwParallel(d3.select("#property2").append("svg"),$("#property").width(),$("#property").height());
-//绘制树图
-dthree.tool.DrawTreeMap("#property3",$("#property").width(),$("#property").height());
-//绘制火焰图
-dthree.tool.DrawFlameGraph("#property4",$("#property").width(),$("#property").height());
 //绘制统计图表
 dthree.tool.DrawCircularheat("#wholePropert1",$("#mapdiv").width()/3-10-20,$("#wholePropert1").height());
 dthree.tool.DrawBarChart("#wholePropert2",$("#mapdiv").width()/3-10-20,$("#wholePropert2").height());

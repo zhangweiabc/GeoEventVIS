@@ -12,6 +12,8 @@ $(document).ready(function(){
 			handlesl.attr("cy", ysl(1));
 			SVGMap.zoomMap.scale(1);
 	  		SVGMap.zoomMap.translate([0,0]);
+
+	  		ResetHeatmapData(gHeatmapdata,projection1);
 		}
 		else
 		{
@@ -21,6 +23,8 @@ $(document).ready(function(){
 	  		handlesl.attr("cy", ysl(currentScale));
 	  		SVGMap.zoomMap.scale(1);
 	  		SVGMap.zoomMap.translate([0,0]);
+
+	  		ResetHeatmapData(gHeatmapdata,projection2);
 	  	}
 	});
 	$("#ptbuttonAdd").click(function(){
@@ -83,9 +87,10 @@ $(document).ready(function(){
 		if(isshouwairports)
 		{
 			isshouwairports=0;
+			DrawFlights();
 
 			this.value="关闭";
-			d3.selectAll("#flight").style("opacity",1);
+			/*d3.selectAll("#flight").style("opacity",1);
 			d3.selectAll("#airport").style("opacity",1);
 
 			//动画
@@ -106,14 +111,14 @@ $(document).ready(function(){
 		        .style("stroke", "red")
 		        .style("stroke-width", 2)
 		        .style("opacity",0.2); 
-		    },tt+i*10)});
+		    },tt+i*10)});*/
 		}
 		else
 		{
 			isshouwairports=1;
 			this.value="机场";
 			//停止动画
-			d3.selectAll(".flight").each(function(d,i){
+			/*d3.selectAll(".flight").each(function(d,i){
 				clearInterval(d.timeid3d);
 				d3.select(this).transition()
 					.duration(2000)
@@ -125,7 +130,8 @@ $(document).ready(function(){
 			});
 			//隐藏
 			d3.selectAll("#flight").style("opacity",0);
-			d3.selectAll("#airport").style("opacity",0);
+			d3.selectAll("#airport").style("opacity",0);*/
+			RemoveFlights();
 	  	}
 	});
 	$("#ptbuttonPoints").click(function(){
@@ -166,7 +172,10 @@ $(document).ready(function(){
 			d3.selectAll(".chinapath").style("fill",function(d,i){
 		        return colorChina;
 		    });
-		    d3.selectAll(".worldpath").style("fill",worldColor);
+		    d3.selectAll(".worldpath").style("fill",worldColor).each(function(d,i){
+		    	if(d.id=="CHN") 
+		    		d3.select(this).style("fill","#fff")
+		    	     .style("filter","url(#gaussian2)");});
 		    d3.select("#mapdiv").style("background-color",oceanColor);
 		    d3.selectAll(".southsea path").style("fill",worldColor);
 			isshouwareas=0;
@@ -177,9 +186,9 @@ $(document).ready(function(){
 			d3.selectAll(".chinapath").style("fill",function(d,i){
 		      return chinainterpolatecolor(chinalinear(i));
 		    });
-		    d3.selectAll(".worldpath").style("fill","#FFFFCC");
-		    d3.select("#mapdiv").style("background-color","#CCFFFF");
-		    d3.selectAll(".southsea path").style("fill","#FFFFCC");
+		    d3.selectAll(".worldpath").style("fill",worldColor);//"#FFFFCC"
+		    d3.select("#mapdiv").style("background-color",oceanColor);//"#CCFFFF"
+		    d3.selectAll(".southsea path").style("fill",oceanColor);//"#FFFFCC"
 			isshouwareas=1;
 			this.value="关闭";
 		}
@@ -194,9 +203,16 @@ $(document).ready(function(){
 		else
 		{
 		  //canvas热图数据
-		  DrawHeatMapData(gmajorcitydata);
-		  isshouwheat=1;
-		  this.value="关闭";
+			var heatmapdata=[];
+			for(var bb in gmajorcitydata){
+			  gmajorcitydata[bb].value=Math.random(100)*100;
+			  heatmapdata.push(gmajorcitydata[bb]);
+			};
+			DrawHeatMapData(heatmapdata);
+			gHeatmapdata= heatmapdata;
+
+			isshouwheat=1;
+			this.value="关闭";
 		}
 	});
 	$("#ptbuttonGraticule").click(function(){
@@ -224,7 +240,7 @@ $(document).ready(function(){
 		{
 			d3.selectAll(".chinapath").attr("opacity",1);
 			isshowchina=1;
-			this.value="中国";
+			this.value="滤镜";
 		}
 	});
 	$("#ptbuttonZhuji").click(function(){
@@ -242,31 +258,30 @@ $(document).ready(function(){
 		}
 	});
 	$("#ptbuttonThree").click(function(){
-			if(isshow3d)
-			{
- 				SVGMap.projectionChange(projection2);
-				SVGMap.scaleLOD(currentTranslate,currentScale);
-				SVGMap.zoomMap.on("zoom", SVGMap.zoomed);
-				isshow3d=0;
-				this.value="三维";
-			}
-			else
-			{
-				SVGMap.scaleLOD([0,0],1);
+		if(isshow3d)
+		{
+			SVGMap.projectionChange(projection2);
+			SVGMap.scaleLOD(currentTranslate,currentScale);
+			SVGMap.zoomMap.on("zoom", SVGMap.zoomed);
 
-				projection.rotate([initRotate[0]+180*currentTranslate[0]/width,
-			          initRotate[1]-180*currentTranslate[1]/height,
-			          initRotate[2]
-			        ]);
-			    projection.scale(initScale*currentScale);
+			isshow3d=0;
+			this.value="三维";
+		}
+		else
+		{
+			SVGMap.scaleLOD([0,0],1);
 
-			    SVGMap.projectionChange(projection);
+			projection.rotate([initRotate[0]+180*currentTranslate[0]/width,
+		          initRotate[1]-180*currentTranslate[1]/height,
+		          initRotate[2]
+		        ]);
+		    projection.scale(initScale*currentScale);
+		    SVGMap.projectionChange(projection);
+			SVGMap.zoomMap.on("zoom", SVGMap.zoomed3);
 
-				SVGMap.zoomMap.on("zoom", SVGMap.zoomed3);
-
-				isshow3d=1;
-				this.value="二维";
-			}
+			isshow3d=1;
+			this.value="二维";
+		}
 	});
 	$("#ptbuttonAnimal").click(function(){
 		if(isshowdata3d==1){

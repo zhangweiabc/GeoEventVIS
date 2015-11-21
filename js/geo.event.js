@@ -1,6 +1,7 @@
+dthree.event={};
 //timeline时间插件
 // Called when the Visualization API is loaded.
-function DrawEventstory(divId,width,height) {
+dthree.event.DrawEventstory = function (divId,width,height) {
     var timeline;
     // Create a JSON data table
     var data = [];
@@ -86,7 +87,7 @@ eventLineColor: The color of the event line. Accepts a color (color name or #fff
 eventColor: The color of the event. Accepts a color (color name or #ffffff notation), or a function receiving the eventData and returning a color. Defaults to null. EventLineColor will be ignored if this is used.
 minScale: The minimum scaling (zoom out), default to 0.
 maxScale: The maximum scaling (zoom in), default to Infinity.*/
-function DrawEventstory1(divId,width) {
+dthree.event.DrawEventstory1 = function(divId,width) {
     var data = [
     { name: "党的一大", dates: [new Date('2015/09/11 13:24:54'), new Date('2015/09/12 13:25:03'), new Date('2015/09/13 13:25:05')] },
     { name: "党的二大", dates: [new Date('2015/09/14 13:24:57'), new Date('2015/09/15 13:25:04'), new Date('2015/09/16 13:25:04')] },
