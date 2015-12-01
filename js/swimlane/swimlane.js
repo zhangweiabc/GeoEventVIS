@@ -5,11 +5,14 @@ function Draweventstory3(divID,w,h)
 	  , items = data.items
 	  , now = new Date();
 
-	var margin = {top: 20, right: 60, bottom: 15, left: 60}
-	  , width = w - margin.left - margin.right
-	  , height = h - margin.top - margin.bottom
-	  , miniHeight = lanes.length * 12 + 20
-	  , mainHeight = height - miniHeight - 20;
+	var margin = {top: 20, right: 60, bottom: 15, left: 60};
+    if(h<40||w<120) margin = {top: 0, right: 0, bottom: 0, left: 0};
+
+	var width = w - margin.left - margin.right;
+	var height = h - margin.top - margin.bottom;
+	var miniHeight = lanes.length * 12 + 20;
+	var mainHeight = height - miniHeight - 20;
+	if(h<40||w<120) {miniHeight=h*0.4;mainHeight=h*0.5;}
 
 	var x = d3.time.scale()
 		.domain([d3.time.sunday(d3.min(items, function(d) { return d.start; })),
@@ -183,7 +186,7 @@ function Draweventstory3(divID,w,h)
 		.call(brush)
 		.selectAll('rect')
 			.attr('y', 1)
-			.attr('height', miniHeight - 1);
+			.attr('height', miniHeight);
 
 	mini.selectAll('rect.background').remove();
 	display();

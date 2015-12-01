@@ -17,8 +17,8 @@ function DrawPointsData()
       locations
         .attr("x",function(d){return projection2([d.log,d.lat])[0]-30;})
         .attr("y",function(d){return projection2([d.log,d.lat])[1]-30;})
-        .attr("width",60)
-        .attr("height",60)
+        .attr("width",20)
+        .attr("height",20)
         .attr("xlink:href",function(d){return d.img;})
         .attr("opacity",1)
         .on("mouseover",function(){})
@@ -85,14 +85,23 @@ function DrawFlights()
   {
     if (error) 
       return console.error(error);
+      var defs=SVGMap.svgairport().append("defs");
+      var radialGradient=defs.append("radialGradient")//linearGradients
+               .attr("id","myRadialGradient")
+               .attr("fx",0.5)
+               .attr("fy",0.5)
+               .attr("cx",0.5)
+               .attr("cy",0.5);
 
-      SVGMap.svgairport().selectAll("circle").data(airportdata).enter().append("circle").attr("id","airport").attr("class","airport").attr({
-          cx: function(d,i){return projection2([airportdata[i][" longitude"],airportdata[i][" latitude"]])[0]},
-          cy: function(d,i){return projection2([airportdata[i][" longitude"],airportdata[i][" latitude"]])[1]},
-          r : function(d,i){return 1}
-      })
-      .style("fill", "yellow")
-      .style("opacity", 1);
+      var stop1=radialGradient.append("stop")
+               .attr("offset","0%")
+               .attr("stop-color","#F0F")
+               .attr("stop-opacity",0);
+
+      var stop2=radialGradient.append("stop")
+               .attr("offset","100%")
+               .attr("stop-color","#FF0")
+               .attr("stop-opacity",0.7);
     ////////////////////////////////////////航线数据////////////////////////////////
     d3.csv("data/PEK-openflights-export-2012-03-19.csv",function(error, flightsdata) 
     {
@@ -118,37 +127,91 @@ function DrawFlights()
         links.push({
               source: [flightsdata[i]["x1"],flightsdata[i]["y1"]],
               target: [flightsdata[i]["x2"],flightsdata[i]["y2"]]
-          })  ;
-        
+        });
+ 
+        SVGMap.svgairport().append("circle").datum([flightsdata[i]["x2"],flightsdata[i]["y2"]]).attr("id","airport").attr("class","airport").attr({
+            cx: function(d,i){return projection2(d)[0]},
+            cy: function(d,i){return projection2(d)[1]},
+            r : function(d,i){return 2}
+        })
+        .style("fill","url(#"+radialGradient.attr("id")+")")
+        .style("opacity", 1); 
+        SVGMap.svgairport().append("circle").datum([flightsdata[i]["x2"],flightsdata[i]["y2"]]).attr("id","airport1").attr("class","airport1").attr({
+            cx: function(d,i){return projection2(d)[0]},
+            cy: function(d,i){return projection2(d)[1]},
+            r : function(d,i){return 1}
+        })
+        .style("fill","url(#"+radialGradient.attr("id")+")")
+        .style("opacity", 1); 
       };
-      SVGMap.svgflights().selectAll("path")
+     d3.selectAll("#airport").each(function(d,i){
+      var tt= 8000 +i*Math.random();
+      var aa=d3.select(this);
+      setInterval(function(){
+          aa.transition()
+            .duration(tt/2)
+            .attrTween("r",function(){
+               var interpolate = d3.interpolate(2,5);
+               var _this = this;
+               return function(t) {
+                   _this._current = interpolate(t);
+                   return _this._current;
+               };
+           })
+           .style("fill","url(#"+radialGradient.attr("id")+")")
+           .transition()
+           .duration(tt/2)
+           .attrTween("r",function(){
+               var interpolate = d3.interpolate(5,2);
+               var _this = this;
+               return function(t) {
+                   _this._current = interpolate(t);
+                   return _this._current;
+               };
+           })
+           .style("fill","url(#"+radialGradient.attr("id")+")");
+      },tt+i*10);});
+      //静止
+      SVGMap.svgflights().append("g").attr("id","flightJ").selectAll("path")
+          .data(links)
+          .enter().append("path").attr("id","flight1").attr("class","flight1")
+          .style("fill","#0aa")
+          .style("fill-opacity",0)
+          .style("stroke", "blue")
+          .style("stroke-width", 5)
+          .style("stroke-linecap", "round")
+          .attr("d", function(d) { return path2(arc(d));})
+          .style("opacity", 0.01); 
+      //动态
+      SVGMap.svgflights().append("g").attr("id","flightD").selectAll("path")
           .data(links)
           .enter().append("path").attr("id","flight").attr("class","flight")
           .style("fill","#0aa")
           .style("fill-opacity",0)
-          .style("stroke", "blue")
-          .style("stroke-width", 0.2)
+          .style("stroke", "yellow")
+          .style("stroke-width", 1)
+          .style("stroke-linecap", "round")
           .attr("d", function(d) { return path2(arc(d));})
-          .style("opacity", 1);  
+          .style("opacity", 0.01);   
       //动画效果
       d3.selectAll("#flight").each(function(d,i){
           var totalLength = d3.select(this).node().getTotalLength();
-          var tt= 5000+i*Math.random();
+          var tt= 8000+i*Math.random();
           var aa=d3.select(this);
 
-          d.timeid3d = setInterval(function(){aa.attr("stroke-dasharray", totalLength + " " + totalLength)
+      d.timeid3d = setInterval(function(){aa.attr("stroke-dasharray", totalLength + " " + totalLength)
             .attr("stroke-dashoffset", totalLength)
-            .style("stroke", "blue")
-            .style("stroke-width", 0.2)
-            .style("opacity",0.5)
+            //.style("stroke", "blue")
+            //.style("stroke-width", 3)
+            //.style("opacity",0.01)
             .transition()
             .duration(tt/2)
             .ease("linear")//cubic//elastic//back//bounce
             .attr("stroke-dashoffset",0)
-            .style("stroke", "red")
-            .style("stroke-width", 2)
-            .style("opacity",0.2); 
-        },tt+i*10)});
+            .style("stroke", "yellow")
+            //.style("stroke-width", 3)
+            .style("opacity",1); 
+        },tt+i*100)});
     });//航线数据
   });
 }
@@ -166,7 +229,7 @@ function RemoveFlights()
     });
 
     SVGMap.svgairport().selectAll("circle").remove();
-    SVGMap.svgflights().selectAll("path").remove();
+    SVGMap.svgflights().selectAll("g").remove();
 }
 ///////////////////////////////////////绘制热点数据/////////////////////////////////////////////////////
 //绘制热图

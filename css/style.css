@@ -110,14 +110,13 @@
   stroke-width: 10px;
   stroke-linecap: round;
 }
-
+/*工具栏样式*/
 .axissl .halosl {
   fill: none;
-  stroke: #ddd;
+  stroke: #fff;
   stroke-width: 8px;
   stroke-linecap: round;
 }
-
 .slidersl .handlesl {
   fill: #fff;
   stroke: #000;
@@ -125,18 +124,18 @@
   stroke-width: 1.25px;
   cursor: crosshair;
 }
-
 .axissl .axissl.domain {
   fill: none;
   stroke: #000;
   stroke-opacity: .3;
   stroke-width: 10px;
   stroke-linecap: round;
-}
+}/*工具栏样式*/
 /*EventDrop*/
 .zoom {
     fill: transparent;
     cursor: pointer;
+    stroke: none;
 }
 
 .y-axis path,

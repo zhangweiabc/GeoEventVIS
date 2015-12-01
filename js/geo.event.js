@@ -1,73 +1,114 @@
 dthree.event={};
 //timeline时间插件
 // Called when the Visualization API is loaded.
-dthree.event.DrawEventstory = function (divId,width,height) {
-    var timeline;
-    // Create a JSON data table
-    var data = [];
+dthree.event.DrawEventstory = function (mdivId,width,height) {
+    var timeline; 
+    var data1 =[];
+    var divId = mdivId;
 
-    // an item every month
-    var i, iMax = 1000;
-    var num = 0;
-    var date = new Date(2012, 0, 1);
-    for (i = 0; i < iMax; i++) {
-        date.setMonth(date.getMonth() + 1);
-        data.push({
-            "start": new Date(date),
-            "content": "event " + num
-        });
-        num++;
-    }
+    //1、格式化数据
+    var formatting_data = function(raw_data) {
+        var gtd_data=[];
+        for(var i=0; i < raw_data.length; i++){
+          var country = raw_data[i].country,
+          year    = +raw_data[i].iyear,
+          month   = +raw_data[i].imonth,
+          day     = +raw_data[i].iday,
+          nkill   = +raw_data[i].nkill;
+          date = new Date(year, month-1, day);
 
-    // an item every day
-    date = new Date(2012, 3, 1);
-    for (i = 0; i < iMax; i++) {
-        date.setDate(date.getDate() + 1);
-        data.push({
-            "start": new Date(date),
-            "content": "event " + num
-        });
-        num++;
-    }
+          gtd_data.push({
+              "start": date,
+              "content": raw_data[i].country + "："+ raw_data[i].nkill
+          });
+        };
+        return gtd_data;
+    }//formatting_data 
 
-    // an item every hour
-    date = new Date(2012, 6, 1);
-    for (i = 0; i < iMax; i++) {
-        date.setHours(date.getHours() + 1);
-        data.push({
-            "start": new Date(date),
-            "content": "event " + num
-        });
-        num++;
-    }
-
-    // items on the same spot
-    date = new Date(2014, 9, 1);
-    for (i = 0; i < iMax; i++) {
-        data.push({
-            "start": new Date(date),
-            "content": "event " + num
-        });
-        num++;
-    }
-
-    // specify options
+    //2、设置options
     var options = {
         'width':  width,
         'height': height,
-        'start': new Date(2001, 0, 1),
-        'end': new Date(2015, 11, 31),
+        'start': new Date(2006, 12),
+        'end': new Date(2010, 12),
         'cluster': true,
         // 'axisOnTop': true,
         'editable': true
     };
+    //初始化
+    var init = function(data){
+        data1 = formatting_data(data);
+        //3创建timeline对象
+        timeline = new links.Timeline(document.getElementById(divId), options);
+        //4、绘制数据
+        timeline.draw(data1);
+        //5、鼠标响应事件
+        d3.selectAll(".timeline-content").on("click",function(){
+            //判断是否选择要素
+            if(timeline.getSelection().length==0) return;
+            //清空原始数据
+            d3.selectAll(".worldpath").style("fill",worldColor).datum(function(d,i){d.nkill = null; return d;});
+            //执行动作
+            if(timeline.getSelection()[0]["style"]=="row")//item
+            {
+              //console.log(timeline.getItem(parseInt(timeline.getSelection()[0]["row"])));
+              var selecteditem=timeline.getItem(parseInt(timeline.getSelection()[0]["row"]));
+              var selectid="#"+selecteditem["content"].substring(0,3);
+              var nkill = parseInt(selecteditem["content"].substring(4));
+              d3.select(selectid).style("fill",colorfills[Math.ceil(colorScale(nkill))]).datum(function(d,i){ d.nkill = nkill; return d;});
+            }
+            else//cluster
+            {
+              //console.log(timeline.getCluster(parseInt(timeline.getSelection()[0]["cluster"])));
+              var selectedcluster=timeline.getCluster(parseInt(timeline.getSelection()[0]["cluster"]));
 
-    // Instantiate our timeline object.
-    timeline = new links.Timeline(document.getElementById(divId), options);
+              //去除重复数据，按国家分类统计
+              var totalcountry={};
+              var totalKilled =0;
+              for(var i=0; i < selectedcluster["items"].length; i++){
+                var country = selectedcluster["items"][i]["content"].substring(0,3);
+                var nkill = parseInt(selectedcluster["items"][i]["content"].substring(4));//int型
+                totalKilled += nkill;
 
-    // Draw our timeline with the created data and options
-    timeline.draw(data);
-}
+                if(totalcountry[country] == null){
+                  totalcountry[country] = nkill;
+                }
+                else{
+                  totalcountry[country] = nkill + totalcountry[country];
+                };  
+              };
+              for (var country in totalcountry) {
+                 var selectid="#"+country;
+                  d3.select(selectid).style("fill",colorfills[Math.ceil(colorScale(totalcountry[country]))]).datum(function(d,i){ d.nkill = totalcountry[country]; return d;});
+              };
+              //所有数据单个表示
+              /*for (var i = selectedcluster["items"].length - 1; i >= 0; i--) {
+                  var selectid="#"+selectedcluster["items"][i]["content"].substring(0,3);
+                  d3.select(selectid).style("fill","yellow");
+              };*/
+            }
+          });//鼠标响应事件
+    };
+    var update = function(){
+       var options1 = {
+          'width':  width,
+          'height': height,
+          'start': new Date(2010, 9),
+          'end': new Date(2010, 12),
+          'cluster': true,
+          // 'axisOnTop': true,
+          'editable': true
+      };
+      timeline = new links.Timeline(document.getElementById(divId), options1);
+      console.log(timeline.getOptions());
+      timeline.draw(data1,options1);
+    };
+    
+    return {
+      init:init,
+      update:update
+    };
+};
 
 //EventDrop时间插件
 /*start: start date of the scale. Defaults to new Date(0).
@@ -88,61 +129,160 @@ eventColor: The color of the event. Accepts a color (color name or #ffffff notat
 minScale: The minimum scaling (zoom out), default to 0.
 maxScale: The maximum scaling (zoom in), default to Infinity.*/
 dthree.event.DrawEventstory1 = function(divId,width) {
-    var data = [
-    { name: "党的一大", dates: [new Date('2015/09/11 13:24:54'), new Date('2015/09/12 13:25:03'), new Date('2015/09/13 13:25:05')] },
-    { name: "党的二大", dates: [new Date('2015/09/14 13:24:57'), new Date('2015/09/15 13:25:04'), new Date('2015/09/16 13:25:04')] },
-    { name: "党的三大", dates: [new Date('2015/09/17 13:25:12'),new Date('2015/09/18 18:25:12')] }
-    ];
-    var data2 = [];
-    var names = ["党的一大", "党的二大", "党的三大","党的四大","党的五大"];
+    var origindata = [];
+    var currentdata = [];
 
-    var endTime = Date.now();
-    var month = 30 * 24 * 60 * 60 * 1000;
-    var startTime = endTime - 6 * month;
+    var currentstartdate = new Date(2009, 12);
+    var currentenddate = new Date(2010, 12);
 
-    function createEvent (name, maxNbEvents) {
-        maxNbEvents = maxNbEvents | 200;
-        var event = {
-            name: name,
-            dates: []
-        };
-        // add up to 200 events
-        var max =  Math.floor(Math.random() * maxNbEvents);
-        for (var j = 0; j < max; j++) {
-            var time = (Math.random() * (endTime - startTime)) + startTime;
-            event.dates.push(new Date(time));
-        }
-        return event;
-    }
-    for (var i = 0; i < 5; i++) {
-        data2.push(createEvent(names[i]));
-    }
-
+    //1、创建eventDropsChart对象
     var   eventDropsChart = d3.chart.eventDrops().hasTopAxis(true).width(width).margin({ top: 60, left: 150, bottom: 10, right: 50 });
-    eventDropsChart.eventLineColor(function (datum, index) {
-              return color2(index);
-          })
-          .start(new Date(startTime))
-          .end(new Date(endTime));
+    //格式化数据
+    var formatting_data = function(raw_data) {
+      var gtd_data=[];
 
-    eventDropsChart.eventHover(function (datum, index) {
-            tipshow(data2[i],"eventstory1");console.log(datum+":"+index);});
+      for(var i=0; i < raw_data.length; i++){
+        var isconclude=0;
+        var country = raw_data[i].country,
+        year    = +raw_data[i].iyear,
+        month   = +raw_data[i].imonth,
+        day     = +raw_data[i].iday,
+        nkill   = +raw_data[i].nkill;
+        var date = new Date(year, month-1, day);
+        var mevent = {"date":date,"country":country,"longitude":raw_data[i].longitude,"latitude":raw_data[i].latitude,"nkill":nkill};
 
-    d3.select(divId).datum(data2).call(eventDropsChart);
-    /*d3.json("data/eventdrop.json",function(error,root){
-       if (error) return console.error(error);
-        console.log(root.children);
-      var eventDropsChart = d3.chart.eventDrops().hasTopAxis(true);
-      d3.select('#timetool').datum(root.children).call(eventDropsChart);
-    });*/
-}
-//EventDrop时间插件
+         for(var j=0; j < gtd_data.length; j++){
+            if(raw_data[i].country==gtd_data[j]["name"]) {
+              gtd_data[j]["dates"].push(date);
+              gtd_data[j]["events"].push(mevent);
+              gtd_data[j]["nkill"]=nkill+gtd_data[j]["nkill"];
+              isconclude=1;
+              break;
+            }
+            else continue;
+         }
+         if(isconclude==0) {
+            gtd_data.push({
+                name : raw_data[i].country,
+                dates  : [],
+                events : [],
+                nkill : raw_data[i].nkill
+             });
+            gtd_data[gtd_data.length-1]["dates"].push(date);
+            gtd_data[gtd_data.length-1]["events"].push(mevent);
+          }
+      }
+      return gtd_data;
+    };//formatting_data
+    //按照国家过滤数据
+    var filterDatebyCountry = function(raw_data){
+      var gtd_data=[];
+      var countries = WORLDMAP.countries(); 
 
+      _.map(countries, function(country){
+        for (var i = raw_data.length - 1; i >= 0; i--) {
+          if(raw_data[i].name==country)
+          {
+             gtd_data.push(raw_data[i]);
+          }
+        };
+      }); 
+      return gtd_data;
+    }//filterDatebyCountry
+    //按照日期过滤数据
+    /*var filterDatebyData = function(raw_data)
+    {
+      var i, j;
+      var gtd_data = {
+                name : "",
+                dates  : [],
+                events : [],
+                nkill : 0
+      };
+     
+      for(i=0; i<raw_data.dates.length; i++) {
+        if(raw_data.dates[i] < currentstartdate) {
+          continue;
+        } 
+
+        for(j=i; j<raw_data.dates.length; j++) {
+          if(raw_data.dates[j]> currentenddate) {
+            break;
+          } 
+          else {
+            gtd_data.dates.push(raw_data.dates[j]);
+            gtd_data.events.push(raw_data.events[j]);
+          }
+        }
+        break;
+      }
+      gtd_data.name = raw_data.name;
+      gtd_data.nkill = raw_data.nkill;
+
+      return gtd_data;
+    }*/
+    //初始化
+    var init = function(data)
+    {
+        //2、处理数据
+        origindata  = formatting_data(data);
+        currentdata = filterDatebyCountry(data);
+        eventDropsChart.eventLineColor(function (datum, index) {return color2(index);})
+                       .start(currentstartdate)
+                       .end(currentenddate);
+
+        //3、设置鼠标响应事件
+        //悬浮事件
+        eventDropsChart.eventHover(function (d) {tipshow("死亡人数："+d3.select(d).data()[0]["nkill"],"eventstory1");});
+        //点击事件
+        eventDropsChart.eventClick(function (d) {
+                            tiphide();  
+                            //清空原始面数据
+                            d3.selectAll(".worldpath").style("fill",worldColor).datum(function(d,i){d.nkill = null; return d;});
+                            //绘制面
+                            var nkill =d3.select(d).data()[0]["nkill"];
+                            var selectid="#"+d3.select(d).data()[0]["country"];
+                            d3.select(selectid).style("fill",colorfills[Math.ceil(colorScale(nkill))]).datum(function(d,i){ d.nkill = nkill; return d;});
+                            //清空原始点数据
+                            d3.select("#events").selectAll("#eventcircles").remove();
+                            //console.log(d3.select(d).data()[0]["longitude"]); console.log(d3.select(d).data()[0]["latitude"]);
+                            //console.log(projection2([d3.select(d).data()[0]["latitude"],d3.select(d).data()[0]["latitude"]]));
+                            //绘制点
+                            d3.select("#events").append("circle").attr("class","eventcircles").attr("id","eventcircles")
+                                  .attr('cx', projection2([d3.select(d).data()[0]["longitude"],d3.select(d).data()[0]["latitude"]])[0])
+                                  .attr('cy', projection2([d3.select(d).data()[0]["longitude"],d3.select(d).data()[0]["latitude"]])[1])
+                                  .style('fill', "yellow")
+                                  .attr('fill-opacity',0.5)
+                                  .attr('r', 10)//function(d){return rScale(d.nkill)||0;})//zwxg
+                        });
+        //4、绘制数据
+        d3.select(divId).datum(currentdata).call(eventDropsChart);  
+    }
+    //更新视图
+    var update = function(time_range)
+    {
+      //判读是否传入有效参数
+      if(typeof time_range !== 'undefined'){
+        currentstartdate = time_range[0];
+        currentenddate = time_range[1];
+      }
+      //按照国家过滤数据
+      currentdata = filterDatebyCountry(origindata);
+      //按照时间过滤显示
+      eventDropsChart.start(currentstartdate).end(currentenddate);
+      d3.select(divId).datum(currentdata).call(eventDropsChart); 
+    }
+
+    return {
+      init:init,
+      update:update
+    };
+}//EventDrop时间插件
 ////////////////////////////////////crossfilter/////////////////////////////////////////////
-d3.csv("data/gps.csv",function(error, gpsdata) 
-{
-    crossfilterRead(gpsdata);
-});
+//d3.csv("data/gps.csv",function(error, gpsdata) 
+//{
+//    crossfilterRead(gpsdata);
+//});
 function crossfilterRead (allgps) {
   // Various formatters.
   var formatNumber = d3.format(",d"),
@@ -480,3 +620,4 @@ function crossfilterRead (allgps) {
     return d3.rebind(chart, brush, "on");
   }
 };//crossfilter
+

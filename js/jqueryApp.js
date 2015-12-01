@@ -32,8 +32,15 @@ $(document).ready(function(){
 		if(isshow3d) projc=projection;
 		else projc =projection2;
 
+		d3.json("data/gtd/my_data.json", function(error, root) {
+		    if (error) 
+		      return console.error(error);
+		  console.log(root.length);
+		});
 		if(isshowcitypoint)
 		{
+			d3.selectAll(".chinapath").attr("opacity",1);
+			d3.select("#chinamaps").attr("display","block"); 
 			d3.selectAll(".chinacity").style("fill", function(d,i){return color2(i)})
 				.attr("opacity",1).attr({
 			        cx:function(d,i){return projc([d.x,d.y])[0]}, //Math.random()*width},
@@ -69,6 +76,8 @@ $(document).ready(function(){
 		else
 		{
 			d3.selectAll(".chinacity").attr("opacity",0);
+			d3.selectAll(".chinapath").attr("opacity",0);
+			d3.select("#chinamaps").attr("display","none"); 
 			isshowcitypoint=1;
 			this.value="测试";
 			
@@ -90,47 +99,13 @@ $(document).ready(function(){
 			DrawFlights();
 
 			this.value="关闭";
-			/*d3.selectAll("#flight").style("opacity",1);
-			d3.selectAll("#airport").style("opacity",1);
-
-			//动画
-			d3.selectAll("#flight").each(function(d,i){
-		      var totalLength = d3.select(this).node().getTotalLength();
-		      var tt= 5000+i*Math.random();
-		      var aa=d3.select(this);
-		      
-		    d.timeid3d = setInterval(function(){aa.attr("stroke-dasharray", totalLength + " " + totalLength)
-		        .attr("stroke-dashoffset", totalLength)
-		        .style("stroke", "blue")
-		        .style("stroke-width", 0.2)
-		        .style("opacity",0.5)
-		        .transition()
-		        .duration(tt/2)
-		        .ease("linear")//cubic//elastic//back//bounce
-		        .attr("stroke-dashoffset",0)
-		        .style("stroke", "red")
-		        .style("stroke-width", 2)
-		        .style("opacity",0.2); 
-		    },tt+i*10)});*/
+		
 		}
 		else
 		{
 			isshouwairports=1;
 			this.value="机场";
-			//停止动画
-			/*d3.selectAll(".flight").each(function(d,i){
-				clearInterval(d.timeid3d);
-				d3.select(this).transition()
-					.duration(2000)
-					.attr("stroke-dasharray", d3.select(this).node().getTotalLength() + " " + d3.select(this).node().getTotalLength())
-					.attr("stroke-dashoffset",0)
-					.style("stroke", "blue")
-			        .style("stroke-width", 1)
-			        .style("opacity",0)
-			});
-			//隐藏
-			d3.selectAll("#flight").style("opacity",0);
-			d3.selectAll("#airport").style("opacity",0);*/
+
 			RemoveFlights();
 	  	}
 	});
@@ -166,29 +141,26 @@ $(document).ready(function(){
 		}
 	});
 	$("#ptbuttonAreas").click(function(){
-		//if(isshowchina==0) return;
+
 		if(isshouwareas)
 		{
+			d3.selectAll(".chinapath").attr("opacity",0);
+			d3.select("#chinamaps").attr("display","none"); 
 			d3.selectAll(".chinapath").style("fill",function(d,i){
 		        return colorChina;
 		    });
-		    d3.selectAll(".worldpath").style("fill",worldColor).each(function(d,i){
-		    	if(d.id=="CHN") 
-		    		d3.select(this).style("fill","#fff")
-		    	     .style("filter","url(#gaussian2)");});
-		    d3.select("#mapdiv").style("background-color",oceanColor);
-		    d3.selectAll(".southsea path").style("fill",worldColor);
+
 			isshouwareas=0;
 			this.value="面域";
 		}
 		else
 		{
+			d3.selectAll(".chinapath").attr("opacity",1);
+			d3.select("#chinamaps").attr("display","block"); 
 			d3.selectAll(".chinapath").style("fill",function(d,i){
 		      return chinainterpolatecolor(chinalinear(i));
 		    });
-		    d3.selectAll(".worldpath").style("fill",worldColor);//"#FFFFCC"
-		    d3.select("#mapdiv").style("background-color",oceanColor);//"#CCFFFF"
-		    d3.selectAll(".southsea path").style("fill",oceanColor);//"#FFFFCC"
+
 			isshouwareas=1;
 			this.value="关闭";
 		}
@@ -197,12 +169,14 @@ $(document).ready(function(){
 		if(isshouwheat)
 		{
 			d3.select(".heatmap-canvas").remove();
+			d3.select("#heatmapcanvas").style("display","none");
 			isshouwheat=0;
 			this.value="场域";
 		}
 		else
 		{
 		  //canvas热图数据
+		    d3.select("#heatmapcanvas").style("display","block");
 			var heatmapdata=[];
 			for(var bb in gmajorcitydata){
 			  gmajorcitydata[bb].value=Math.random(100)*100;
@@ -232,13 +206,31 @@ $(document).ready(function(){
 	$("#ptbuttonChina").click(function(){
 		if(isshowchina)
 		{
-			d3.selectAll(".chinapath").attr("opacity",0);
-			isshowchina=0;
+			d3.selectAll(".chinapath").attr("opacity",1);
+			d3.select("#chinamaps").attr("display","block"); 
+		    d3.selectAll(".worldpath").each(function(d,i){
+		    	if(d.id=="CHN") 
+		    		d3.select(this).style("filter","url(#gaussian2)");});
+		    /*d3.select("#mapdiv").style("background-color","#333333");
+		    d3.selectAll(".southsea path").style("fill","#666666");*/
+
+		    isshowchina=0;
 			this.value="关闭";
 		}
 		else
 		{
-			d3.selectAll(".chinapath").attr("opacity",1);
+			d3.selectAll(".chinapath").attr("opacity",0);
+			d3.select("#chinamaps").attr("display","none"); 
+			d3.selectAll(".worldpath").each(function(d,i){
+		    	if(d.id=="CHN") 
+		    		d3.select(this).style("filter","none");});
+			/*d3.selectAll(".chinapath").style("fill",function(d,i){
+		      return chinainterpolatecolor(chinalinear(i));
+		    });
+		    d3.selectAll(".worldpath").style("fill",worldColor);//"#FFFFCC"
+		    d3.select("#mapdiv").style("background-color",oceanColor);//"#CCFFFF"
+		    d3.selectAll(".southsea path").style("fill",oceanColor);//"#FFFFCC"*/
+
 			isshowchina=1;
 			this.value="滤镜";
 		}
@@ -247,12 +239,14 @@ $(document).ready(function(){
 		if(isshowzhuji)
 		{
 			d3.selectAll(".chinatext").attr("opacity",0);
+			d3.select("#chinatexts").attr("display","none");
 			isshowzhuji=0;
 			this.value="注记";		
 		}
 		else
 		{
 			d3.selectAll(".chinatext").attr("opacity",1);
+			d3.select("#chinatexts").attr("display","block");
 			isshowzhuji=1;
 			this.value="关闭";
 		}

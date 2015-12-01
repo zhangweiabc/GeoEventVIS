@@ -23,7 +23,7 @@ var isshouwlines=0;
 var isshouwareas=0;
 var isshouwheat=0;
 var isshowgraticule=0;
-var isshowchina=1;
+var isshowchina=0;
 var isshowcitypoint=1;
 var isshowzhuji=0;
 var isshow3d=0;
@@ -46,7 +46,7 @@ var projection1 = d3.geo.orthographic()//albers//orthographic正射//equirectang
 				       .rotate([250,-30,0])
 				       .precision(.1);
 //投影2D
-var projection2 = d3.geo.mercator()//albers//orthographic//equirectangular//mercator
+var projection2 = d3.geo.equirectangular()//albers//orthographic//equirectangular//mercator
                     .center([0, 0])
                     .scale(400)//初始化比例尺
                     .translate([width/2-1300, height/2+200]);
@@ -69,15 +69,15 @@ var b1 = d3.rgb(255,255,0);
 var interpolateColor = d3.interpolate(a1,b1);
 
 //世界地图颜色设置
-var worldColor = "#FFFFCC";//"#222";//世界地图
+var worldColor = "#EEEEEE"//"#222";"#FFFFCC";//世界地图
 var overColor = "#ff0";//查询颜色
-var oceanColor = "#CCFFFF";//"#333333";//#mapdiv设置
+var oceanColor = "#DDDDDD";//"#333333";//"#CCFFFF";//#mapdiv设置
 var worldstroke= "#CCCCCC";
 var worldstrokewidth = 1;
 //中国地图颜色设置
 var aa = d3.rgb(150,200,100);  //浅绿  
 var bb = d3.rgb(150,100,200);        //深绿  
-var colorChina ="#E26D64";//d3.interpolate(aa,bb);    
+var colorChina ="#EEEEEE";//d3.interpolate(aa,bb);    
 var chinastroke ="#FFFFCC";
 var chinastrokewidth = 0.5;
 var chinainterpolatecolor=d3.interpolate(aa,bb);   
@@ -103,7 +103,24 @@ var color = d3.scale.category10();
 //E : "#4CC3D9"
 //U : "#93648D"
 -->
-
+//死亡人数颜色设置
+var colorfills = {
+    8: "#800000",
+    7: "#8A1818",
+    6: "#943131",
+    5: "#9F4949",
+    4: "#A96262",
+    3: "#B37A7A",
+    2: "#BE9393",
+    1: "#C8ABAB",
+    0: "#D2C4C4",
+    defaultFill: '#DDDDDD'
+  };
+var colorScale = d3.scale.log()
+                    .clamp(true)
+                    .domain([1, 3000])
+                    .range([0, 8])
+                    .nice();
 //数据变量
 var relationsdata={},
     heatmapsvgdata={},

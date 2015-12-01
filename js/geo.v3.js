@@ -45,17 +45,15 @@ dthree.GeoMap.SVGMap = function() {
         SVGMap.projectionChange(projection);
     }
     SVGMap.zoomMap = d3.behavior.zoom().x(xScalezoom).y(yScalezoom)
-                    .center([width / 2, height / 2])
-                    .scaleExtent([0.5, 20])//设置缩放范围
-                    .on("zoom", SVGMap.zoomed);
+                        .center([width / 2, height / 2])
+                        .scaleExtent([0.5, 20])//设置缩放范围
+                        .on("zoom", SVGMap.zoomed);
     var svgmaps= selection.call(SVGMap.zoomMap)
-              .append("svg")//.call(zoomMap)
-              .attr("class", "maps")
-              .attr("width", "100%")
-              .attr("height", "100%")
-              .append("g").attr("id","maps");
-
-
+                          .append("svg")//.call(zoomMap)
+                          .attr("class", "maps")
+                          .attr("width", "100%")
+                          .attr("height", "100%");
+                          //.append("g").attr("id","maps");
     //////////////////////////////////////////////设置2D画布///////////////////////////////////////////////
     //heatmap_d3
     var svgheatmap = svgmaps.append("g").attr("class","svgheatmap");
@@ -81,16 +79,17 @@ dthree.GeoMap.SVGMap = function() {
     //分市地图注记
     var svgcitytexts = svgmaps.append("g").attr("class","citytexts").attr("id","citytexts");
 
+    //事件标注
+    var svgevents = svgmaps.append("g").attr("class","events").attr("id","events");
+
     //线性标绘
     svglines = svgmaps.append("g").attr("class","lines").attr("id","lines");
     //重点目标
     svgpoints = svgmaps.append("g").attr("class","points").attr("id","points");
     //机场数据
     svgairport = svgmaps.append("g").attr("class","airports").attr("id","airports");
-    //飞机航线动态
+    //飞机航线
     svgflights= svgmaps.append("g").attr("class","flights").attr("id","flights");
-    //飞机航线静止
-    var svgflights1= svgmaps.append("g").attr("class","flights1").attr("id","flights1");
 
     //预定义高斯滤镜
     var defs = svgchinamap.append("defs");
@@ -176,19 +175,32 @@ dthree.GeoMap.SVGMap = function() {
         svgworldmap.selectAll("path").data(gworlddata)
               .enter()
               .append("path").attr("class","worldpath")
+              .attr("id",function(d,i){return d.id})
               .style("stroke",worldstroke)
               .style("stroke-width",worldstrokewidth)
               //.attr("fill", function(d,i){return color2(i);})
               .style("fill",worldColor)
               .attr("d", path2)//投影
-              .each(function(d,i){if(d.id=="CHN") d3.select(this).style("fill","#fff").style("filter","url(#"+ gaussian2.attr("id") +")");})
-              /*.style("fill-opacity",0.5)
-             .on("mouseover",function(d,i){
+              /*.each(function(d,i){if(d.id=="CHN") d3.select(this).style("fill","#fff").style("filter","url(#"+ gaussian2.attr("id") +")");})
+              .style("fill-opacity",0.5)*/
+              .on("mouseover",function(d,i){
                   d3.select(this).style("fill",overColor);
+                  if(d.nkill!=null) tipshow(d.id+" 死亡人数："+d.nkill);
+                  else tipshow(d.id);
               })
               .on("mouseout",function(d,i){
-                  d3.select(this).transition().duration(1000).style("fill",worldColor);
-              })*/;
+                  tiphide();
+                  if((d.nkill== null)||(WORLDMAP=={})) d3.select(this).transition().duration(1000).style("fill",worldColor);
+                  else d3.select(this).transition().duration(1000).style("fill",function(d){return colorfills[Math.ceil(WORLDMAP.colorScale(d.nkill))];}); 
+              })
+              .on("click",function(d,i){
+                  if((d.nkill != null)&&(circlesmapshow!={})&&(WORLDMAP!={})) 
+                  {
+                    WORLDMAP.setcountries(d.id);
+                    circlesmapshow.update();
+                    eventdrop.update();
+                  }
+              });
       });
       ////////////////////////////中国地图及注记//////////////////////////////////////////
       d3.json("data/mapdata/china.json", function(error, root) {
@@ -209,17 +221,10 @@ dthree.GeoMap.SVGMap = function() {
           .style("fill", function(d,i){
             return  colorChina;//chinainterpolatecolor(chinalinear(i));
           })
-          .attr("opacity",1)
+          .attr("opacity",0)
           //.style("filter","url(#"+ gaussian2.attr("id") +")")
-          /*.on("mouseover",function(d,i){
-              d3.select(this).style("fill",overColor);
-              //tooltipdiv.style("visibility", "visible");
-              })
-          .on("mouseout",function(d,i){ d3.select(this).transition().duration(1000).style("fill", chinainterpolatecolor(chinalinear(i)));//.style("fill","#001");
-              //tiphide();
-              })*/
           .each(function(d,i){
-               var id = d.properties.id;
+               //var id = d.properties.id;
                //drawPrivenceMap(d, id, "data/mapdata/geometryProvince/" + id + ".json");
           });
         //显示注记
@@ -286,6 +291,8 @@ dthree.GeoMap.SVGMap = function() {
             return d3.select(this).html() + xmlDocument.getElementsByTagName("g")[0].outerHTML;
           }); 
           d3.select("#southseachina").attr("transform", "translate(550,450)scale(0.5)");
+          d3.selectAll(".southsea line").style("stroke",worldstroke);
+          d3.selectAll(".southsea path").style("stroke",worldstroke).style("fill",worldColor);
       });
       //中国地图南海部分
       //////////////////////////////////////////////////绘制省级数据//////////////////////////////////////////////
@@ -404,8 +411,9 @@ dthree.GeoMap.SVGMap = function() {
         d3.select("#lines").attr("transform", "translate(" + icurrentTranslate + ")scale(" + icurrentScale + ")");
         d3.select("#airports").attr("transform", "translate(" + icurrentTranslate + ")scale(" + icurrentScale + ")");
         d3.select("#flights").attr("transform", "translate(" + icurrentTranslate + ")scale(" + icurrentScale + ")");
+        d3.select("#flights1").attr("transform", "translate(" + icurrentTranslate + ")scale(" + icurrentScale + ")");
         d3.select("#southsea").attr("transform", "translate(" + icurrentTranslate + ")scale(" + icurrentScale + ")");
-
+        d3.select("#events").attr("transform", "translate(" + icurrentTranslate + ")scale(" + icurrentScale + ")");
         //d3.select("#heatmapcanvas").attr("transform", "translate(" + icurrentTranslate + ")scale(" + icurrentScale + ")");
         if(isshouwheat)
         {
@@ -418,10 +426,10 @@ dthree.GeoMap.SVGMap = function() {
         if((icurrentScale>=4)&&(icurrentScale<12))//显示省级
         {
             d3.select("#worldmap").attr("display","none");
-            //d3.select("#chinamaps").attr("display","none");
-            d3.select("#chinatexts").attr("display","block");
+            d3.select("#chinamaps").attr("display","none");
+            d3.select("#chinatexts").attr("display","none");
             d3.select("#provencemaps").attr("display","block");
-            d3.selectAll("#Provincepath").style("fill-opacity",0);
+            //d3.selectAll("#Provincepath").style("fill-opacity",0);
             d3.select("#provencetexts").attr("display","block");
             d3.select("#citymaps").attr("display","none");
             d3.select("#citytexts").attr("display","none");
@@ -429,20 +437,20 @@ dthree.GeoMap.SVGMap = function() {
         else if(icurrentScale>=12)//显示县级
         {
             d3.select("#worldmap").attr("display","none");
-            //d3.select("#chinamaps").attr("display","none");
-            d3.select("#chinatexts").attr("display","block");
-            //d3.select("#provencemaps").attr("display","none");
-            d3.selectAll("#Provincepath").style("fill-opacity",0);
+            d3.select("#chinamaps").attr("display","none");
+            d3.select("#chinatexts").attr("display","none");
+            d3.select("#provencemaps").attr("display","none");
+            //d3.selectAll("#Provincepath").style("fill-opacity",0);
             d3.select("#provencetexts").attr("display","none");
             d3.select("#citymaps").attr("display","block");
-            d3.selectAll("#Citypath").style("fill-opacity",0);
+            //d3.selectAll("#Citypath").style("fill-opacity",0);
             d3.select("#citytexts").attr("display","block");
         }
         else//currentScale<4显示全国
         {
           d3.select("#worldmap").attr("display","block");
-          d3.select("#chinamaps").attr("display","block");
-          d3.select("#chinatexts").attr("display","block");
+          //d3.select("#chinamaps").attr("display","block");
+          //d3.select("#chinatexts").attr("display","block");
           d3.select("#provencemaps").attr("display","none");
           //d3.selectAll("#Provincepath").style("fill-opacity",0);
           d3.select("#provencetexts").attr("display","none");
@@ -471,12 +479,19 @@ dthree.GeoMap.SVGMap = function() {
             y:function(d,i){return iprojection([d.x,d.y])[1]-30}
           }); 
           d3.selectAll(".airport").attr({
-            cx: function(d,i){return iprojection([d[" longitude"],d[" latitude"]])[0]},
-            cy: function(d,i){return iprojection([d[" longitude"],d[" latitude"]])[1]},
+            cx: function(d,i){return iprojection(d)[0]},
+            cy: function(d,i){return iprojection(d)[1]},
             r : function(d,i){return 1}
           });
           d3.selectAll(".flight").attr("d", function(d) { return ipath(arc(d));});
-           if(isshouwheat)
+          d3.selectAll(".airport1").attr({
+            cx: function(d,i){return iprojection(d)[0]},
+            cy: function(d,i){return iprojection(d)[1]},
+            r : function(d,i){return 1}
+          });
+          d3.selectAll(".flight1").attr("d", function(d) { return ipath(arc(d));});
+
+          if(isshouwheat)
           {
             var can = document.getElementById("heatmap-canvas");
             var cans =can.getContext('2d');

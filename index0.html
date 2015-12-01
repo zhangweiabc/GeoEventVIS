@@ -13,7 +13,7 @@
     <link href="css/mainstyle.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/earth.css">
-    <link rel="stylesheet" type="text/css" href="lib/timeline/timeline.css">
+    <link rel="stylesheet" type="text/css" href="js/timeline/timeline.css">
     <link href="lib/leaflet/leaflet.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="lib/globe3d/globe3d.css">
     <link rel="stylesheet" type="text/css" href="lib/flamegraph/d3.flameGraph.css">
@@ -186,16 +186,17 @@
                   <!- 标签页-class="tab-pane">  
                   <div class="tab-content">
                     <div class="tab-pane active" id="mapdiv" style="position:relative;">
-                        <!--<div class="mapdiv1" id="mapdiv1" style="height:100%;width:100%;position:absolute;"></div>-->
-                        <div class="heatmapcanvas" id="heatmapcanvas" style="position:absolute;" style="display: none;"></div>
+                        <div class="heatmapcanvas" id="heatmapcanvas" style="display:none;position:absolute;"></div>
                         <div class="pantool" id="pantool"></div>
                         <div class="rightpanel" id="rightpanel"></div>
                         <div class="bottompanel" id="bottompanel"></div>
                     </div>
                     <div class="tab-pane" id="global3Ddiv" style="position:relative;"> 
                         <div class="pantool3d" id="pantool3d"></div>
+                        <div class="leftpanel3d" id="leftpanel3d"></div>
                         <div class="bottompanel3d" id="bottompanel3d"></div>
-                        <canvas id="d3-canvas" width="1048px" height="800px" style="display: none;"></canvas>
+                        <div class="rightpanel3d" id="rightpanel3d"></div>
+                        <div class="svg3d" id="svg3d" style="display:none"></div>
                     </div>
                     <div class="tab-pane" id="wholePropert" style="position:relative;"> 
                           <div class="row">
@@ -239,7 +240,7 @@
                 <!-显示时间-> 
                 <div class="row">
                     <div id="crossfilter">
-                        <div id="date-chart" class="chart">
+                        <!--<div id="date-chart" class="chart">
                             <div class="title">Day of Date</div>
                         </div>
                         <div id="hour-chart" class="chart">
@@ -247,7 +248,7 @@
                         </div>
                         <div id="id-chart" class="chart">
                             <div class="title">ID</div>
-                        </div>
+                        </div>-->
                     </div><!-eventdrop-> 
                 </div><!-显示时间-> 
             </div><!-显示地图和时间->
@@ -334,8 +335,13 @@
   <script type="text/javascript" src="lib/queue.js"></script>
   <!--<script type="text/javascript" src="lib/d3.layout.js"></script>-->
   <script type="text/javascript" src="lib/topojson.js"></script>
+  <script type="text/javascript" src="lib/underscore.js"></script>
   <script type="text/javascript" src="lib/fisheye.js"></script>
   <script type="text/javascript" src="js/global.js"></script>
+  <script type="text/javascript" src="lib/stats.js"></script>
+  <script type="text/javascript" src="lib/dat.gui.js"></script>
+  <script type="text/javascript" src="lib/d3-threeD.js"></script>
+  <script type="text/javascript" src="lib/OrbitControls.js"></script>
   <script type="text/javascript" src="js/earth.js"></script>
   <script type="text/javascript" src="lib/d3.layout.cloud.js"></script>
   <script type="text/javascript" src="js/tools.js"></script>
@@ -348,12 +354,16 @@
   <script type="text/javascript" src="js/arrowmaker.js"></script>
   <script type="text/javascript" src="js/jqueryApp.js"></script>
 
-  <script type="text/javascript" src="lib/timeline/timeline.js"></script>
-  <script type="text/javascript" src="lib/eventDrops.js"></script>
+  <script type="text/javascript" src="js/timeline/timeline.js"></script>
+  <script type="text/javascript" src="js/eventDrops/eventDrops.js"></script>
   <script type="text/javascript" src="js/ComicNarrative/narrative.js"></script>
   <script type="text/javascript" src="js/swimlane/randomData.js"></script>
   <script type="text/javascript" src="js/swimlane/swimlane.js"></script>
+  <!--<script type="text/javascript" src="data/gtd/country_name_mapping.js"></script>-->
+  <script type="text/javascript" src="data/gtd/country_id_mapping.js"></script>
   <script type="text/javascript" src="js/geo.event.js"></script>
+  <script type="text/javascript" src="js/geo.event.gtd.js"></script>
+
 
   <script type="text/javascript" src="js/ComicNarrative/catxml.js"></script>
   <script type="text/javascript" src="lib/circularHeatChart.js"></script>
@@ -369,13 +379,6 @@
       .duration(5000)
       .style("opacity", 0)
       .remove();*/
-  </script>
-  <script type="text/javascript">
-    //全部刷新，等效于F5刷新
-    $(window).resize(function (){
-        location.reload()
-     });
-
   </script>
   <!--<script type="text/javascript" src="lib/globe3d/globe3d.js"></script>-->
   </body>

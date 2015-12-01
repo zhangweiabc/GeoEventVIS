@@ -1,18 +1,147 @@
-/*///////////////////////////////////////////Three基本步骤////////////////////////
+//stats.js
+var stats = new Stats();
+stats.setMode(0); // 0: fps, 1: ms, 2: mb
+stats.domElement.style.position = 'absolute';
+stats.domElement.style.left = '0px';
+stats.domElement.style.top = '0px';
+document.getElementById("leftpanel3d").appendChild( stats.domElement );
+
+//dat.GUI.js
+var controls = new function () {
+    this.scaleX = 1;
+    this.scaleY = 1;
+    this.scaleZ = 1;
+
+    this.positionX = 0;
+    this.positionY = 4;
+    this.positionZ = 0;
+
+    this.rotationX = 0;
+    this.rotationY = 0;
+    this.rotationZ = 0;
+    this.scale = 1;
+
+    this.translateX = 0;
+    this.translateY = 0;
+    this.translateZ = 0;
+
+    this.visible = true;
+
+    /*this.translate = function () {
+
+        sphere.translateX(controls.translateX);
+        sphere.translateY(controls.translateY);
+        sphere.translateZ(controls.translateZ);
+
+        controls.positionX = sphere.position.x;
+        controls.positionY = sphere.position.y;
+        controls.positionZ = sphere.position.z;
+    }*/
+    this.translate = function () {
+
+        root.translateX(controls.translateX);
+        root.translateY(controls.translateY);
+        root.translateZ(controls.translateZ);
+
+        controls.positionX = root.position.x;
+        controls.positionY = root.position.y;
+        controls.positionZ = root.position.z;
+    }
+};
+
+var gui = new dat.GUI();
+
+guiScale = gui.addFolder('scale');
+guiScale.add(controls, 'scaleX', 0, 5);
+guiScale.add(controls, 'scaleY', 0, 5);
+guiScale.add(controls, 'scaleZ', 0, 5);
+
+guiPosition = gui.addFolder('position');
+var contX = guiPosition.add(controls, 'positionX', -10, 10);
+var contY = guiPosition.add(controls, 'positionY', -4, 20);
+var contZ = guiPosition.add(controls, 'positionZ', -10, 10);
+
+contX.listen();
+contX.onChange(function (value) {
+    //sphere.position.x = controls.positionX;
+    root.position.x = controls.positionX;
+});
+
+contY.listen();
+contY.onChange(function (value) {
+    //sphere.position.y = controls.positionY;
+    root.position.y = controls.positionY;
+});
+
+contZ.listen();
+contZ.onChange(function (value) {
+    //sphere.position.z = controls.positionZ;
+    root.position.z = controls.positionZ;
+});
+
+
+guiRotation = gui.addFolder('rotation');
+guiRotation.add(controls, 'rotationX', -4, 4);
+guiRotation.add(controls, 'rotationY', -4, 4);
+guiRotation.add(controls, 'rotationZ', -4, 4);
+
+guiTranslate = gui.addFolder('translate');
+
+guiTranslate.add(controls, 'translateX', -10, 10);
+guiTranslate.add(controls, 'translateY', -10, 10);
+guiTranslate.add(controls, 'translateZ', -10, 10);
+guiTranslate.add(controls, 'translate');
+
+gui.add(controls, 'visible');
+
+document.getElementById('rightpanel3d')
+        .appendChild(d3.select(".dg").attr("id","dg").style(
+          {
+            "position":"absolute",
+            "height":"auto",
+            "right":"-20px",
+          }).node());
+/////////////////////////////////////////////////////////////////////////////////
+/*d3.json("data/mapdata/world-countries.json", function(error, root) {    
+      if (error) return console.error(error);
+
+      d3.select("#svg3d").append("svg").attr("id","threeSVGs")
+            .attr("width", "100%")
+            .attr("height", "100%")
+            .append("g","threeSVG")
+            .selectAll("path")
+            .data(root.features)
+            .enter()
+            .append("path").attr("class","tworldpath").attr("id",function(d,i){return "worldpath"+i})
+            .style("stroke",worldstroke)
+            .style("stroke-width",worldstrokewidth)
+            //.attr("fill", function(d,i){return color2(i);})
+            .style("fill","#ffffff")
+            .attr("d", path2);*/
+    
+///////////////////////////////////////////Three基本步骤////////////////////////
 //开启Three.js渲染器
- var renderer;//声明全局变量（对象）
+/*var orbit;
+var renderer;//声明全局变量（对象）
  function initThree() {
     width = document.getElementById('mapdiv').clientWidth;//获取画布「canvas3d」的宽
     height = document.getElementById('mapdiv').clientHeight;//获取画布「canvas3d」的高
     renderer=new THREE.WebGLRenderer({antialias:true});//生成渲染器对象（属性：抗锯齿效果为设置有效）
+    //renderer..shadowMapEnabled = true;
     renderer.setSize(width, height );//指定渲染器的高宽（和画布框大小一致）
     document.getElementById('global3Ddiv').appendChild(renderer.domElement);//追加 【canvas】 元素到 【canvas3d】 元素中。
-    //renderer.setClearColorHex(0xFFFFFF, 1.0);//设置canvas背景色(clearColor)
   }
-   //设置相机
+
+  //设置场景
+  var scene;
+  function initScene() {   
+    scene = new THREE.Scene();
+    //scene.fog=new THREE.Fog(0xffffff,0.1,500);
+  }
+  //设置相机
   var camera;
   function initCamera() { 
-    camera = new THREE.PerspectiveCamera( 45, width / height , 1 , 5000 );//设置透视投影的相机,默认情况下相机的上方向为Y轴，右方向为X轴，沿着Z轴朝里（视野角：fov 纵横比：aspect 相机离视体积最近的距离：near 相机离视体积最远的距离：far）
+    camera = new THREE.PerspectiveCamera( 45, width / height , 1 , 10000 );//设置透视投影的相机,默认情况下相机的上方向为Y轴，右方向为X轴，沿着Z轴朝里（视野角：fov 纵横比：aspect 相机离视体积最近的距离：near 相机离视体积最远的距离：far）
     camera.position.x = 0;//设置相机的位置坐标
     camera.position.y = 50;//设置相机的位置坐标
     camera.position.z = 100;//设置相机的位置坐标
@@ -21,43 +150,87 @@
     camera.up.z = 0;//设置相机的上为「z」轴方向
     camera.lookAt( {x:0, y:0, z:0 } );//设置视野的中心坐标
   }
-   //设置场景
-  var scene;
-  function initScene() {   
-    scene = new THREE.Scene();
-  }
-
   //设置光源
   var light;
   function initLight() { 
-    light = new THREE.DirectionalLight(0xff0000, 1.0, 0);//设置平行光源
-    light.position.set( 200, 200, 200 );//设置光源向量
+    light = new THREE.DirectionalLight(0xffffff, 1.0, 0);//设置平行光源
+    light.position.set( 2000, 2000, 2000);//设置光源向量
     scene.add(light);// 追加光源到场景
   }
    //设置物体
   var sphere;
   function initObject(){  
     sphere = new THREE.Mesh(
-         new THREE.SphereGeometry(20,20),                //width,height,depth
+         new THREE.SphereGeometry(20,20,50),                //width,height,depth
          new THREE.MeshLambertMaterial({
          		map: THREE.ImageUtils.loadTexture('img/2_no_clouds_8k.jpg')})
          		//color: 0xff0000}) //材质设定
     );
-    scene.add(sphere);
+    //sphere.wireframe=true;
     sphere.position.set(0,0,0);
+    scene.add(sphere);
+   
+    d3.selectAll(".tworldpath").each(function(d,i){
+    var shape = createMesh(new THREE.ShapeGeometry(drawShape(this)));
+    // add the sphere to the scene
+    scene.add(shape);
+   })
+  }
 
+//d3svg转换三维
+function drawShape(svgpath) {
+    var svgString = svgpath.getAttribute("d");//document.querySelector("#worldpath1").getAttribute("d");
+
+    var shape = transformSVGPathExposed(svgString);
+
+    // return the shape
+    return shape;
+}
+function createMesh(geom) {
+
+      geom.applyMatrix(new THREE.Matrix4().makeTranslation(-390, -74, 0));
+
+      // assign two materials
+      var meshMaterial = new THREE.MeshPhongMaterial({color: 0x333333, shininess: 100, metal: true});
+      var mesh = new THREE.Mesh(geom, meshMaterial);
+      mesh.scale.x = 0.1;
+      mesh.scale.y = 0.1;
+
+      mesh.rotation.z = Math.PI;
+      mesh.rotation.x = -1.1;
+      return mesh;
   }
   //执行
-  function threeStart() {
-    initThree();
-    initCamera();
-    initScene();   
-    initLight();
-    initObject();
-    renderer.clear(); 
+  initThree();
+  initCamera();
+  initScene();   
+  initLight();
+  initObject();
+
+  
+  orbit = new THREE.OrbitControls(camera);//, renderer.domElement);
+  orbit.autoRotate = false;
+  var clock = new THREE.Clock();
+  //renderer.clear(); 
+
+  function render() {
+    stats.update();
+    
+    var delta = clock.getDelta();
+    orbit.update(delta);
+
+    sphere.visible = controls.visible;
+
+    sphere.rotation.x += controls.rotationX;
+    sphere.rotation.y = controls.rotationY;
+    sphere.rotation.z = controls.rotationZ;
+
+    sphere.scale.set(controls.scaleX, controls.scaleY, controls.scaleZ);
     renderer.render(scene, camera);
+    requestAnimationFrame(render);
   }
-  threeStart();*/
+  render();
+//});*/
 /////////////////////////////d3的canvas生成three纹理///////////////////////////////////////////
 /*var  width = document.getElementById('mapdiv').clientWidth;//获取画布「canvas3d」的宽
      height = document.getElementById('mapdiv').clientHeight;//获取画布「canvas3d」的高
@@ -123,16 +296,25 @@ var projection3 = d3.geo.equirectangular().translate([width/2, height/2]).scale(
     root.add(mapLayer);//添加地图纹理
     scene.add(root);//添加实体
 
-    /*function render() {
-      root.rotation.y += 0.005;
+    var orbit = new THREE.OrbitControls(camera);
+    function render() {
+      stats.update( );
+      orbit.update( );
+
+      root.visible = controls.visible;
+
+      root.rotation.x = controls.rotationX;
+      root.rotation.y = controls.rotationY;
+      root.rotation.z = controls.rotationZ;
+
+      root.scale.set(controls.scaleX, controls.scaleY, controls.scaleZ);
       requestAnimationFrame(render);
       renderer.render(scene, camera);
     }
     render();
-    setTimeout(function(){return renderer.render(scene, camera);},1000);
   });*/
 ////////////////////////////////////d3canvas三维////////////////////////////////////////////
-var  width = document.getElementById('mapdiv').clientWidth;//获取画布「canvas3d」的宽
+/*var  width = document.getElementById('mapdiv').clientWidth;//获取画布「canvas3d」的宽
      height = document.getElementById('mapdiv').clientHeight;//获取画布「canvas3d」的高
 //添加漫游缩放
 var xScalezoom = d3.scale.linear()
@@ -190,8 +372,7 @@ queue()
 
 function ready(error, world, names) {
   if (error) throw error;
-  console.log(world);
-  console.log(names);
+
   globe = {type: "Sphere"};
   land = topojson.feature(world, world.objects.land);
   countries = topojson.feature(world, world.objects.countries).features;
@@ -228,7 +409,7 @@ function ready(error, world, names) {
       .transition();
       //.each("end", transition);
   })();
-}
+}*/
 ///////////////////////////////////////////纯d3模拟3D///////////////////////////////////
 /*d3.demo = {};
 d3.demo.canvas = function() {

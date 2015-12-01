@@ -624,7 +624,7 @@ function DrawEventstory2(divID,width,height)
 	    function mouseover(d) {
 		if (d.char_node == true) return;
 
-		tipshow(d,"eventstory2");
+		tipshow(d.id);
 		/*var im = new Image();
 		im.name = "Scene panel";
 		
@@ -728,7 +728,7 @@ function DrawEventstory2(divID,width,height)
 
 
 	function draw_chart(name, safe_name, folder, tie_breaker, center_sort, collapse) {
-	    d3.json(folder + "/narrative.svg", function(j) {
+	    d3.json(folder + "/narrative.json", function(j) {
 		var margin = {top: 20, right: 25, bottom: 20, left: 1};
 		var width = raw_chart_width - margin.left - margin.right;
 

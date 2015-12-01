@@ -54,10 +54,10 @@ div#mapdiv{
   height: 800px;
 }
 div#global3Ddiv{
-  margin: 10px;
-  background-color:#FFFFCC;
+  margin: 0px;
+  background-color:#ccccff;
   height:800px;
-   -moz-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   border: 1px solid #bebebe;
   box-sizing: border-box;
 }
@@ -161,6 +161,19 @@ div #rightpanel{
 div #rightpanel:hover {
    opacity:0.8;
 }
+div #rightpanel3d{
+    position:absolute;
+    margin: 0px;
+    right: 10px;
+}
+div #leftpanel3d{
+    position:absolute;
+    top: 0px;
+    left: 0px;
+    border: 1px solid #dddddd;
+    box-sizing: border-box;
+    opacity:1;
+}
 @media only screen and (max-width: 1920px) {
     div #rightpanel {
         height:20%;
@@ -176,20 +189,20 @@ div #rightpanel:hover {
 }
 div #bottompanel{
   position:absolute;
-  height:10%;
+  height:auto;
   width:100%;
   bottom:0px;
   background-color:#cccccc;
   -moz-box-sizing: border-box;
   border: 1px solid #dddddd;
   box-sizing: border-box;
-  opacity: 0;
+  opacity: 0.8;
 }
 div #bottompanel:hover {
   /*-webkit-transform: scale(0.75);
   -moz-transform: scale(0.75);
-  transform: scale(0.75);*/
-  opacity:0.8;
+  transform: scale(0.75);
+  opacity:1;*/
 }
 div #bottompanel3d{
   position:absolute;
@@ -209,7 +222,7 @@ div #bottompanel3d:hover {
   opacity:0.8;
 }
 /*crossfilter*/
-div #crossfilter {
+div#crossfilter{
   margin-top: 10px;
   width: 100%;
   height: 160px;
@@ -284,6 +297,7 @@ div #eventstory{
    -moz-box-sizing: border-box;
    border: 1px solid #bebebe;
    box-sizing: border-box;
+   height: 300px;
 }
 div #eventstory1{
    margin-top: 10px;
@@ -302,6 +316,7 @@ div #eventstory2{
    -moz-box-sizing: border-box;
    border: 1px solid #bebebe;
    box-sizing: border-box;
+   height: 300px;
 }
 div #eventstory3{
    margin-top: 10px;
@@ -311,6 +326,7 @@ div #eventstory3{
    -moz-box-sizing: border-box;
    border: 1px solid #bebebe;
    box-sizing: border-box;
+   height: 300px;
 }
 div #eventstory4{
    margin-top: 10px;

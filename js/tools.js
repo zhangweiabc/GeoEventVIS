@@ -57,7 +57,7 @@
           .data(data)
           .enter().append("path")
           .attr("d", pathpd)
-          .on("mouseover",function(d,i){tipshow(d,"Parallel");})
+          .on("mouseover",function(d,i){tipshow(d.name);})
           .on("mouseout",function(){tiphide();});
 
       // Add a group element for each dimension.
@@ -179,7 +179,7 @@
             .style("fill", function(d) { return color2((d.children ? d : d.parent).name); })
             .style("stroke-width",0.5)
             .on("click", magnify)
-            .on("mouseover",function(d){tipshow(d,"Sunburst");})
+            .on("mouseover",function(d){tipshow(d.name);})
             .on("mouseout",function(){tiphide();})
             .each(stash);
       
@@ -275,7 +275,7 @@
       var nodeEnter = node.enter().append("g")
           .attr("class", "node")
           .attr("transform", function(d) { return "rotate(" + (source.x - 90) + ")translate(" + source.y + ")"; })
-          .on("mouseover",function(d){tipshow(d,"RadialTree");})
+          .on("mouseover",function(d){tipshow(d.name);})
           .on("mouseout",function(){tiphide();})
           .on("click",function(d){treeclick(d);});
 
@@ -406,7 +406,7 @@
         .attr("width", x(xStep) - x(0))
         .attr("height", y(0) - y(yStep))
         .style("fill", function(d) { return z(d.count); })
-        .on("mouseover",function(d){tipshow(d,"HeatMap");})
+        .on("mouseover",function(d){tipshow(d);})
         .on("mouseout",function(){tiphide();});
     // Add a legend for the color values.
     var legend = svgheatmap.selectAll(".legend")
@@ -506,7 +506,7 @@
           .attr("r", function(d) { return Math.sqrt(d.size) / 10 || 4.5; })
           .style("fill", color)
           .on("click", click)
-          .on("mouseover",function(d){tipshow(d,"ForceGraph");})
+          .on("mouseover",function(d){tipshow(d.name);})
           .on("mouseout",function(){tiphide();})
           .call(force.drag);
 
@@ -595,7 +595,7 @@
         /* Add a mouseover event */
     d3.selectAll(dviID+" path").on('mouseover', function(d,i) {
         //var d = d3.select(this).data()[0];
-        tipshow(d,"Circularheat");
+        tipshow(d);
         //d3.select("#info").text(d.title + ' has value ' + d.value);
     }).on("mouseout",function(){tiphide();});
   }
@@ -1684,22 +1684,13 @@ var details = d3.select("body")
                 .attr("id", "details");
 
 
-var tipshow = function(d,id) {
+var tipshow = function(d) {
   //tooltipdiv.style("visibility", "visible");
   tooltipdiv.style("opacity", 1);
 
   tooltipdiv.html(function() {
-      var showcontent;
-      if((id=="RadialTree")||(id=="ForceGraph")||(id=="Sunburst")||(id=="Parallel"))  showcontent=d.name;
-      else if(id=="HeatMap") showcontent="count:"+d.count;
-      else if(id=="eventstory1") {showcontent=d;}
-      else if(id=="eventstory2") {showcontent=d.id;}
-      else if(id=="Circularheat") {showcontent=d;}
-
-      var tt = '<table><tr><td colspan="2"  style="color:#e66101;">' + "" +
-        '</td></tr><tr><td>""</td><td>'+""+'</td></tr>'+
-        "<center>" + showcontent + "</center>";
-      return tt+'</table>';
+      var tt = '<table><tr><td  style="color:#ff00ff;">' + d + '</td></tr></table>';
+      return tt;
     })
     .style("left", (d3.event.pageX + 15) + "px")
     .style("top", (d3.event.pageY ) + "px");

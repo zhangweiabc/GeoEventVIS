@@ -139,19 +139,6 @@ d3.select("#pantool").append("g")
   .attr("type","button")
   .attr("value","三维")
   .on("click",function(){});
-/////////////////////////////////////创建pantool3d//////////////////////////////  
- d3.select("#pantool3d").append("g")
-  .append("input")
-  .attr("id","ptbuttonAdd3d")
-  .attr("type","button")
-  .attr("value","加载")
-  .on("click",function(){});
-d3.select("#pantool3d").append("g")
-  .append("input")
-  .attr("id","ptbuttonAnimal")
-  .attr("type","button")
-  .attr("value","动态")
-  .on("click",function(){});
 /////////////////////////////////////创建rightpantool//////////////////////////////
 d3.select("#rightpanel")
   .append("input").attr("id","ptbutton_rightpanel")
@@ -175,9 +162,8 @@ d3.select("#rightpanel")
       }
   });
 /////////////////////////////////////创建bottompantool//////////////////////////////
-var svgAxisTime = d3.select("#bottompanel").append("svg").attr("class","svgAxisTime").attr("width",$("#bottompanel").width()).attr("height",$("#bottompanel").height());
-DrawTimeAxis("",svgAxisTime,$("#bottompanel").width(),$("#bottompanel").height(),[]);
-
+//var svgAxisTime = d3.select("#bottompanel").append("svg").attr("class","svgAxisTime").attr("width",$("#bottompanel").width()).attr("height",$("#bottompanel").height());
+//DrawTimeAxis("",svgAxisTime,$("#bottompanel").width(),$("#bottompanel").height(),[]);
 function DrawTimeAxis(filename, svg, w, h, d){
   var intervalEvent;
   d3.select("#bottompanel")
@@ -300,8 +286,6 @@ function DrawTimeAxis(filename, svg, w, h, d){
     }
 }
 /////////////////////////////////////创建bottompantool3d//////////////////////////////
-DrawTimeAxis3d(0,2000,"#bottompanel3d",$("#bottompanel").width(),$("#bottompanel").height()*0.8);
-
 function DrawTimeAxis3d(Durationmin,Durationmax,divId,w,h){
     //var Durationmax=d3.max(gflightsdata, function(d) {return parseInt(d["Distance"]);});
     //var Durationmin=d3.min(gflightsdata, function(d) {return parseInt(d["Distance"]);});
